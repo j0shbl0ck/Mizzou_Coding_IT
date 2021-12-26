@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>ti84.utf8</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="profilestyle.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Joshua Block MU-IT</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="https://github.com/">GitHub</a>
+</li>
+<li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About Me</a>
+</li>
+<li>
+  <a href="ti84.html">Ti-84 Projects</a>
+</li>
+<li>
+  <a href="pythonprojects.html">Python Projects</a>
+</li>
+<li>
+  <a href="foodrecipes.html">Food Recipes</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+
+</div>
+
+
+<p>
+ 
+</p>
+<h1>
+<strong>Ti-84 Graphing Calculator Programming</strong>
+</h1>
+<p>
+The Ti-84 graphing calculators have the ability to create your own programs to show the sequences and radians, compute the quadratic formula, and more!
+</p>
+<p>
+In tenth grade, I grew tired of having to memorize math formulas, so in my calculator I first started out with having them displayed while running a created program. This obviously gave me an upper hand on tests and the math teacher approved of this as it was impressive to use a calculator with this type of reasoning.
+</p>
+<p>
+Becoming more interested in coding on calculators I began programming tiny programs turning what was only being displayed into real-time calculations. The programming language is called, <em>TI-Basics</em>.
+</p>
+<p>
+I have not resorted to using my programs anymore, but calculator programs are legal on the ACT exams! The only rule that applies are the programs can only have 10 lines of code, however it never says how many programs you can have…
+</p>
+<p>
+To learn how to put programs onto your calculator:<a href="https://www.ti84calcwiz.com/downloading-apps-programs-on-ti-84-plus-calculators/" target="_blank"> www.ti84calcwiz.com</a>
+</p>
+<img src="websitepics/IMG_5347.jpg" />
+<h3>
+Attached below is the complete source code for my program: ALGEBRA2
+</h3>
+<pre class="text"><code>ClrHome
+Lbl 0
+Menu(&quot;Algebra 2 Home&quot;,&quot;Coordinate Geometry&quot;,A1,&quot;Trigonometry&quot;,A2,&quot;Sequences &amp; Series&quot;,A3,&quot;Degrees &amp; Radians&quot;,A4,&quot;Quadratic Formula&quot;,A5,&quot;Forms&quot;,A6,&quot;End&quot;,A7)
+
+ClrHome
+
+Lbl A1
+Menu(&quot;COORDINATE GEOMETRY&quot;,&quot;DISTANCE&quot;,B1,&quot;MIDPOINT&quot;,B2,&quot;SLOPE&quot;,B3,&quot;[black arrow left]&quot;,0)
+ClrHome
+Lbl B1
+Disp &quot;d=√(X2-X1)^2+(Y2-Y1)^2
+Input &quot;X1? &quot;,A
+Input &quot;Y1? &quot;,B 
+Input &quot;X2? &quot;,C
+Input &quot;Y2? &quot;,D
+(C-A)^2→J
+(D-B)^2→K
+√(J+K)→Z
+Disp Z
+Pause 
+Goto A1
+Lbl B2
+ClrHome
+Disp &quot;((X1+X2)/2,(Y1+Y2)/2)&quot;
+Input &quot;X1? &quot;,A
+Input &quot;Y1? &quot;,B
+Input &quot;X2? &quot;,C
+Input &quot;Y2? &quot;,D
+(A+C)/2→X
+(B+D)/2→Y
+Disp X,Y
+Pause 
+Goto A1
+Lbl B3
+ClrHome
+Disp &quot;m=(Y1-Y2)/(X1-X2)&quot;
+Input &quot;X1? &quot;,A
+Input &quot;Y1? &quot;,B
+Input &quot;X2? &quot;,C
+Input &quot;Y2? &quot;,D
+(D-B)→E
+(C-A)→F
+(E/F)→G
+Disp &quot;SLOPE=&quot;,G
+Pause 
+Goto A1
+
+
+Lbl A2
+Menu(&quot;Algebraic Trig.&quot;,&quot;Law Of Consine&quot;,H1,&quot;Law Of Sines&quot;,H2,&quot;Six Value Trig.&quot;,H3,&quot;Coterminal Angle&quot;,H4,&quot;[black arrow left]&quot;,0)
+Lbl H1
+Menu(&quot;LAW OF COSINES&quot;,&quot;Little A&quot;,D1,&quot;Little B&quot;,D2,&quot;Little C&quot;,D3,&quot;Finding Angles&quot;,D4,&quot;[black arrow left]&quot;,A2)
+Lbl D1
+ClrHome
+Disp &quot;a^2=b^2+c^2-2(b)(c)cos(A°)&quot;
+Input &quot;A°?&quot;,A
+Input &quot;b?&quot;,B
+Input &quot;c?&quot;,C
+B^2+C^2-2(B)(C)cos(A°)→S
+√(S→I
+round(I,2)→X
+Disp X
+Pause 
+Goto A2
+Lbl D2
+ClrHome
+Disp &quot;b^2=a^2+c^2-2(a)(c)cos(B°)&quot;
+Input &quot;a?&quot;,A
+Input &quot;B°?&quot;,B
+Input &quot;c?&quot;,C
+A^2+C^2-2(A)(C)cos(B°)→S
+√(S→I
+round(I,2)→X
+Disp X
+Pause 
+Goto A2
+Lbl D3
+ClrHome
+Disp &quot;c^2=a^2+b^2-2(a)(b)cos(C°)&quot;
+Input &quot;a?&quot;,A
+Input &quot;b?&quot;,B
+Input &quot;C°?&quot;,C
+A^2+B^2-2(A)(B)cos(C°)→S
+√(S→I
+round(I,2)→X
+Disp X
+Pause 
+Goto A2
+Lbl D4
+Menu(&quot;Find Angle A,B,C&quot;,&quot;A°&quot;,I1,&quot;B°&quot;,I2,&quot;C°&quot;,I3,&quot;[black arrow left]&quot;,A2)
+Lbl I1
+ClrHome
+Disp &quot;Given three sides, find A°&quot;
+Input &quot;a?&quot;,A
+Input &quot;b?&quot;,B
+Input &quot;c?&quot;,C
+(B^2+C^2-A^2)/(2(B)(C))→K
+cos^-1(K)→O
+round(O,0)→Z
+round(Z,0)→Y
+Disp &quot;Angle A&quot;,Y
+Pause  
+Goto D4 
+Lbl I2
+ClrHome
+Disp &quot;Given three sides, find B°&quot;
+Input &quot;a?&quot;,A
+Input &quot;b?&quot;,B
+Input &quot;c?&quot;,C
+(C^2+A^2-B^2)/(2(C)(A))→K
+cos^-1(K)→O
+round(O,0)→Z
+round(Z,0)→Y
+Disp &quot;Angle B&quot;,Y
+Pause  
+Goto D4 
+Lbl I3
+ClrHome
+Disp &quot;Given three sides, find C°&quot;
+Input &quot;a?&quot;,A
+Input &quot;b?&quot;,B
+Input &quot;c?&quot;,C
+(A^2+B^2-C^2)/(2(A)(B))→K
+cos^-1(K)→O
+round(O,0)→Z
+round(Z,0)→Y
+Disp &quot;Angle C&quot;,Y
+Pause 
+Goto D4 
+Lbl H2
+Menu(&quot;Area Of Triangles&quot;,&quot;SIN A&quot;,C1,&quot;SIN B&quot;,C2,&quot;SIN C&quot;,C3,&quot;[black arrow left]&quot;,A2)
+Lbl C1
+ClrHome
+Disp &quot;1/2(B)(C)sin(A)&quot;
+Prompt A
+Prompt B
+Prompt C
+1/2(B)(C)sin(A)→X
+round(X,1)→Y
+Disp Y
+Stop
+Lbl C2
+Disp &quot;1/2(A)(C)sin(B)&quot;
+Prompt A
+Prompt B
+Prompt C
+1/2(A)(C)sin(B)→O
+round(O,1)→P
+Disp P
+Stop
+Lbl C3
+ClrHome
+Disp &quot;1/2(A)(B)sin(C)&quot;
+Prompt A
+Prompt B
+Prompt C
+1/2(A)(B)sin(C)→E
+round(E,1)→F
+Disp F
+Stop
+Lbl C4
+Stop
+Lbl H3
+ClrHome
+Disp &quot;Opp,Hyp,Adj,OF θ&quot;
+Prompt O
+Prompt H
+Prompt A
+Disp &quot;Sin θ&quot;,O/H[black arrow right]Frac
+Disp &quot;[ENTER] FOR NEXT&quot;
+Pause 
+Disp &quot;Cos θ&quot;,A/H[black arrow right]Frac
+Disp &quot;[ENTER] FOR NEXT&quot;
+Pause 
+Disp &quot;Tan θ&quot;,O/A[black arrow right]Frac
+Disp &quot;[ENTER] FOR NEXT&quot;
+Pause 
+Disp &quot;Csc θ&quot;,H/O[black arrow right]Frac
+Disp &quot;[ENTER] FOR NEXT&quot;
+Pause 
+Disp &quot;Sec θ&quot;,H/A[black arrow right]Frac
+Disp &quot;[ENTER] FOR NEXT&quot;
+Pause 
+Disp &quot;Cot θ&quot;,A/O[black arrow right]Frac
+Disp &quot;[ENTER] TO END&quot;
+Pause 
+Goto A2
+Lbl H4
+ClrHome
+Menu(&quot;COTERMINAL ANGLE&quot;,&quot;Positive/Negative Angle&quot;,J1,&quot;[black arrow left]&quot;,0)
+Lbl J1
+ClrHome
+Disp &quot;Degree°?&quot;
+Prompt D
+Disp &quot;Postive Angle&quot;,D°+360
+Disp &quot;Negative Angle&quot;,D°-360
+Pause 
+Goto A2
+
+
+
+Lbl A3
+ClrHome
+Menu(&quot;Sequences and Series&quot;,&quot;Arithmetic Seq&quot;,E1,&quot;Arithmetic Ser&quot;,E2,&quot;Geometric Seq&quot;,E3,&quot;Geometric Ser&quot;,E4,&quot;[ black arrow left]&quot;,0)
+Lbl E1
+ClrHome
+Disp &quot;A1?&quot;
+Prompt A
+Disp &quot;D?&quot;
+Prompt D
+Disp &quot;N?&quot;
+Prompt N
+(A+(N-1)D)→L
+Disp L
+Pause 
+Goto A3
+Lbl E2
+ClrHome
+Disp &quot;A1?&quot;
+Prompt A
+Disp &quot;D?&quot;
+Prompt D
+Disp &quot;N?&quot;
+Prompt N
+(N/2)→K
+2(A)→J
+(J+(N-1)(D))→L
+(K)(L)→X
+Disp X
+Pause 
+Goto A3
+Lbl E3
+ClrHome
+Disp &quot;A1?&quot;
+Prompt A
+Disp &quot;R?&quot;
+Prompt R
+Disp &quot;N-1?&quot;
+Prompt N
+(A)(R)^(N-1)→L
+Disp L
+Pause 
+Goto A3
+Lbl E4
+ClrHome
+Disp &quot;A1?&quot;
+Prompt A
+Disp &quot;N?&quot;
+Prompt N
+Disp &quot;R?&quot;
+Prompt R
+(A-A(R)^N)→K
+(1-R)→Q
+(K/Q)→S
+Disp S
+Pause 
+Goto A3
+
+
+Lbl A4
+Menu(&quot;DEGREES RADIANS&quot;,&quot;Degree to Radian&quot;,F1,&quot;Radian to Degree&quot;,F2,&quot;[black arrow left]&quot;,0)
+Lbl F1
+ClrHome
+Input &quot;?° &quot;,D
+D*(π/180)→X
+Disp X
+Pause 
+Goto A4
+Lbl F2
+ClrHome
+Input &quot;Xπ? &quot;,X
+Input &quot;Xπ/A? &quot;,A
+(X/A)*180→D
+Disp D°
+Pause  
+Goto A4
+
+
+Lbl A5
+ClrHome
+Menu(&quot;Quadratic Formula&quot;,&quot;–B+√(B-4AC)/2A&quot;,G1,&quot;–B-√(B-4AC)/2A&quot;,G2,&quot;BOTH&quot;,G3,&quot;[black arrow left]&quot;,0)
+ClrHome
+Lbl G1
+ClrHome
+Disp &quot;–B+√(B^2-4AC)/2A&quot;
+Disp &quot;X^2=A,X=B,WHOLE NUMBER=C&quot;
+Input &quot;A?&quot;,A
+Input &quot;B?&quot;,B
+Input &quot;C?&quot;,C
+If (B^2-(4AC))&lt;0
+Then
+Disp &quot;No Solution&quot;
+Pause 
+Goto A5
+Else
+If A=0
+Then
+Disp &quot;Not Quadratic&quot;
+Pause 
+Goto A5
+Else
+(–B+√(B^2-4AC))/(2A)→W
+Disp W
+Pause 
+Goto A5
+Lbl G2
+ClrHome
+Disp &quot;–B-√(B^2-4AC)/2A&quot;
+Disp &quot;X^2=A,X=B,WHOLE NUMBER=C
+Input &quot;A?&quot;,A
+Input &quot;B?&quot;,B
+Input &quot;C?&quot;,C
+If (B^2-(4AC))&lt;0
+Then
+Disp &quot;No Solution&quot;
+Pause 
+Goto A5
+Else
+If A=0
+Then
+Disp &quot;Not Quadratic&quot;
+Pause 
+Goto A5
+Else
+(–B-√(B^2-4AC))/(2A)→H
+Disp H
+Pause 
+Goto A5
+Lbl G3
+ClrHome
+Disp &quot;X^2=A,X=B,WHOLE NUMBER=C&quot;
+Input &quot;A?&quot;,A
+Input &quot;B?&quot;,B
+Input &quot;C?&quot;,C
+If (B^2-(4AC))&lt;0
+Then
+Disp &quot;No Solution&quot;
+Pause 
+Goto A5
+Else
+If A=0
+Then
+Disp &quot;Not Quadratic&quot;
+Pause 
+Goto A5
+Else
+Disp &quot;[–B+√(B^2-4AC)/2A]
+(–B+√(B^2-4AC))/(2A)→V
+Disp V
+Disp &quot;[–B-√(B^2-4AC)/2A]&quot;
+(–B-√(B^2-4AC))/(2A)→Q
+Disp Q
+Pause 
+Goto A5
+
+
+Lbl A6
+ClrHome
+Menu(&quot;SAMPLE OF FORMS&quot;,&quot;SLOPE INTERCEPT FORM&quot;,Z1,&quot;POINT SLOPE FORM&quot;,Z2,&quot;STANDARD FORM&quot;,Z3,&quot;[black arrow left]&quot;,0)
+Lbl Z1
+Disp &quot;Y=MX+B&quot;
+Pause 
+Disp &quot;2X+Y=5&quot;,&quot;Y=–2X+5&quot;
+Pause 
+Goto A6
+Lbl Z2
+Disp &quot;Y-Y1=M(X-X1)&quot;
+Pause 
+Disp &quot;Y-2=2/3(X-0)&quot;,&quot;Y-2=2/3X&quot;
+Pause 
+Goto A6
+Lbl Z3
+Disp &quot;AX+BY=C&quot;
+Pause 
+Disp &quot;M=–A/B&quot;,&quot;X–INT=(C/A,0)&quot;,&quot;Y–INT=(0,C/B)&quot;
+Pause 
+Disp &quot;Y=2X-6&quot;,&quot;–2X+Y=–6&quot;,&quot;–2X+Y=–6&quot;,&quot;2X-Y=6&quot;
+Pause 
+Goto A6
+
+Lbl A7
+Stop</code></pre>
+<p>
+ 
+</p>
+<div align="center">
+<h3>
+Interested in using this program? Click the link below!
+</h3>
+</div>
+<div align="center">
+<p>
+Download <a href="Coding%20Files/ALGEBRA2.TIProgram"><strong>ALGEBRA2 Ti-84 Program</strong></a>
+</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
