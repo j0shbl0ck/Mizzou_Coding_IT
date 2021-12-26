@@ -1,0 +1,26 @@
+name: "personal-website"
+output_dir: "."
+navbar:
+  title: "Joshua Block MU-IT"
+  left:
+    - text: "GitHub"
+      href: https://github.com/
+    - text: "Home"
+      href: index.html
+    - text: "About Me"
+      href: about.html
+    - text: "Ti-84 Projects"
+      href: ti84.html
+    - text: "Python Projects"
+      href: pythonprojects.html
+    - text: "Food Recipes"
+      href: foodrecipes.html
+
+output:
+  html_document:
+    css: profilestyle.css
+    theme: cosmo
+
+    
+
+  

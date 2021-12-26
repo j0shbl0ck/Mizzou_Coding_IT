@@ -1,0 +1,31 @@
+<p>&nbsp;</p>
+<h1>__Favorite Food Recipes__</h1>
+<p>I love food! It is probably one of my biggest weaknesses and my stomach shows...</p>
+<p>Below are some recipes from different websites that I have found to be my __FAVORITES!__</p>
+<h2>Beef-Wellington</h2>
+![](https://s3.amazonaws.com/finecooking.s3.tauntonclud.com/app/uploads/2000/12/19164801/beef-wellington_wide.jpg)
+<h3>__INGREDIENTS__</h3>
+<ul>
+<li>3 packages (1 lb. each) frozen puff pastry</li>
+<li>2 large portabella mushrooms, stems removed</li>
+<li>6 Tbs. olive oil; more for cooking</li>
+<li>1/2 tsp. fresh thyme leaves, lightly chopped</li>
+<li>1/2 tsp. very roughly chopped fresh rosemary</li>
+<li>Coarse salt and freshly ground black pepper</li>
+</ul>
+<p> Complete ingredients and recipe instructions: <a href="https://www.finecooking.com/recipe/individual-beef-wellingtons-with-mushroom-spinach-blue-cheese-filling" target="_blank"> www.finecooking.com</a></p>
+
+<h2>Creamy Spinach Stuffed Salmon</h2>
+![](https://cafedelites.com/wp-content/uploads/2018/04/Creamy-Spinach-Stuffed-Salmon-IMAGE-6.jpg)
+<h3>__INGREDIENTS__</h3>
+<ul>
+<li>4 skinless salmon fillets</li>
+<li>2 tablespoons olive oil divided</li>
+<li>salt and pepper to season</li>
+<li>2 tablespoons lemon juice</li>
+<li>1 tablespoon unsalted butter</li>
+<li>Coarse salt and freshly ground black pepper</li>
+<li>4 oz (120 g) cream cheese at room temp</li>
+<li>4 oz (120 g) frozen spinach thawed</li>
+</ul>
+<p> Complete ingredients and recipe instructions: <a href="https://cafedelites.com/creamy-spinach-stuffed-salmon/" target="_blank"> www.cafedelites.com</a></p>

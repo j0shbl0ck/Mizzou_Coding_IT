@@ -1,0 +1,12 @@
+<p>&nbsp;</p>
+<div align="center"><h1>__Who am I?__</h1></div>
+
+![person with question marks](https://assets.entrepreneur.com/content/3x2/2000/20151125105751-questions-1014060-1920.jpeg)
+<p>&nbsp;</p>
+<p>I am an undergraduate at the _University of Missouri - Columbia_ studying 
+Information Technology. While I am not busy in college studies, I spend time at
+home doing hobbies such as video editing or video games!</p>
+<p>You are already here, so go check out my <a href="https://www.linkedin.com/in/j0shbl0ck247/" target="_blank">__LinkedIn__</a> and let's connect! If you are interested in following me on other social media 
+platforms, you can scan the QR code or tap my <a href="https://linktr.ee/j0shbl0ck" target="_blank">__Linktr.ee__</a> link.</p> 
+![](websitepics/j0shbl0ck.png)
+
