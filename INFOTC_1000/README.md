@@ -1,1 +1,1 @@
-This contains all projects and assignments readily available from my class.
+This repository contains coding assignments from Mizzou IT Program - 1000
