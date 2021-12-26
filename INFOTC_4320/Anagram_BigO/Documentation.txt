@@ -1,0 +1,1 @@
+Contained in this document is my anagram code. The code sorts the two anagrams are equal and returning back if they are (True or False). The Big O Notation is in the formula of O(NlogN) + O(MlogM) time, O(1) space. 
