@@ -1,0 +1,67 @@
+/* Real CSS Below */
+.linktext {
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif, 'Tahoma', Sans-Serif;
+    position: absolute;
+    left: 16px;
+    top: 8px;
+}
+
+
+
+
+
+
+
+#phptitle {
+
+    font-size: 36px;
+    font-family: 'Raleway', sans-serif, 'Tahoma', Sans-Serif;
+    text-decoration: underline;
+
+}
+
+#phpfunction {
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    text-align:justify;
+
+}
+
+#phpfunctionform {
+    text-align:center;
+}
+
+#phpwrapper {
+    width: 80%;
+    min-height: 65vh;
+    background-color: cornflowerblue;
+    opacity: 75%;
+    border-style: solid double;
+    border-color: gold;
+    margin-top: 110px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding:0% 3% 10% 3%;
+    text-align:center;
+    
+}
+.dropdown-menu-center {
+    left: 50%;
+    right: auto;
+    text-align: center;
+    transform: translate(-50%,0);
+
+}
+
+
+button{
+    cursor: pointer;
+    border: 1px solid #555;
+    text-align: center;
+    padding: 5px;
+    margin-left: 8px;
+    bottom: 0;
+}

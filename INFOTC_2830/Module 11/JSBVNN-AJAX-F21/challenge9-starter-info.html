@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>AJAX - Response as JSON</title>
+	<script>
+
+        var apiKey = "vkkAdzj75hbvo5RwcA70O2IMy6ens0R4hIOeoYtU";
+        var curiosityManifest;
+	
+        function getManifests() {            
+            var xmlHttp = new XMLHttpRequest();
+            
+            xmlHttp.onload = function() {
+                if (xmlHttp.status == 200) {
+                	curiosityManifest = JSON.parse(xmlHttp.responseText).photo_manifest;
+                    
+                    var updatedPhotos = {};
+                    curiosityManifest.photos.forEach(photo => {
+                        updatedPhotos[photo.sol] = photo;
+                    });
+
+                    curiosityManifest.photos = updatedPhotos;
+                    console.log(curiosityManifest);
+                }
+            };
+            
+            xmlHttp.open("GET", "https://api.nasa.gov/mars-photos/api/v1/manifests/curiosity?api_key=" + apiKey, true);
+            xmlHttp.send();
+        }
+
+        function changeSol() {
+            var solVal = document.getElementById("sol").value;
+            if (curiosityManifest.photos[solVal] == null) {
+                alert("No data for this sol");
+                return;
+            }
+
+            var cameras = curiosityManifest.photos[solVal].cameras;
+            var selectString = "";
+            cameras.forEach(cam => {
+                selectString += "<option value='" + cam + "'>" + cam + "</option>";
+            });
+
+            document.getElementById("cameraSelect").innerHTML = selectString;
+        }
+
+        function submitInfo() {
+            var xmlHttp = new XMLHttpRequest();
+
+            xmlHttp.onload = function() {
+                if (xmlHttp.status == 200) {
+                    response = JSON.parse(xmlHttp.responseText);
+                    var photo = response.photos[0];
+                    document.getElementById("displayImage").setAttribute("src", photo.img_src);
+                    document.getElementById("camName").innerHTML = photo.rover.name + ": " + photo.camera.full_name;
+                }
+            };
+
+            var sol = document.getElementById("sol").value;
+            var camera = document.getElementById("cameraSelect").value;
+
+            var url = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=" + sol + "&camera=" + camera + "&api_key=" + apiKey;
+            xmlHttp.open("GET", url, true);
+            xmlHttp.send();
+        }
+	
+	</script>
+</head>
+<body onload="getManifests()">
+	<h1>My Content</h1>
+	<form>
+        <input type="number" id="sol" value="1" onchange="changeSol()">
+        <select id="cameraSelect">
+            <option>Please select a camera...</option>
+        </select>
+        <select id="roverName">
+            <option value="curiosity">Curiosity</option>
+            <option value="opportunity">Opportunity</option>
+            <option value="spirit">Spirit</option>
+        </select>
+    </form>
+    <button onclick="submitInfo()">Submit</button>
+    <br>
+    <img id="displayImage" src="" alt="currentImage">
+    <p id="camName">Camera Name</p>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* Real CSS Below */
+.linktext {
+    font-size: 18px;
+    font-family: 'Raleway', sans-serif, 'Tahoma', Sans-Serif;
+    position: absolute;
+    left: 16px;
+    top: 8px;
+}
+
+#container, #formContainer{
+    width: 80%;
+    border: 2px solid black;
+    margin: auto;
+}
+
+#toDoTable{
+    width: 100%;
+}
+
+#tableBody {
+    width: 100%
+
+}
+
+#formContainer{
+    margin-top: 2em;
+
+}
+
+
+body{
+    padding:0% 3% 10% 3%;
+    text-align:center;
+    }
+    h1{
+    color: #32a852;
+    margin-top:30px;
+    }
+
+button{
+    cursor: pointer;
+    border: 1px solid #555;
+    text-align: center;
+    padding: 5px;
+    margin-left: 8px;
+    bottom: 0;
+}
+.dark{
+    background-color: #b8c6db;
+    color: #f5f7fa;
+}

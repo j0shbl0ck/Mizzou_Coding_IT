@@ -1,0 +1,139 @@
+/* 
+Source one: https://medium.com/swlh/how-to-create-your-first-login-page-with-html-css-and-javascript-602dd71144f1
+
+
+*/
+
+
+/* Navbar CSS Begin */
+*{
+  margin:0;
+  padding:0;
+  font-family:verdana;
+}
+#abc{
+  width:100%;
+  height:100vh;
+  background-color: FFFFFF;
+  background-size: cover;
+}
+nav{
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255,255,255,0);
+  line-height: 50px;
+}
+nav ul{
+  float: right;
+  margin-right: 30px;
+}
+nav ul li{
+  list-style-type: none;
+  display: inline-block;
+  transition: 0.7s all;
+}
+nav ul li:hover{
+  background-color: #D3D3D3;
+}
+nav ul li a{
+  text-decoration: none;
+  color: #000000;
+  padding: 30px;
+}
+li {
+  font-family: 'Work Sans', sans-serif;
+}
+/* Navbar CSS End */
+
+/* Login CSS Begin */
+
+html {
+  height: 100%;
+}
+
+#main-holder {
+  width: 40%;
+  height: 40%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  vertical-align: middle;
+  margin-top: 7%;
+  margin-left: 30%;
+  background-color: white;
+  border-radius: 7px;
+  box-shadow: 0px 0px 5px 2px black;
+}
+
+#login-error-msg-holder {
+  width: 100%;
+  height: 80%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#login-error-msg {
+  width: 23%;
+  text-align: center;
+  margin: 0;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  color: #8a0000;
+  border: 1px solid #8a0000;
+  background-color: #e58f8f;
+  opacity: 0;
+}
+
+#error-msg-second-line {
+  display: block;
+}
+
+#login-form {
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.login-form-field::placeholder {
+  color: #3a3a3a;
+}
+
+.login-form-field {
+  border: none;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+}
+
+#login-form-submit {
+  width: 100%;
+  padding: 7px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  cursor: pointer;
+  outline: none;
+}
+
+
+/* Login CSS End
+
+/* Image CSS Begin */
+
+img {
+  border-radius: 8px;
+  max-width: 15%;
+  margin-top: 3.5%;
+  height: auto;
+  float: center;
+  clear: center;
+}
+
+/* Image CSS End */

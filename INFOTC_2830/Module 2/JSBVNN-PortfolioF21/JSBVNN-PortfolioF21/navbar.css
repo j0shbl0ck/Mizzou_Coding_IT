@@ -1,0 +1,17 @@
+/* Hopefully I can truly learn how to import a css correctly. For now this was just a test...*/
+.navbar {
+    overflow: hidden;
+    background-color: #666666;
+    position: fixed;
+    top: 0; /* Positioning of the navbar */
+    width: 100%; /* Full width */
+}
+.navbar a {
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 15px;
+    text-decoration: none;
+    font-family: calibri;
+}

@@ -1,0 +1,101 @@
+<!--
+    Name: Joshua Block
+    Pawprint: JSBVNN
+    Date: 11/06/2021
+    Challenge 11: AJAX Fall 2021
+-->
+<!--
+    Reference Links:
+    https://www.w3schools.com/Css/css_dropdowns.asp
+    https://www.w3schools.com/tags/tag_optoin.asp
+    https://www.w3schools.com/js/js_if_else.asp
+    https://www.codegrepper.com/code-examples/css/how+to+center+text+inside+a+box+in+html
+    https://www.w3schools.com/howto/howto_css_three_columns.asp
+    https://www.w3schools.com/howto/howto_css_three_columns.asp
+    https://www.w3schools.com/howto/howto_js_slideshow.asp
+    https://www.w3schools.com/howto/howto_css_modals.asp
+    https://www.codewall.co.uk/add-jquery-ajax-loading-spinners-to-your-website/
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>AJAX - Response as JSON</title>
+    <link rel="stylesheet" href="AJAX-Columns.css">
+    <link rel="stylesheet" href="AJAX-Slides.css">
+    <link rel="stylesheet" href="AJAX-Errors.css">
+    <script src="AJAX-Slides.js"></script>
+	<script src="curiosity.js"></script>
+    <script src="opportunity.js"></script>
+    <script src="spirit.js"></script>
+
+</head>
+<body onload="getManifests()" id="grad">
+    <h1 class="MarsCenter">Mars Explorer</h1>
+    <!-- Modal content 
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close">&times;</span>
+            <h2>NASA API ERROR</h2>
+        </div>
+        <div class="modal-body">
+            <p>The Martian SOL you selected does not have any photos!</p>
+            <p>Try another Martian SOL until you find one with photos.</p>
+        </div>
+        <div class="modal-footer">
+            <h3>Click the X to close</h3>
+        </div>
+    </div>
+    -->
+    <div class="row">
+        <div class="column left">
+            <form>
+                <p>Martian Sol:</p>
+                <input type="number" id="sol" value="1" onchange="changeSol()">
+                <p>Rover:</p>
+                <select name="Rover:" id="roverName">
+                    <option>Please Select Rover</option>
+                    <option value="curiosity">Curiosity</option>
+                    <option value="opportunity">Opportunity</option>
+                    <option value="spirit">Spirit</option>
+                </select>
+                <p>Camera:</p>
+                <select id="cameraSelect">
+                    <option>Please Select Camera</option>
+                    <option>Front Hazard Avoidance Camera</option>
+                    <option>Mars Descent Imager</option>
+                    <option>Rear Hazard Avoidance Camera</option>
+                </select>
+            </form>
+            <br>
+            <button onclick="submitInfo()" id="getDataBtn">View</button>
+            <div id="loader" class="lds-dual-ring hidden overlay"></div>
+            <br>
+        </div>
+
+        <div class="column middle">
+            <!-- Slideshow container -->
+            <div class="slideshow-container">
+
+                <!-- Full-width images with number and caption text -->
+                <div class="mySlides fade">
+                    <img id="displayImage" src="" style="max-width: 70%;" alt="rover image">
+                </div>
+                <!-- Next and previous buttons -->
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>              
+            </div>
+            <br>
+    
+        </div>
+
+        <div class="column right">
+            <p id="rover"></p>
+            <p id="camName"></p> 
+            <p id="launch"></p>
+        </div>
+
+    </div>
+</body>
+</html>

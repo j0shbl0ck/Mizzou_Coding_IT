@@ -1,0 +1,45 @@
+
+#MizzouFootball th, #MizzouFootball td {
+    border: 3px solid grey;
+    padding: 10px 20px;
+    font-size: 18pt;
+    font-family: 'Raleway', sans-serif, 'Tahoma', Sans-Serif;
+    color: ghostwhite;
+    height: 50px;
+    text-align: center;
+}
+table#MizzouFootball {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: black;
+}
+
+#row1 {
+    background-color: darkred;
+  
+}
+#row2 {
+    background-color: darkslateblue;
+
+}
+img.mizzou {
+    width: 150px;
+    height: 100px;
+}
+img {
+    vertical-align: middle;
+}
+#text {
+    color: ghostwhite;
+    font-size: 36pt;
+}
+#wrapper {
+    box-shadow: 5px 10px #808080;
+}
+/*#MizzouFootball tr:nth-child(2n+1) {
+    background-color: darkgoldenrod;
+}
+#MizzouFootball tr:nth-child(2n) {
+    background-color: darkgray;
+}
+    */

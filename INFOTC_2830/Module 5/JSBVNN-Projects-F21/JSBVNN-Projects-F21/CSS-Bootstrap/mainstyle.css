@@ -1,0 +1,75 @@
+body{
+    background-color: lightcyan;
+}
+.navbar {
+    overflow: hidden;
+    background-color: teal;
+    position: fixed;
+    top: 0px; /* Positioning of the navbar */
+    left: 0px;
+    right: 0px;
+    width: 100%; /* Full width */
+    margin: 0px;    
+    padding: 16px 0 16px 16px;
+    background: linear-gradient(to right, #485868, #d7e3f7);
+}  
+.navbar a {
+    display: inline-block;
+    color: white;
+    text-align: left;
+    padding-right: 16px;
+    text-decoration: none;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;   
+}
+
+.navbar a:active {
+    background-color: red;
+    color:palegreen;
+}
+
+
+
+#name01 {
+    text-align: left;
+    color: whitesmoke;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 32px;
+    margin: 8px;
+    letter-spacing: 3pt;
+}
+
+
+#PI01 {
+    display: block;
+    position: relative;
+    margin-top: 110px;
+    margin-bottom: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 15%;
+    border: 10px outset teal;
+    
+}
+#name02 {
+    text-align: center;
+    color: teal;
+    position: relative;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 30px;
+}
+/* https://www.w3schools.com/CSS/css_selectors.asp */
+p {
+    text-align: center;
+    font-size: 20px;
+    color: dimgrey;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.exampleClass {
+    border: 20px solid red; 
+ }
+ 
+ .exampleClass {
+    border: 20px solid gold; 
+ }

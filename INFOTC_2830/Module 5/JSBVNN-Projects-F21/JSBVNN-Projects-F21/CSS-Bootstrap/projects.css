@@ -1,0 +1,70 @@
+
+.maincontainer {
+    width: 88%;
+    position: relative;
+    margin: 45px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+.cardcontainer {
+    width: 440px;
+    background-color: white;
+    border-width: 2px;
+    border-style: double;
+    border-color: aqua;
+    border-radius: 8px;
+    height: 500px;
+    position: relative;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    font-family: 'Raleway', sans-serif, 'Tahoma', Sans-Serif;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin: auto;
+    display: column;
+
+    
+}
+
+/*.card {
+    Add shadows to create the "card" effect 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    width: 440px;
+    background-color: purple;
+    border-width: 2px;
+    border-style: double;
+    border-color: aqua;
+    border-radius: 8px;
+    height: 260px;
+    position: relative;
+    margin: 4%;
+    margin-bottom: 20px;
+
+} */
+
+    /* On mouse-over, add a deeper shadow */
+
+
+/* Add some padding inside the card container */
+
+
+/* Add rounded corners to the top left and the top right corner of the image */
+img {
+    border-radius: 5px 5px 0 0;
+    border-bottom-width: thick;
+    border-bottom-color: aqua;
+    border-bottom-style: solid;   
+    width: 440px;
+    height: 100;
+}
+
+.linktext {
+    font-size: 18px;
+    color: aqua;
+    font-family: 'Raleway', sans-serif, 'Tahoma', Sans-Serif;
+}
+
+
+

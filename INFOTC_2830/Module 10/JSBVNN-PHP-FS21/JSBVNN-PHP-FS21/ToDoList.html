@@ -1,0 +1,65 @@
+<!--
+    Name: Joshua Block
+    Pawprint: JSBVNN
+    Date: 10/09/2021
+    Challenge To Do List 21
+-->
+<!--
+    References:
+    (Already, some of this layout may be similar to what was dicussed and shown by the PLA in the Zoom lecture)
+    https://www.w3schools.com/howto/howto_js_todolist.asp#:~:text=Create%20The%20To%20Do%20List%20Step%201%29%20Add,an%20element%27s%20total%20width...%20Step%203%29%20Add%20JavaScript%3A
+    https://stackoverflow.com/questions/40448990/to-do-list-with-priorities-in-javascript
+    https://dev.to/codingnepal/todo-list-app-using-html-css-javascript-5e7p
+    https://inspiredwebdev.com/how-to-create-a-to-do-list-with-javascript/
+    https://enddevl.blogspot.com/2021/10/build-to-do-list-using-html-css.html
+    https://codereview.stackexchange.com/questions/149159/basic-javascript-todo-list-with-task-priorities
+    https://data-flair.training/blogs/javascript-project-to-do-list/
+    https://www.w3schools.com/howto/howto_js_toggle_dark_mode.asp
+    https://html5tutorial.info/html5-date.php
+    https://www.w3schools.com/tags/att_input_type_range.asp
+    https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>To Do List</title>
+        <link rel="stylesheet" href="CSS-Bootstrap-JS/todolist.css">
+    </head>
+    <body onload="addEventListener()">
+        <button onclick="myFunction()">Change Appearance</button>
+        <a href="Projects.html" class="linktext"><b>Back to Projects</b></a>
+        <div contenteditable="true"><h2>
+            To Do List</h2>
+          </div>
+        
+            <div id="container">
+                <table id="toDoTable">
+                    <thread> 
+                        <tr>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Priority</th>
+                            <th>Action</th>
+                        </tr>
+                    </thread>   
+                    <tbody id="tableBody"></tbody>
+                </table>
+            </div>
+            <div id="formContainer">
+                <form id="addToList">
+                    <input id="title" type="text" name="title" placeholder="Title">
+                    <input id="type" type="text" name="type" placeholder="Type">
+                    <label for="meeting">Task Due : </label><input id="meeting" type="date" value="mm/dd/yyyy"/>
+                    <label for="priorities">Priority (between 0 and 6):</label>
+                    <input type="range" id="priorities" name="priorities" min="0" max="6">
+                    <button oneclick="createListItem()" type="submit">Add to list</button>
+                    <button oneclick="createListItem()" type="clear">Clear Tasks</button>
+                </form>
+
+            </div>
+        <script src="CSS-Bootstrap-JS/todolist.js"></script>
+    </body>
+</html>
+    

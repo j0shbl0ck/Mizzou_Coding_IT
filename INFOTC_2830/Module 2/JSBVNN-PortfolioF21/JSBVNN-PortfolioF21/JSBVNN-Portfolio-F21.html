@@ -1,0 +1,95 @@
+<!--
+    Name: Joshua Block
+    Pawprint: JSBVNN
+    Date: 9/01/2021
+    Challenge: PortfolioF21
+-->
+
+<!DOCTYPE html> 
+<html lang ="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JSBVNN-Portfolio-F21</title>
+        <!-- Links in relation to setting up navbar and background 
+            https://wwww.freecodecamp.org/news/external-css-stylesheets-how-to-link-css-to-html-and-import-into-head/ 
+             https://www.w3docs.com/snippets/css/how-to-create-a-fixed-navbar-with-css -->
+        <style>
+            body{
+                background-color: lightcyan;
+            }
+            .navbar {
+                overflow: hidden;
+                background-color: teal;
+                position: fixed;
+                top: 0px; /* Positioning of the navbar */
+                left: 0;
+                right: 0;
+                width: 100%; /* Full width */
+                margin: 0px;
+            }  
+            .navbar a {
+                float: left;
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 15px;
+                text-decoration: none;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+
+            #name01 {
+                text-align: left;
+                color: whitesmoke;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 32px;
+                margin: 8px;
+                letter-spacing: 3pt;
+            }
+            #PI01 {
+                display: block;
+                position: relative;
+                margin-top: 110px;
+                margin-bottom: 60px;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 15%;
+                border: 10px outset teal;
+                
+            }
+            #name02 {
+                text-align: center;
+                color: teal;
+                position: relative;
+                margin-top: 25px;
+                margin-bottom: 15px;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                font-size: 30px;
+            }
+            /* https://www.w3schools.com/CSS/css_selectors.asp */
+            p {
+                text-align: center;
+                font-size: 20px;
+                color: dimgrey;
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        </style>      
+    </head>
+    <body>
+        <div class="navbar">
+                <a href="#name">Joshua Block</a>
+                
+
+        </div>
+        <!-- Links in relation to setting up profile image 
+            https://stackoverflow.com/questions/4908171/how-to-show-local-picture-in-web-page
+             https://www.html.am/html-codes/html-image-borders.cfm -->
+        <img id="PI01" src="Profile_Image.jpg" alt="Profile of Josh">
+
+        <h2 id="name02">Joshua Block </h2>
+        <p>Upcoming Microsoft 365 Engineer</p>
+        
+    </body>
+</html>
+
+
+

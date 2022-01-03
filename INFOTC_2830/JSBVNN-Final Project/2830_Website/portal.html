@@ -1,0 +1,60 @@
+<!--
+    Source one: https://www.w3schools.com/howto/howto_css_login_form.asp
+    Source two: https://medium.com/swlh/how-to-create-your-first-login-page-with-html-css-and-javascript-602dd71144f1
+    Source three: https://stackoverflow.com/questions/35710019/javascript-simple-redirect-after-password-is-entered
+    Source four: https://stackoverflow.com/questions/46918432/javascript-prevent-accessing-restricted-page-without-login-in
+
+
+I understand what was needed to prevent someone from typing in the "secret" page 
+such as javascript or php script running to check if a session was already created via session storage. This way if an end-user were
+to type the "secret" page it would see if the user authenicated on the first page. My coding knowledge is very litte and could not 
+found a solution that could 100% function. What is weird is if I open the "secret" page via file explorer, the access block works?
+
+-->
+
+<!DOCTYPE html> 
+<html lang ="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Customer Portal</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script defer src="Final_JS/portal.js"></script>
+        <link rel="stylesheet" type="text/css" href="Final_CSS/portal.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@1,500&display=swap">
+    </head>
+    <body>
+        
+    </head>
+    <div>
+        <div id="abc">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="bio.html">Biography</a></li>
+                    <li><a href="port.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact Form</a></li>
+                    <li><a href="portal.html">Customer Portal</a></li>
+                </ul>
+            </nav> 
+            <main id="main-holder">
+                <h1>Customer Portal Login</h1>
+                <img src="Final_Images/Portal_Page/BP Logo 2.png" alt="block photography logo">
+                <div id="login-error-msg-holder">
+                    <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+                </div>
+                
+                <form id="login-form">
+                    <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+                    <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+                    <input type="submit" value="Login" id="login-form-submit">
+                </form>              
+            </main>
+        </div> 
+    </div>
+
+    
+    </body>
+</html>

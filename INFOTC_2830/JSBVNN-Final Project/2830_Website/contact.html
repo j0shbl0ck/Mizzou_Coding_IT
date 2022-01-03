@@ -1,0 +1,74 @@
+<!--
+    Source one: https://paperform.co/blog/html-contact-form/
+    Source two: 
+
+-->
+
+<!DOCTYPE html> 
+<html lang ="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Contact</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="Final_CSS/contact.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@1,500&display=swap">
+        <form id="fcf-form-id" class="fcf-form-class" method="post" action="contact-form-process.php"></form>
+    </head>
+    <body>
+    <div>
+        <div id="abc">
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="bio.html">Biography</a></li>
+                    <li><a href="port.html">Portfolio</a></li>
+                    <li><a href="contact.html">Contact Form</a></li>
+                    <li><a href="portal.html">Customer Portal</a></li>
+                </ul>
+            </nav> 
+            <div class="fcf-body">
+
+                <div id="fcf-form">
+                <h3 class="fcf-h3">Book your photo session now!</h3>
+            
+                <form id="fcf-form-id" class="fcf-form-class" method="post" action="Final_PHP/contact.php">
+                    
+                    <div class="fcf-form-group">
+                        <label for="Name" class="fcf-label">Full Name:</label>
+                        <div class="fcf-input-group">
+                            <input type="text" id="Name" name="Name" class="fcf-form-control" required>
+                        </div>
+                    </div>
+            
+                    <div class="fcf-form-group">
+                        <label for="Email" class="fcf-label">Email Address:</label>
+                        <div class="fcf-input-group">
+                            <input type="email" id="Email" name="Email" class="fcf-form-control" required>
+                        </div>
+                    </div>
+            
+                    <div class="fcf-form-group">
+                        <label for="Message" class="fcf-label">Describe your photo session how you see it:</label>
+                        <div class="fcf-input-group">
+                            <textarea id="Message" name="Message" class="fcf-form-control" rows="6" maxlength="3000" required></textarea>
+                        </div>
+                    </div>
+            
+                    <div class="fcf-form-group">
+                        <button type="submit" id="fcf-button" class="fcf-btn fcf-btn-primary fcf-btn-lg fcf-btn-block">Submit</button>
+                    </div>
+            
+                </form>
+                </div>
+            
+            </div>
+        </div> 
+    </div>
+
+    
+    </body>
+</html>

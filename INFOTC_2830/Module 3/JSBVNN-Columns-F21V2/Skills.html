@@ -1,0 +1,118 @@
+<!--
+    Name: Joshua Block
+    Pawprint: JSBVNN
+    Date: 9/8/2021
+    Challenge: Multi-Column Layout F21
+-->
+<!--
+    References:
+    (Already, some of this layout may be similar to what was dicussed and shown by Wergeles in the Zoom lecture)
+-->
+<!DOCTYPE html>
+<html lang ="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Skills</title>
+        <link rel="stylesheet" href="mainstyle.css">
+        <link rel="stylesheet" href="column.css">
+    </head>
+    <body>
+            <!-- Main wrapper. This div should wrap all columns, row wrapper, and title header
+                1160px -> (content width)
+            -->
+
+            <div id="MainWrapper" class="clearhack">
+                <h2 id="nameheader">Skills</h2>
+            
+                <!-- Left Column -->
+                <!-- Put left column physical width calculations here: 
+                    
+                    251px -> (content width)
+                +   40px -> (left 20px + right 20px paddng)
+                +   46px -> (left 23px + right 23px margin)
+                +   18px -> (left 9px  + right 9px border)
+                =   355px -> total physical width
+
+
+                -->
+                <div id="leftColumn">
+                    <h2>Work Skills:</h2>
+                    <ul>
+                        <li>Azure Active Directory</li>
+                        <li>MS 365 Security</li>
+                        <li>MS Intune Adminstrator</li>
+                        <li>SharePoint Adminstrator</li>
+                    </ul>
+                    <h2>Honors and Awards:</h2>
+                    <ul>
+                        <li>Senior Class President</li>
+                        <li>Deans List x1</li>
+                        <li>High Deans List x1</li>
+                    </ul>
+                    
+                </div>
+                
+                <!-- [Middle Column]Row Wrapper. This div will contain two rows -->
+                <!-- Put middle column physical width calculation here:
+
+                    432px -> (content width)
+                +   46px -> (left 23px + right 23px margin) 
+                =   478px -> total physical width
+                --> 
+
+
+
+                <div id="rowWrapper">
+                        <!-- top -->
+                    <div id="topRow">
+                        <h2>Activites:</h2>
+                        <ul>
+                            <li>XC Assistant Coach</li>
+                            <li>Graphic Design in Adobe CC</li>
+                        </ul>
+
+                    </div>
+                        <!-- bottom -->
+                    <div id="bottomRow">
+                        <h2>Work Experience:</h2>
+                        <ul>
+                            <li>Help Desk - Infinitech [March 2021]</li>
+                            <li>MS 365 Engineer - InfiniTech [August 2021]</li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <!-- Right Column -->
+                <!--Put right column calculations here: 
+                
+                Right Physical Width:
+                    1160px -> (Main Wrapper Content Width)
+                -   355px -> (Left Physical Width)
+                -   478 -> (Row Wrapper Physical Width)
+                =   327px -> total right physical width
+                
+                Right Content Width:
+                    327px -> (Right Physical width)
+                -   40px -> (left 20px + right 20px padding)
+                -   18px -> (left 9px + right 9px border)
+                -   46px -> (left 23px + right 23px margin)
+                =   233px -> total right content width
+                -->
+                <div id="rightColumn">
+                    <h2>Courses:</h2>
+                    <ul>
+                        <li>INFOTC 2910</li>
+                        <li>INFOTC 2040</li>
+                        <li>INFOTC 2830</li>
+                    </ul>
+                </div>
+                <div class="navbar">
+                    <a href="JSBVNN-Columns-F21V2.html">Joshua Block</a>
+                    <a href="Skills.html">Skills</a>
+                </div>
+            </div>
+        
+        <h5>Last updated by Josh Block with JSBVNN on 9/11/2021</h5>
+    </body>
+</html>

@@ -1,0 +1,82 @@
+<!--
+    Name: Joshua Block
+    Pawprint: JSBVNN
+    Date: 10/29/2021
+    Challenge: PHP
+-->
+<!--
+    References:
+    (Already, some of this layout may be similar to what was dicussed and shown by the PLA in the Zoom lecture)
+    https://1stwebdesigner.com/php-contact-form-html/
+    https://www.w3schools.com/php/php_form_complete.asp
+    https://www.tabnine.com/academy/javascript/how-to-use-option-selected-property/
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>JSBVNNPHP</title>
+        <link rel="stylesheet" href="forms.css">
+        <script src="forms.js"></script>
+    </head>
+    <body>
+        
+        <a href="http://34.71.129.235/Projects.html" class="linktext"><b>Back to Projects</b></a>
+            
+        <div id="phpwrapper">
+            <h2 id="phptitle">JSBVNN PHP Playground</h2>
+            <div id="phpfunctionform">
+                <form action="#">
+                    <label>Form Section</label>
+                    <select name="select_function" id="dropdown">
+                        <option value="Select_Function">Select a Function</option>
+                        <option value="Name">Name</option>
+                        <option value="Hamming_Number">Hamming Number</option>
+                        <option value="Password_Simulation">Password Simulation</option>
+                        <option value="List_Creator">List Creator</option>
+                        <option value="Cylinder_Surace_Area">Cylinder Surface Area</option>
+                    <!-- <option value="Select_Function" disabled>Select a Function</option> -->
+                    </select>
+                </form>
+
+                <div id="phpfunction">
+
+                    <form method="GET" id="Name" action="forms.php">
+                        <label>Name Function</label>
+                        <p>First Name</p> <input type="text" name="first_name">
+                        <p>Last Name</p> <input type="text" name="last_name">
+                        <input type="submit" value="Submit"><input type="reset" value="Clear">
+                    </form>  
+            
+                    <form method="get" id="Hamming_Number" action="forms.php">
+                        <label>Hamming Function</label>
+                        <p>Provide a Number</p> <input type="number" name="number">
+                        <input type="submit" value="Submit"><input type="reset" value="Clear">
+                    </form>  
+            
+                    <form method="POST" id="Password_Simulation" action="forms.php">
+                        <label>Password Simulation</label>
+                        <p>Username</p> <input type="text" name="username">
+                        <p>Password</p> <input type="password" name="password">
+                        <input type="submit" value="Submit"><input type="reset" value="Clear">
+                    </form>  
+            
+                    <form method="POST" id="List_Creator" action="forms.php">
+                        <label>List Creator Function</label>
+                        <p>First singular value</p> <input type="text" name="first_value">
+                        <p>Second singular value</p> <input type="text" name="second_value">
+                        <input type="submit" value="Submit"><input type="reset" value="Clear">
+                    </form>  
+            
+                    <form method="POST" id="Cylinder_Surace_Area" action="forms.php">
+                        <label>Cylinder Surface Area</label>
+                        <p>Enter Radius</p> <input type="number" name="radius">
+                        <p>Enter Height</p> <input type="number" name="height">
+                        <input type="submit" value="Submit"><input type="reset" value="Clear">
+                        <output>$area_new</output>
+                    </form>  
+                </div>       
+            </div> 
+        </div>
+    </body>
+</html>
