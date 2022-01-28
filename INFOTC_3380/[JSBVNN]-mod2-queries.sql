@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 1/27/22
-Version: 1.0.3 ***/
+Version: 1.0.4 ***/
 
 --RECALL tables
 SHOW tables;
@@ -27,11 +27,17 @@ SELECT cust_code, cust_name, cust_country, phone_no, FROM customer WHERE cust_co
 SELECT * FROM agents;
 SELECT agent_name, phone_no FORM agents WHERE working_area='Bangalore';
 --Show orders with advance amounts of $100. (6 rows returned)
-SHOW * FROM orders;
+SELECT * FROM orders;
 SELECT * FROM orders WHERE advance_amount='100';
 --Show the names of grade 2 customers. (10 rows returned)
+SELECT * FROM customer;
+SELECT * FROM customer WHERE grade='2';
 --Show all customer information for customers from New York. (3 rows returned)
+SELECT * FROM customer;
+SELECT * FROM customer WHERE cust_city='New York';
 --Show all agent information for agents who work in London with commission rates greater than 0.12. (2 rows returned)
+SELECT * FROM agents;
+SELECT * FROM agents WHERE working_area='London' AND commission>0.12;
 --Show order number, agent code, and customer code for orders with advance amount less than or equal to $500, and order amount greater than or equal to $1500. (9 rows returned)
 --Show customer code, customer name, agent code, and outstanding amount for customers with outstanding amounts greater than $6000 and pay amount less tha or equal to $3000. (3 rows returned)
 --Show order numbers for order amounts less than $1000. (8 rows returned)
