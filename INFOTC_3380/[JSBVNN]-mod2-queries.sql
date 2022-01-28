@@ -1,22 +1,21 @@
 --Josh Block
 --1/27/22
---v1.0.1
+--v1.0.2
 
 --Display all of the customer data. (25 rows returned)
 SELECT * FROM customer;
-
 --Display all of the agent data. (12 rows returned)
 SELECT * FROM agents;
-
 --Display customer names and grades. (25 rows returned)
-SELECT cust_name, grade
-    -> FROM customer;
-
+SELECT cust_name, grade FROM customer;
 --Display agent code, name, and working area. (12 rows returned)
-SELECT agent_code, agent_name, working_area
-    -> FROM agents;
+SELECT agent_code, agent_name, working_area FROM agents;
 --Display order number, order amount, and order date. (34 rows returned)
+SELECT ord_num, ord_amount, ord_date FROM orders;
 --Show all customer code, name, country, and phone number, for all customers from the United States. (4 rows returned)
+SELECT * FROM customers;
+SELECT cust_code, cust_name, cust_country, phone_no, FROM customer WHERE cust_country='USA';
+
 --Show agent names and phone numbers for agents from Bangalore. (3 rows returned)
 --Show orders with advance amounts of $100. (6 rows returned)
 --Show the names of grade 2 customers. (10 rows returned)
