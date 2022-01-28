@@ -3,7 +3,11 @@
 --v1.0.0
 
 --Display all of the customer data. (25 rows returned)
+SELECT * FROM customer;
+
 --Display all of the agent data. (12 rows returned)
+SELECT * FROM agents;
+
 --Display customer names and grades. (25 rows returned)
 --Display agent code, name, and working area. (12 rows returned)
 --Display order number, order amount, and order date. (34 rows returned)
