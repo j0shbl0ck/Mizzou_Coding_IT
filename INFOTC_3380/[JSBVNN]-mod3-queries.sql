@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/03/22
-Version: 1.0.7 ***/
+Version: 1.0.9 ***/
 
 --RECALL tables
 SHOW tables;
@@ -27,4 +27,5 @@ SELECT c.CUST_NAME, c.cust_code, c.outstanding_amt, a.agent_name FROM customer c
 --Display customer name, order number, order amount, and advance amount if order amount is greater than or equal to $2,500 or advance amount is less than $300.
 SELECT c.cust_name, o.ord_num, o.ord_amount, o.advance_amount FROM customer c, orders o WHERE o.ord_amount >= 2500 OR o.advance_amount < 300;
 --Display agent name, agent working area, customer name, customer working area for customers and agents who have the same working area.
+SELECT a.agent_name, a.working_area, c.cust_name, c.working_area FROM agents a, customers c, WHERE a.agent_code = c.agent_code;
 --Display customer name, agent name, and order number where order amount is less than $1,000 or opening amount is greater than $8000.
