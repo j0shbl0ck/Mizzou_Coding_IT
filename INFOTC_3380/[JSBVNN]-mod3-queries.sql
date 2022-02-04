@@ -29,4 +29,4 @@ SELECT c.cust_name, o.ord_num, o.ord_amount, o.advance_amount FROM customer c, o
 --Display agent name, agent working area, customer name, customer working area for customers and agents who have the same working area.
 SELECT a.agent_name, a.working_area, c.cust_name, c.working_area FROM agents a, customer c WHERE a.working_area = c.working_area;
 --Display customer name, agent name, and order number where order amount is less than $1,000 or opening amount is greater than $8000.
-SELECT c.cust_name, a.agent_name, o.ord_num FROM customer c, agents a, orders o WHERE o.ord_amount<=1000 OR c.opening_amt>8000;
+SELECT c.cust_name, a.agent_name, o.ord_num FROM customer c, agents a, orders o WHERE o.ord_amount<1000 OR c.opening_amt>8000;
