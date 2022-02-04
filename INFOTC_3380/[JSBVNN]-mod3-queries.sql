@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/03/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 --RECALL tables
 SHOW tables;
@@ -13,7 +13,7 @@ DESCRIBE orders;
 --Display the customer name and all of their agent’s information.
 SELECT customer.CUST_NAME, agents.* FROM agents, customer WHERE agents.AGENT_CODE = customer.AGENT_CODE;
 --For each order, display order number, order date, customer name and agent name.
-SELECT orders.ORD_NUM, orders.ORD_DATE, customer.CUST_NAME, agent.AGENT_NAME FROM agents, customer, orders WHERE agent.AGENT_CODE = orders.AGENT_CODE AND customer.AGENT_CODE = orders.AGENT_CODE;
+SELECT orders.ORD_NUM, orders.ORD_DATE, customer.CUST_NAME, agents.AGENT_NAME FROM agents, customer, orders WHERE agents.AGENT_CODE = orders.AGENT_CODE AND customer.AGENT_CODE = orders.AGENT_CODE;
 --Display agent name, customer name, order date, and order amount for customers from Canada.
 --Display customer name, order number, and order amount for customers in New York city.
 --Display agent name, customer name, order number and order amount for orders of more han $1,500.
