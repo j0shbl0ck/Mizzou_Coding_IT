@@ -15,7 +15,7 @@ SELECT customer.CUST_NAME, agents.* FROM agents, customer WHERE agents.AGENT_COD
 --For each order, display order number, order date, customer name and agent name.
 SELECT orders.ORD_NUM, orders.ORD_DATE, customer.CUST_NAME, agents.AGENT_NAME FROM agents, customer, orders WHERE agents.AGENT_CODE = orders.AGENT_CODE AND customer.AGENT_CODE = orders.AGENT_CODE;
 --Display agent name, customer name, order date, and order amount for customers from Canada.
-SELECT agents.AGENT_NAME, customer.CUST_NAME, orders.ORD_DATE, orders.ORD_AMOUNT FROM agents, customer, orders WHERE agents.AGENT_CODE = customer.AGENT_CODE AND order.AGENT_CODE = customer.AGENT_CODE AND customer.CUST_COUNTRY='Canada';
+SELECT agents.AGENT_NAME, customer.CUST_NAME, orders.ORD_DATE, orders.ORD_AMOUNT FROM agents, customer, orders WHERE agents.AGENT_CODE = customer.AGENT_CODE AND orders.AGENT_CODE = customer.AGENT_CODE AND customer.CUST_COUNTRY='Canada';
 --Display customer name, order number, and order amount for customers in New York city.
 --Display agent name, customer name, order number and order amount for orders of more han $1,500.
 --Display all agent and orders information.
