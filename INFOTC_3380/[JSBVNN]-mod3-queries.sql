@@ -23,7 +23,7 @@ SELECT a.AGENT_NAME, c.CUST_NAME, o.ORD_NUM, o.ORD_AMOUNT FROM customer c, order
 --Display all agent and orders information.
 SELECT a.*,o.* FROM agents a, orders o;
 --Display customer name, customer code, outstanding amount, and agent name for customers with outstanding amounts greater than or equal to $6,000.
-SELECT c.CUST_NAME, c.cust_code, c.outstanding_amt, a.agent_name WHERE customer c, agents a WHERE a.agent_code = c.AGENT_CODE AND c.outstanding_amt>=6000;
+SELECT c.CUST_NAME, c.cust_code, c.outstanding_amt, a.agent_name FROM customer c, agents a WHERE a.agent_code = c.AGENT_CODE AND c.outstanding_amt>=6000;
 --Display customer name, order number order amount, and advance amount if order amount is greater than or equal to $2,500 or advance amount is less than $300.
 --Display agent name, agent working area, customer name, customer working area for customers and agents who have the same working area.
 --Display customer name, agent name, and order number where order amount is less than $1,000 or opening amount is greater than $8000.
