@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/03/22
-Version: 1.0.4 ***/
+Version: 1.0.5 ***/
 
 --RECALL tables
 SHOW tables;
@@ -18,7 +18,8 @@ SELECT orders.ORD_NUM, orders.ORD_DATE, customer.CUST_NAME, agents.AGENT_NAME FR
 SELECT agents.AGENT_NAME, customer.CUST_NAME, orders.ORD_DATE, orders.ORD_AMOUNT FROM agents, customer, orders WHERE agents.AGENT_CODE = customer.AGENT_CODE AND orders.AGENT_CODE = customer.AGENT_CODE AND customer.CUST_COUNTRY='Canada';
 --Display customer name, order number, and order amount for customers in New York city.
 SELECT c.CUST_NAME, o.ORD_NUM, o.ORD_AMOUNT FROM customer c, orders o WHERE o.AGENT_CODE = c.AGENT_CODE and c.CUST_CITY='New York';
---Display agent name, customer name, order number and order amount for orders of more han $1,500.
+--Display agent name, customer name, order number and order amount for orders of more than $1,500.
+SELECT a.AGENT_NAME, c.CUST_NAME, o.ORD_NUM, o.ORD_AMOUNT FROM customer c, orders o, agents a WHERE a.agent_code = o.AGENT_CODE AND c.agent_code = o.agent_code AND o.ORD_AMOUNT > 1500;
 --Display all agent and orders information.
 --Display customer name, customer code, outstanding amount, and agent name for customers with outstanding amounts greater than or equal to $6,000.
 --Display customer name, order number order amount, and advance amount if order amount is greater than or equal to $2,500 or advance amount is less than $300.
