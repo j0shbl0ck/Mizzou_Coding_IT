@@ -1,4 +1,5 @@
 Help for Modules 2-3
+1.1 Opem terminal and type: open -a docker
 1. Open terminal and cd into it-3380-dev-env folder
 2. In terminal (Mac) run: docker-compose up -d
 3. Log into mysql-container in Docker: docker exec -it mysql-container bash
