@@ -40,3 +40,4 @@ SELECT a.agent_name, a.working_area, c.cust_name, c.working_area FROM agents a, 
 
 --Display customer name, agent name, and order number where order amount is less than $1,000 or opening amount is greater than $8000.
 SELECT c.cust_name, a.agent_name, o.ord_num FROM customer c, agents a, orders o WHERE o.ord_amount<1000 OR c.opening_amt>8000;
+SELECT c.cust_name, a.agent_name, o.ord_num FROM customer c, agents a, orders o WHERE c.agent_code = o.agent_code AND (o.ord_amount<1000 OR c.opening_amt>8000);
