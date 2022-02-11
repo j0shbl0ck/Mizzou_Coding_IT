@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/10/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 // RECALL the collections
 show collections
