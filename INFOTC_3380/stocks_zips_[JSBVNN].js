@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/10/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 // RECALL the collections
 show collections
@@ -26,14 +26,22 @@ db.zips.distinct("state",{"city":"SPRINGFIELD"});
 // How many cities named Springfield are there in the United States?
 db.zips.count({"city":"SPRINGFIELD"})
 // List the zip code, population, and state for cities named Emerald.
-db.zips.count({"city":"EMERALD"},{"_id":1,"pop":1,"state":1})
+db.zips.find({"city":"EMERALD"},{"_id":1,"pop":1,"state":1})
 // List the zip code, city, and state for cities with a population of 10 people.
-
+db.zips.find({"pop":{$eq:10}},{"_id":1,"pop":1,"state":1})
 // List all of the documents in the stocks collection.
+db.stocks.find()
 // List the company name and symbol for all companies in the “Information Technology” sector.
+db.stocks.find({"Sector":"Information Technology"},{"Name":1,"Symbol":1})
 // List the symbol, company name, and stock price for all companies in the “Financials” sector whose stock price is greater than $75.
+db.stocks.find({"Sector":"Financials","Price":{$gt:75}},{"Symbol":1,"Name":1,"Price":1})
 // List the Company name, sector, and earnings (EBITDA) for all companies with earnings (EBITDA) of at least $2.5 Billion
+db.stocks.find({"EBITDA":{$lte:2500000000}},{"Name":1,"Sector":1,"EBITDA":1})
 // List the company name, symbol and sector for all companies with a 52 Week High greater than or equal to 150.
+db.stocks.find({"52 Week High":{$gte:150}},{"Name":1,"Symbol":1,"Sector":1})
 // List the symbol, company name, and stock price for all companies in the “Real Estate” sector whose stock price is less than $50.
+db.stocks.find({"Sector":"Real Estate","Price":{$lt:75}},{"Symbol":1,"Name":1,"Price":1})
 // List the company name, symbol and dividend yield for companies in the Utilities or Industrials sectors.
+db.stocks.find({$or:[{"Sector":"Real Estate"},{"Sector":"Utilities"}]},{"Name":1,"Symbol":1,"Dividend Yield":1})
 // List the company name, symbol and market cap for companies whose dividend yield is greater than 3 or whose earnings/share is less than 1.
+db.stocks.find({$or:[{"Dividend Yield":{$gt:3}},{"Price/Earnings":{$lt:1}}]},{"Name":1,"Symbol":1,"Market Cap":1})
