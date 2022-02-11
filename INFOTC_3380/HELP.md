@@ -19,7 +19,7 @@
 7. ```mongoimport --db module4 --collection zips --drop --file zips.json --jsonArray``` to create data base named module4 and load data from files.
 ### Log into the Mongo Server
 8. ```mongo```
-9. ```show dbs``
+9. ```show dbs```
 10. ```use module4```
 11. ```show collections```
 12. ```db.zips.findOne();```
