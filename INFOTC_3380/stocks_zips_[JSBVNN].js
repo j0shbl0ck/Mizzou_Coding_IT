@@ -39,7 +39,7 @@ db.stocks.find({"Sector":"Information Technology"},{"Name":1,"Symbol":1})
 // List the symbol, company name, and stock price for all companies in the “Financials” sector whose stock price is greater than $75.
 db.stocks.find({"Sector":"Financials","Price":{$gt:75}},{"Symbol":1,"Name":1,"Price":1})
 // List the Company name, sector, and earnings (EBITDA) for all companies with earnings (EBITDA) of at least $2.5 Billion
-db.stocks.find({"EBITDA":{$lte:2500000000}},{"Name":1,"Sector":1,"EBITDA":1})
+db.stocks.find({"EBITDA":{$gte:2500000000}},{"Name":1,"Sector":1,"EBITDA":1})
 // List the company name, symbol and sector for all companies with a 52 Week High greater than or equal to 150.
 db.stocks.find({"52 Week High":{$gte:150}},{"Name":1,"Symbol":1,"Sector":1})
 // List the symbol, company name, and stock price for all companies in the “Real Estate” sector whose stock price is less than $50.
