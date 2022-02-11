@@ -1,13 +1,16 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/10/22
-Version: 1.0.3 ***/
+Version: 1.0.4 ***/
 
-// RECALL the collections
+/* 
+RECALL the collections:
 show collections
-// RECALL structure of the data in your collections
+-------------------
+RECALL structure of the data in your collections:
 db.zips.findOne();
 db.stocks.findOne();
+*/
 
 // List all zip codes and city from your home state.
 db.zips.find({"state": "MO"},{"_id":1,"city":1});
