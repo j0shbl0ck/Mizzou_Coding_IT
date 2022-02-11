@@ -1,4 +1,4 @@
-# Help in starting up Docker
+# How to start up Docker 🐳
 
 ## Primarily towards Modules 2-3
 1. Open terminal and type: ```open -a docker```
