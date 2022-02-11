@@ -1,11 +1,10 @@
 /*** USER INFORMATION 
 Student: Josh Block
-Date: 1/27/22
-Version: 1.0.5 ***/
+Date: 2/10/22
+Version: 1.0.0 ***/
 
---RECALL tables
-SHOW tables;
---RECALL Tables_in_module2
-DESCRIBE agents;
-DESCRIBE customer;
-DESCRIBE orders;
+// RECALL the collections
+show collections
+// RECALL structure of the data in your collections
+db.zips.findOne();
+db.stocks.findOne();
