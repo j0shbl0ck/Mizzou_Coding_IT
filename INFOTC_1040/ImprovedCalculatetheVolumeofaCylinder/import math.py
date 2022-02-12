@@ -9,13 +9,21 @@ while (do_calculation):
     while (True):
         try:
             radius = float(input("What is the radius of the cylinder?")) # ask for radius from user
-            height = float(input("What is the height of the cylinder")) #ask for height from user
-            if (radius or height < 0): # checks if numbers are negative, if so reject
-                print ("Negative numbers are not allowed.")
-                continue # returns to try loop
+            if (radius < 0): # checks if value is negative
+                print("Negative value error")
+                continue # loops back to while loop
         except ValueError:
-            # catches non-numerical value
-            print("Your input is invalid, please state a numerical value.")
+            print("Your input is invalid, please state a numerical value.") # catches non-numerical value
+        else:
+            break
+    while (True):
+        try:
+            height = float(input("What is the height of the cylinder")) #ask for height from user
+            if (height < 0): # checks if value is negative
+                print("Negative value error")
+                continue # loops back to while loop
+        except ValueError:
+            print("Your input is invalid, please state a numerical value.") # catches non-numerical value
         else:
             break
 
