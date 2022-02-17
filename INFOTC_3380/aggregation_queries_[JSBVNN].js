@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/15/22
-Version: 1.0.6 ***/
+Version: 1.0.5 ***/
 
 /* 
 RECALL the collections:
@@ -14,12 +14,12 @@ db.stocks.findOne();
 
 // Which states have zip codes with populations greater than (75,000) people?
 db.zips.aggregate([{$match:{pop:{$gt:75000}}},{$project: {state:1}}]);
+db.zips.aggregate([{$group: {_id: "$state"}, PopulationGreaterThan75000:{"$pop":{gt:74000}}},{$project: {_id:1,state:1}}])
 // Which cities have populations greater than 200,000 people?
 db.zips.aggregate([ {$group: {city: "$city"}}, {$math : {pop:{$gt:200000}}},{$project:{_id:0,city:1}}]);
 // What is the total population of each city in FL. Sort in ascending order based on total population?
-db.zips.aggreate([{$match:{state:"FL"}},{$group:{_id:"city",TotalPopulation:{$sum: "$pop"}}},{$sort: {TotalPopulation: {$sum: "$pop"}}}])
+db.zips.aggregate([{$match:{state:"FL"}},{$group:{_id:"city",TotalPopulation:{$sum: "$pop"}}},{$sort: {TotalPopulation: {$sum: "$pop"}}}])
 // What are the 10 most populous cities in MO?
-db.zips.aggreate([{$match:{state: "MO"}},{$group: {_id: "$city"},TotalPopulation:{$sum: "$pop"}},{$sort: {TotalPopulation: -1}},{$limit: 10}])
 // What is the population of New York City, NY?
 // List the cities in Illinois that have 3 or more zip codes? Sort in descending order by total number of zip codes. Hint: count multiple occurrences of a city’s name.
 // Which city has the fewest number of zip codes?
