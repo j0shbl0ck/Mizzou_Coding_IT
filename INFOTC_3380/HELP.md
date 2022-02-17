@@ -11,6 +11,7 @@
 ## Primarily towards Modules 4-
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into it-3380-dev-env folder
+3. In terminal (Mac) run: ```docker-compose up -d```
 ### Load the Database
 3. ```docker exec -it mongo-container bash```
 4. ```cd ~/mongo-files/```
