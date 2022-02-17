@@ -18,7 +18,7 @@ db.zips.aggregate([{$group: {_id: "$state"}, PopulationGreaterThan75000:{"$pop":
 // Which cities have populations greater than 200,000 people?
 db.zips.aggregate([ {$group: {city: "$city"}}, {$math : {pop:{$gt:200000}}},{$project:{_id:0,city:1}}]);
 // What is the total population of each city in FL. Sort in ascending order based on total population?
-db.zips.aggregate([{$match:{state:"FL"}},{$group:{"City":"$city",TotalPopulation:{$sum: "$pop"}}},{$sort:{TotalPopulation:1}}])
+db.zips.aggregate([{$match:{state:"FL"}},{$group:{"_id":"$city",TotalPopulation:{$sum: "$pop"}}},{$sort:{TotalPopulation:1}}])
 // What are the 10 most populous cities in MO?
 db.zips.aggregate([{$match:{state:"MO"}},{$group: {city:"city"},TotalPopulation:{$sum:"pop"}},{$sort:{TotalPopulation: -1}},{$limit: 10}])
 // What is the population of New York City, NY?
