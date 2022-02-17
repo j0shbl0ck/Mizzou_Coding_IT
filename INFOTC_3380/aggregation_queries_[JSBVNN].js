@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/15/22
-Version: 1.3.1 ***/
+Version: 1.3.2 ***/
 
 /* 
 RECALL the collections:
@@ -23,7 +23,7 @@ db.zips.aggregate([{$match:{state:"FL"}},{$group:{"_id":"$city",TotalPopulation:
 db.zips.aggregate([{$match:{state:"MO"}},{$group: {"_id":"$city",TotalPopulation:{$sum:"$pop"}}},{$project: {city:1,TotalPopulation: 1}},{$sort:{TotalPopulation: -1}},{$limit: 10}])
 // What is the population of New York City, NY?
 db.zips.aggregate([{$group:{"_id":null,TotalPopulation:{$sum:"$pop"}}},{$project:{TotalPopulation:1}},{$sort:{TotalPopulation:1}}])
-db.zips.aggregate([{$match: {$and: [{state:"NY"},{city:"NEW YORK CITY"}]}}])
+db.zips.aggregate([{$match: {$and: [{state:"NY"},{city:"NEW YORK CITY"}]}},{$group: {_id:null,Population:{$pop:1}}}])
 // List the cities in Illinois that have 3 or more zip codes? Sort in descending order by total number of zip codes. Hint: count multiple occurrences of a city’s name.
 // Which city has the fewest number of zip codes?
 // What is the name and total population of the most populous city in the zips database?
