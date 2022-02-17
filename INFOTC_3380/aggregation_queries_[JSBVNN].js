@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/15/22
-Version: 1.0.4 ***/
+Version: 1.0.5 ***/
 
 /* 
 RECALL the collections:
@@ -14,6 +14,7 @@ db.stocks.findOne();
 
 // Which states have zip codes with populations greater than (75,000) people?
 db.zips.aggreate([{$match:{pop:{$gt:75000}}},{$project: {state:1}}]);
+db.zips.aggreate([{$group: {_id: "$state"}, PopulationGreaterThan75000:{"$pop":{gt:74000}}},{$project: {_id:1,state:1}}])
 // Which cities have populations greater than 200,000 people?
 db.zips.aggregate([ {$group: {city: "$city"}}, {$math : {pop:{$gt:200000}}},{$project:{_id:0,city:1}}]);
 // What is the total population of each city in FL. Sort in ascending order based on total population?
