@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/15/22
-Version: 1.3.4 ***/
+Version: 1.3.5 ***/
 
 /* 
 RECALL the collections:
@@ -38,3 +38,9 @@ db.zips.aggregate([{$match:{city:"NEY YORK CITY"}},{$group:{"_id":"$city",TotalP
 // What are the top 10 companies in the “Health Care” sector when it comes to “Earnings/Share”?
 // Calculate the total earnings (EBITDA) for all companies in the Information Technology sector.
 // Calculate the number of outstanding shares for companies in the Industrials sector. Number of outstanding shares can be calculated by dividing the Market Cap by the Price. Display company name, symbol, and number of outstanding shares in ascending order.
+
+https://www.geeksforgeeks.org/aggregation-in-mongodb/
+http://reactivemongo.org/releases/0.11/documentation/advanced-topics/aggregation.html
+https://docs.mongodb.com/manual/reference/operator/aggregation/match/
+https://docs.mongodb.com/manual/reference/operator/aggregation/group/
+https://docs.mongodb.com/manual/reference/operator/aggregation/sort/
