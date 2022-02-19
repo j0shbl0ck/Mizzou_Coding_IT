@@ -48,6 +48,7 @@ db.stocks.aggregate([{$match:{Sector:"Health Care"}},{$group: {"_id":"$Name",Tot
 db.stocks.aggregate([{$match:{Sector:"Information Technology"}},{$group:{_id:"$Sector",TotalEarning:{$sum:"$EBITDA"}}}])
 // Calculate the number of outstanding shares for companies in the Industrials sector. Number of outstanding shares can be calculated by dividing the Market Cap by the Price. Display company name, symbol, and number of outstanding shares in ascending order.
 db.stocks.aggregate([{$match:{Sector:"Industrials"}},{$project:{_id:0,Name:1,Symbol:1,OutstandingShares:{$divide:["$MarketCap","$Price"]}}},{$sort:{OutstandingShares:-1}}])
+
 /*** Sources:
 https://www.geeksforgeeks.org/aggregation-in-mongodb/
 http://reactivemongo.org/releases/0.11/documentation/advanced-topics/aggregation.html
