@@ -30,11 +30,17 @@ db.zips.aggregate([{$group:{_id:"$city",ZipCount:{$sum:1}}},{$sort:{ZipCount: 1}
 // What is the name and total population of the most populous city in the zips database?
 db.zips.aggregate([{$group: {"_id":"$city",TotalPopulation:{$sum:"$pop"}}},{$sort:{TotalPopulation: -1}},{$limit: 1}])
 // What is the name and total population of the least populous city in the zips database?
+db.zips.aggregate([{$group: {"_id":"$city",TotalPopulation:{$sum:"$pop"}}},{$sort:{TotalPopulation: 1}},{$limit: 1}])
 // What is the name and total population for the 15 most populous cities in the zips database?
+db.zips.aggregate([{$group: {"_id":"$city",TotalPopulation:{$sum:"$pop"}}},{$sort:{TotalPopulation: -1}},{$limit: 15}])
 // List the symbol and company name of the companies with the ten (10) highest stock price.
+db.stocks.aggregate([{$sort: {Price: -1}},{$limit: 10},{$project: {_id:0, Symbol: 1, Name: 1}}])
 // List total earnings (EBITDA) by sector.
+db.stocks.aggregate([{$group:{_id:"$Sector",TotalEarning:{$sum:"$EBITDA"}}}])
 // List the average earnings by sector
+db.stocks.aggregate([{$group:{_id:"$Sector",AverageEarning:{$avg:"$Earnings/Share"}}}])
 // Show the company name and symbol of the top 10 companies in earnings in the Industrials sector?
+db.stocks.aggregate([{$match:{Sector:"Industrials"}},{$group: {"_id":"$Name",TotalEarnings:{$sum:"$EBITDA"}}},{$sort:{TotalEarnings: -1}},{$limit: 10}])
 // List the names of the companies in the Information Technology sector that paid dividends to shareholders. You will know this if the “Dividend Yield” field is greater than 0.
 // What are the top 10 companies in the “Health Care” sector when it comes to “Earnings/Share”?
 // Calculate the total earnings (EBITDA) for all companies in the Information Technology sector.
