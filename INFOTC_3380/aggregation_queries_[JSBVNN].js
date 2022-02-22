@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/15/22
-Version: 1.3.7 ***/
+Version: 1.3.8 ***/
 
 /* 
 RECALL the collections:
@@ -14,8 +14,8 @@ db.stocks.findOne();
 
 // Which states have zip codes with populations greater than (75,000) people?
 db.zips.aggregate([
-    {$match:{pop:{$gt:75000}}},
-    {$project: {state:1}}
+    {$match: {"pop": {$gt:75000}}},
+    {$group: { _id: "$state" }}
 ]);
 // Which cities have populations greater than 200,000 people?
 db.zips.aggregate([
@@ -76,7 +76,7 @@ db.stocks.aggregate([
 ])
 // List the average earnings by sector
 db.stocks.aggregate([
-    {$group:{_id:"$Sector",AverageEarning:{$avg:"$Earnings/Share"}}}
+    {$group: {_id: "$Sector",AverageEarning: {$avg: "$EBITDA"}}}
 ])
 // Show the company name and symbol of the top 10 companies in earnings in the Industrials sector?
 db.stocks.aggregate([
