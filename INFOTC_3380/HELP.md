@@ -8,7 +8,8 @@
 5. Log into MySQL Server varying on usernaming and password.
 6. Once finished, ```docker-compose down```
 
-## Primarily towards Modules 4-
+
+## Primarily towards Modules 4-5
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
 3. In terminal (Mac) run: ```docker-compose up -d```
@@ -26,3 +27,23 @@
 12. ```show collections```
 13. ```db.zips.findOne();```
 14. ```db.stocks.findOne();```
+
+## Primarily towards Modules 6-
+1. Open terminal and type ```open -a docker```
+2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
+3. In terminal (Mac) run: ```docker-compose up -d```
+4. Close terminal, then open a new session
+### Load the Database (First Time Setup)
+5. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/sql``` folder
+6. ```docker cp classicmodels.sql mysql-container:/root/sql-files```
+7. Close terminal, then open new session and ```docker exec -it mysql-container bash```
+8. ```cd ~/sql-files/```
+9. ```mysql -u root -p```
+10. ```source ~/sql-files/classicmodels.sql```
+### Log into the Mongo Server
+11. ```docker exec -it mysql-container bash```
+12. ```mysql -u root -p```
+13. ```SHOW databases;```
+14. ```USE classicmodels;```
+15. ```SHOW tables;```
+16. ```DESCRIBE orders;```
