@@ -40,7 +40,7 @@
 8. ```cd ~/sql-files/```
 9. ```mysql -u root -p```
 10. ```source ~/sql-files/classicmodels.sql```
-### Log into the Mongo Server
+### Log into the MySQL Server
 11. ```docker exec -it mysql-container bash```
 12. ```mysql -u root -p```
 13. ```SHOW databases;```

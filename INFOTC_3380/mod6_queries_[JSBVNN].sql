@@ -5,9 +5,7 @@ Version: 1.0.0 ***/
 
 --RECALL tables
 SHOW tables;
---RECALL Tables_in_module2
-DESCRIBE orders;
-DESCRIBE customer;
+--RECALL Tables_in_module6
 DESCRIBE orders;
 
 -- Calculate the number of orders for each product that has been ordered. Display the product name and number of orders in a column called “Number of Orders”. Display the results in descending order based on “Number of Orders”. Note: You are calculating the number of orders and not quantity ordered. For example, if Alice orders 3 pizzas today and 5 pizzas next week then pizza orders equals 2 and the quantity of pizzas ordered equals 8. 109 rows returned.
