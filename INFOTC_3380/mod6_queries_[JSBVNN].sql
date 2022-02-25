@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/22/22
-Version: 1.0.0 ***/
+Version: 1.0.1 ***/
 
 --RECALL tables
 SHOW tables;
@@ -9,9 +9,17 @@ SHOW tables;
 DESCRIBE orders;
 
 -- Calculate the number of orders for each product that has been ordered. Display the product name and number of orders in a column called “Number of Orders”. Display the results in descending order based on “Number of Orders”. Note: You are calculating the number of orders and not quantity ordered. For example, if Alice orders 3 pizzas today and 5 pizzas next week then pizza orders equals 2 and the quantity of pizzas ordered equals 8. 109 rows returned.
-
+SELECT p.productName, SUM(c.orderNumber) AS "Number of Orders"
+FROM products p, orderdetails c
+WHERE p.productCode = c.productCode
+GROUP BY productName
+ORDER BY COUNT(c.orderNumber) DESC;
 -- Calculate the total number of each product that has been ordered. Display the product name and quantity ordered in a column called “Quantity Ordered”. Display the results in descending order based on Quantity Ordered. 109 rows returned.
-
+SELECT p.productName, COUNT(d.quantityOrdered) AS "Quantity Ordered"
+FROM products p, orderdetails d
+WHERE p.productCode = d.productCode
+GROUP BY p.productName
+ORDER BY COUNT(d.quantityOrdered) DESC;
 -- Calculate the total dollar value of the top 25 products that has been ordered in the database. Display the product name and the dollar value in a column called “Total Value”.
 
 -- Calculate the number of orders each customer has placed and display the top 25 in descending order based on orders placed. Display the customer name and the orders placed in a columns called “Orders Placed”.
