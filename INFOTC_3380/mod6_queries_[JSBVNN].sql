@@ -9,7 +9,7 @@ SHOW tables;
 DESCRIBE orders;
 
 -- Calculate the number of orders for each product that has been ordered. Display the product name and number of orders in a column called “Number of Orders”. Display the results in descending order based on “Number of Orders”. Note: You are calculating the number of orders and not quantity ordered. For example, if Alice orders 3 pizzas today and 5 pizzas next week then pizza orders equals 2 and the quantity of pizzas ordered equals 8. 109 rows returned.
-SELECT p.productName, SUM(c.orderNumber) AS "Number of Orders"
+SELECT p.productName, COUNT(c.orderNumber) AS "Number of Orders"
 FROM products p, orderdetails c
 WHERE p.productCode = c.productCode
 GROUP BY productName
@@ -21,11 +21,24 @@ WHERE p.productCode = d.productCode
 GROUP BY p.productName
 ORDER BY COUNT(d.quantityOrdered) DESC;
 -- Calculate the total dollar value of the top 25 products that has been ordered in the database. Display the product name and the dollar value in a column called “Total Value”.
-
+SELECT p.productName, SUM(d.quantityOrdered * d.priceEach) AS "Total Value"
+FROM products p, orderdetails d
+WHERE p.productCode = d.productCode
+GROUP BY p.productName
+ORDER BY SUM(quantityOrdered * priceEach) DESC
+LIMIT 25;
 -- Calculate the number of orders each customer has placed and display the top 25 in descending order based on orders placed. Display the customer name and the orders placed in a columns called “Orders Placed”.
-
+SELECT c.customerName, COUNT(o.orderNumber) AS "Orders Placed"
+FROM customers c, orders o
+WHERE c.customerNumber = o.customerNumber
+GROUP BY c.customerName
+ORDER BY COUNT(o.orderNumber) DESC
+LIMIT 25;
 -- Calculate the total payments made each year. Display the year and total payments in a column called “Total Payments”. Note: you will have to use the YEAR() function to get the year portion of the payment date.
-
+SELECT YEAR(paymentDate), SUM(amount) AS "Total Payments" --could also refer to how many payments people made
+FROM payments
+GROUP BY YEAR(paymentDate)
+ORDER BY SUM(amount);
 -- Calculate the total payments made each month in 2004. Display the month and total payments in a column called “Total Payments”. Order the results by month in ascending order. Note: you will have to use the MONTH() and YEAR() functions.
 
 -- Calculate the total payments made each day in December of 2004. Display the day in a column named “Day” and total payments in a column called “Total Payments”. Order the results by day in ascending order. Note: you will have to use the MONTH(), DAY(), and YEAR() functions.
