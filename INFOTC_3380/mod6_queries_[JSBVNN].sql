@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/22/22
-Version: 1.0.3 ***/
+Version: 1.0.4 ***/
 
 --RECALL tables
 SHOW tables;
@@ -77,10 +77,10 @@ GROUP BY p.productName, p.quantityInStock, p.buyPrice
 ORDER BY SUM(p.quantityInStock * p.buyPrice) DESC;
 
 
-
+/*** Sources 
 https://stackoverflow.com/questions/9246410/mysql-query-find-customer-w-orders-but-without-payment
 https://teaching.csse.uwa.edu.au/units/CITS1402/lectures/db-classicmodels.pdf
 https://www.mysqltutorial.org/mysql-sample-database.aspx
 https://github.com/ronaldbradford/schema/blob/master/classicmodels.sql
 https://arvidyuen7.github.io/classicmodels/classicmodels_rmd.html
-https://quizlet.com/163072730/classicmodels-sql-exercises-flash-cards/ 
+https://quizlet.com/163072730/classicmodels-sql-exercises-flash-cards/  ***/
