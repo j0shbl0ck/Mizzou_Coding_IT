@@ -1,12 +1,12 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/22/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 --RECALL tables
 SHOW tables;
---RECALL Tables_in_module6
-DESCRIBE orders;
+--RECALL Tables_in_classicmodels
+DESCRIBE <table in classicmodels>;
 
 -- Calculate the number of orders for each product that has been ordered. Display the product name and number of orders in a column called “Number of Orders”. Display the results in descending order based on “Number of Orders”. Note: You are calculating the number of orders and not quantity ordered. For example, if Alice orders 3 pizzas today and 5 pizzas next week then pizza orders equals 2 and the quantity of pizzas ordered equals 8. 109 rows returned.
 SELECT p.productName, COUNT(c.orderNumber) AS "Number of Orders"
@@ -71,10 +71,11 @@ ORDER BY COUNT(e.employeeNumber) DESC;
 SELECT COUNT(p.productLine) AS "Number of Lines"
 FROM productlines p;
 -- Calculate the dollar value of each product in inventory. You can calculate this by multiplying the quantity in stock by the buy price. Display the product name, quantity in stock, buy price, and in its dollar value in a column called “Dollar Value”. Sort the results in descending order based on dollar value.
-SELECT e.reportsTo, COUNT(e.employeeNumber) AS "Number of Reports"
-FROM employees e
-GROUP BY e.reportsTo
-ORDER BY COUNT(e.employeeNumber) DESC;
+SELECT p.productName, p.quantityInStock, p.buyPrice, SUM(p.quantityInStock * p.buyPrice) AS "Dollar Value"
+FROM products p
+GROUP BY p.productName, p.quantityInStock, p.buyPrice
+ORDER BY SUM(p.quantityInStock * p.buyPrice) DESC;
+
 
 
 https://stackoverflow.com/questions/9246410/mysql-query-find-customer-w-orders-but-without-payment
