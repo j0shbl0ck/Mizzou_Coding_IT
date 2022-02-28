@@ -53,7 +53,7 @@
 15. ```SHOW tables;```
 16. ```DESCRIBE orders;```
 
-<h2 id="PTWP1">Primarily towards Project1</h1>
+<h2>Primarily towards Project1</h2>
 
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
