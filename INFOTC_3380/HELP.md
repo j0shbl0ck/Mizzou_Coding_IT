@@ -24,7 +24,7 @@
 5. ```ls``` to ensure needed files are present/copied
 6. ```mongoimport --db module4 --collection stocks --drop --file sp500-stocks.json --jsonArray``` to create data base named module4 and load data from files.
 7. ```mongoimport --db module4 --collection zips --drop --file zips.json --jsonArray``` to create data base named module4 and load data from files.
-### Log into the Mongo Server
+#### Log into the Mongo Server
 8. ```docker exec -it mongo-container bash```
 9. ```mongo```
 10. ```show dbs```
@@ -45,7 +45,7 @@
 8. ```cd ~/sql-files/```
 9. ```mysql -u root -p```
 10. ```source ~/sql-files/classicmodels.sql```
-### Log into the MySQL Server
+#### Log into the MySQL Server
 11. ```docker exec -it mysql-container bash```
 12. ```mysql -u root -p```
 13. ```SHOW databases;```
