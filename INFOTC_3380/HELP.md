@@ -2,7 +2,7 @@
 ## Table of Contents
 1. [Modules 2-3](#primarily-towards-modules-2-3)
 2. [Modules 4-5](#primarily-towards-modules-4-5)
-3. [Modules 6]
+3. [Modules 6](#primarily-towards-modules-6)
 4. [Project1](#primarily-towards-project1)
 
 ## Primarily towards Modules 2-3
@@ -53,8 +53,7 @@
 15. ```SHOW tables;```
 16. ```DESCRIBE orders;```
 
-<h2>Primarily towards Project1</h2>
-
+## Primarily towards Project1
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
 3. In terminal (Mac) run: ```docker-compose up -d```
