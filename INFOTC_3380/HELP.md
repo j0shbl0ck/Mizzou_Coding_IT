@@ -1,7 +1,7 @@
 # How to start up Docker 🐳
 ## Table of Contents
-1. [Modules 2-3](#primarily-twoards-modules-2-3)
-2. [Modules 4-5]
+1. [Modules 2-3](#primarily-towards-modules-2-3)
+2. [Modules 4-5](#primarily-towards-modules-4-5)
 3. [Modules 6]
 4. [Project1](#primarily-towards-project1)
 
