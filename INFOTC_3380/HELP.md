@@ -3,7 +3,7 @@
 1. Modules 2-3
 2. Modules 4-5
 3. Modules 6
-4. Project1
+4. [Project1](#PTWP)
 
 ## Primarily towards Modules 2-3
 1. Open terminal and type: ```open -a docker```
@@ -54,6 +54,7 @@
 16. ```DESCRIBE orders;```
 
 <h2 id="PTWP1">Primarily towards Project1</h1>
+
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
 3. In terminal (Mac) run: ```docker-compose up -d```
