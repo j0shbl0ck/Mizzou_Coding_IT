@@ -3,7 +3,7 @@
 1. Modules 2-3
 2. Modules 4-5
 3. Modules 6
-4. [Project1](#PTWP)
+4. [Project1](#primarily-towards-project1)
 
 ## Primarily towards Modules 2-3
 1. Open terminal and type: ```open -a docker```
