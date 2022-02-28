@@ -78,10 +78,11 @@
 19. ```cd ~/mongo-files/```
 20. ```ls``` to ensure needed files are present/copied
 21. Use the following commands to create a database named classicmodels and load the data from the json files into their respective collections. Type the following commands:
-   1. ```mongoimport --db classicmodels --collection customers --drop --file customers.json --jsonArray```
-   2. ```mongoimport --db classicmodels --collection orders --drop --file orders.json --jsonArray```
-   3. ```mongoimport --db classicmodels --collection products --drop --file products.json --jsonArray```
-   4. ```mongoimport --db classicmodels --collection employees --drop --file employees.json --jsonArray```
+   * ```mongoimport --db classicmodels --collection customers --drop --file customers.json --jsonArray```
+   * ```mongoimport --db classicmodels --collection orders --drop --file orders.json --jsonArray```
+   * ```mongoimport --db classicmodels --collection products --drop --file products.json --jsonArray```
+   * ```mongoimport --db classicmodels --collection employees --drop --file employees.json --jsonArray```
+
 22. Close terminal session
 #### Log into the Mongo Server
 23. ```docker exec -it mongo-container bash```
