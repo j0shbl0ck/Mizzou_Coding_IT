@@ -67,27 +67,27 @@
 10. ```mysql -u root -p```
 11. ```source ~/sql-files/employeesDB/employees.sql```
 #### Log into the MySQL Server
-11. ```docker exec -it mysql-container bash```
-12. ```mysql -u root -p```
-13. ```SHOW databases;```
-14. ```USE employees;```
-15. ```SHOW tables;```
-16. ```DESCRIBE orders;```
+12. ```docker exec -it mysql-container bash```
+13. ```mysql -u root -p```
+14. ```SHOW databases;```
+15. ```USE employees;```
+16. ```SHOW tables;```
+17. ```DESCRIBE orders;```
 ### Load the Database (First Time Setup)
-3. ```docker exec -it mongo-container bash```
-4. ```cd ~/mongo-files/```
-5. ```ls``` to ensure needed files are present/copied
-6. Use the following commands to create a database named classicmodels and load the data from the json files into their respective collections. Type the following commands:
+18. ```docker exec -it mongo-container bash```
+19. ```cd ~/mongo-files/```
+20. ```ls``` to ensure needed files are present/copied
+21. Use the following commands to create a database named classicmodels and load the data from the json files into their respective collections. Type the following commands:
    1. ```mongoimport --db classicmodels --collection customers --drop --file customers.json --jsonArray```
    2. ```mongoimport --db classicmodels --collection orders --drop --file orders.json --jsonArray```
    3. ```mongoimport --db classicmodels --collection products --drop --file products.json --jsonArray```
    4. ```mongoimport --db classicmodels --collection employees --drop --file employees.json --jsonArray```
-7. Close terminal session
+22. Close terminal session
 #### Log into the Mongo Server
-8. ```docker exec -it mongo-container bash```
-9. ```mongo```
-10. ```show dbs```
-11. ```use classicmodels```
-12. ```show collections```
-13. ```db.orders.findOne();```
-14. ```db.customers.findOne();```
+23. ```docker exec -it mongo-container bash```
+24. ```mongo```
+25. ```show dbs```
+26. ```use classicmodels```
+27. ```show collections```
+28. ```db.orders.findOne();```
+29. ```db.customers.findOne();```
