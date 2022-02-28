@@ -28,7 +28,7 @@
 13. ```db.zips.findOne();```
 14. ```db.stocks.findOne();```
 
-## Primarily towards Modules 6-
+## Primarily towards Modules 6
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
 3. In terminal (Mac) run: ```docker-compose up -d```
@@ -47,3 +47,42 @@
 14. ```USE classicmodels;```
 15. ```SHOW tables;```
 16. ```DESCRIBE orders;```
+
+## Primarily towards Project1
+1. Open terminal and type ```open -a docker```
+2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
+3. In terminal (Mac) run: ```docker-compose up -d```
+4. Close terminal, then open a new session
+### Load the MySQL Database (First Time Setup)
+5. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/sql``` folder
+6. ```docker cp employeesDB mysql-container:/root/sql-files```
+7. Close terminal, then open new session and ```docker exec -it mysql-container bash```
+8. ```cd ~/sql-files/```
+9. ```cd ~/sql-files/employeesDB/```
+10. ```mysql -u root -p```
+11. ```source ~/sql-files/employeesDB/employees.sql```
+#### Log into the MySQL Server
+11. ```docker exec -it mysql-container bash```
+12. ```mysql -u root -p```
+13. ```SHOW databases;```
+14. ```USE employees;```
+15. ```SHOW tables;```
+16. ```DESCRIBE orders;```
+### Load the Database (First Time Setup)
+3. ```docker exec -it mongo-container bash```
+4. ```cd ~/mongo-files/```
+5. ```ls``` to ensure needed files are present/copied
+6. Use the following commands to create a database named classicmodels and load the data from the json files into their respective collections. Type the following commands:
+   1. ```mongoimport --db classicmodels --collection customers --drop --file customers.json --jsonArray```
+   2. ```mongoimport --db classicmodels --collection orders --drop --file orders.json --jsonArray```
+   3. ```mongoimport --db classicmodels --collection products --drop --file products.json --jsonArray```
+   4. ```mongoimport --db classicmodels --collection employees --drop --file employees.json --jsonArray```
+7. Close terminal session
+#### Log into the Mongo Server
+8. ```docker exec -it mongo-container bash```
+9. ```mongo```
+10. ```show dbs```
+11. ```use classicmodels```
+12. ```show collections```
+13. ```db.orders.findOne();```
+14. ```db.customers.findOne();```
