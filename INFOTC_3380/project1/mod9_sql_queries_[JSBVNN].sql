@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.1.4 ***/
+Version: 1.1.5 ***/
 
 --RECALL tables
 SHOW tables;
@@ -42,6 +42,13 @@ FROM departments d
 GROUP BY d.dept_name
 ORDER BY SUM(d.dept_no);
 -- How many males and how many females have been hired by this company in its history?
+SELECT 
+    CASE WHEN e.gender = 'M' THEN "Male"
+        WHEN e.gender = 'F' THEN "Female"
+    END AS e.gender,
+    COUNT(*) as Number
+FROM employees each
+GROUP BY e.gender;
 -- List the titles and the number of current employees that hold that title.
 
 
