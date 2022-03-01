@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.6 ***/
+Version: 1.0.7 ***/
 
 --RECALL tables
 SHOW tables;
@@ -31,6 +31,11 @@ FROM titles t
 ORDER BY t.title DESC;
 
 -- List the first name, last name, and department name for all current department managers. Remember that a current manager has a to_date value of 9999-01-01.
+SELECT e.first_name, e.last_name, d.dept_name
+FROM employees e, 
+INNER JOIN departments d
+ON (d.dept_no = e.emp_no)
+ORDER BY e.emp_no
 -- How many employees does each department currently have? List the department name and number of employees in a column named “Number of Employees”.
 -- How many males and how many females have been hired by this company in its history?
 -- List the titles and the number of current employees that hold that title.
