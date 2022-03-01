@@ -9,12 +9,12 @@ SHOW tables;
 DESCRIBE <table in employees>;
 
 -- List all of the current employees first name, last name, salary and department name.
-SELECT e.first_name, e.last_name, SUM(s.salary) AS "salary", d.dept_name
+SELECT e.first_name, e.last_name, s.salary, d.dept_name
 FROM employees e, salaries s, departments d
 WHERE e.emp_no = s.emp_no
-GROUP BY e.first_name, e.last_name, d.dept_name
-ORDER BY SUM(s.salary) DESC
-LIMIT 10;
+--GROUP BY e.first_name, e.last_name, d.dept_name
+--ORDER BY SUM(s.salary) DESC
+--LIMIT 10;
 -- List the first name, last name, and salary of the current employees with the ten (10) highest salaries.
 SELECT e.first_name, e.last_name, SUM(s.salary)
 FROM employees e, salaries s
