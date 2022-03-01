@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.1.6 ***/
+Version: 1.1.7 ***/
 
 --RECALL tables
 SHOW tables;
@@ -45,8 +45,14 @@ ORDER BY SUM(d.dept_no);
 SELECT e.gender, count(e.gender)
 FROM employees e
 GROUP BY e.gender;
--- List the titles and the number of current employees that hold that title.
+-- THIS IS CORRECT
 
+-- List the titles and the number of current employees that hold that title.
+SELECT t.title, COUNT(e.emp_no)
+FROM titles t, employees e
+WHERE t.emp_no = e.emp_no
+GROUP BY t.title
+ORDER BY COUNT(e.emp_no);
 
 -- Calculate the total payments made by each customer in the database who has made a payment. Display the customer name and the total payments in a column named “Total Payments”. 
 SELECT c.customerName, COUNT(p.amount) AS "Total Payments"
