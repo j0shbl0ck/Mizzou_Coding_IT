@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.5 ***/
+Version: 1.0.6 ***/
 
 --RECALL tables
 SHOW tables;
@@ -27,7 +27,7 @@ SELECT SUM(s.salary) AS "salary"
 FROM salaries s;
 -- Display a list of the unique titles for this company.
 SELECT DISTINCT(t.title)
-FROM titles
+FROM titles t
 ORDER BY t.title DESC;
 
 -- List the first name, last name, and department name for all current department managers. Remember that a current manager has a to_date value of 9999-01-01.
