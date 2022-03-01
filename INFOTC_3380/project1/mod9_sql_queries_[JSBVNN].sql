@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.7 ***/
+Version: 1.0.8 ***/
 
 --RECALL tables
 SHOW tables;
@@ -34,8 +34,7 @@ ORDER BY t.title DESC;
 SELECT e.first_name, e.last_name, d.dept_name
 FROM employees e, 
 INNER JOIN departments d
-ON (d.dept_no = e.emp_no)
-ORDER BY e.emp_no
+ON (d.dept_no = e.emp_no);
 -- How many employees does each department currently have? List the department name and number of employees in a column named “Number of Employees”.
 -- How many males and how many females have been hired by this company in its history?
 -- List the titles and the number of current employees that hold that title.
