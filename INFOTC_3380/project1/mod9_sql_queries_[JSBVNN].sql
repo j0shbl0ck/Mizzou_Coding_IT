@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -9,14 +9,16 @@ SHOW tables;
 DESCRIBE <table in employees>;
 
 -- List all of the current employees first name, last name, salary and department name.
-SELECT e.first_name, e.last_name, s.salary, d.dept_name
+SELECT e.first_name, e.last_name, SUM(s.salary), d.dept_name
 FROM employees e, salaries s, departments d
-WHERE e.emp_no = s.emp_no;
+WHERE e.emp_no = s.emp_no
+GROUP BY e.first_name && e.last_name;
 -- List the first name, last name, and salary of the current employees with the ten (10) highest salaries.
 SELECT e.first_name, e.last_name, s.salary
 FROM employees e, salaries s
 WHERE e.emp_no = s.emp_no
-ORDER BY COUNT(s.salary) ASC
+GROUP BY e.first_name && e.last_name
+ORDER BY s.salary DESC
 LIMIT 10;
 -- What is the total payroll (sum of all current salaries) for the company.
 -- Display a list of the unique titles for this company.
