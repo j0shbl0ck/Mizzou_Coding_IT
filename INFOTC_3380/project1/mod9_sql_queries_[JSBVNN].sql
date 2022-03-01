@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.1.2 ***/
+Version: 1.1.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -38,7 +38,7 @@ GROUP BY e.first_name, e.last_name
 
 -- How many employees does each department currently have? List the department name and number of employees in a column named “Number of Employees”.
 SELECT d.dept_name, COUNT(d.dept_no) AS "Number of Employees"
-FROM departments
+FROM departments d
 GROUP BY d.dept_name
 ORDER BY COUNT(d.dept_no);
 -- How many males and how many females have been hired by this company in its history?
