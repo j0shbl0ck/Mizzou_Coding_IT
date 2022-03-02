@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.2.0 ***/
+Version: 1.2.1 ***/
 
 /* 
 RECALL the collections:
@@ -37,7 +37,7 @@ db.employees.aggregate([
 ])
 // List the names and credit limit of the customers with the 10 highest credit limits
 db.customers.aggregate([
-    {$match: {Name:"$customerName"}}
+    {$match: {Name:"$customerName"}},
     {$sort: {creditLimit: -1}},{$limit: 10},
     {$project: {_id:0, Name: 1, creditLimit: 1}}
 ])
