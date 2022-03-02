@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.8 ***/
+Version: 1.1.0 ***/
 
 /* 
 RECALL the collections:
@@ -31,6 +31,10 @@ db.customers.aggregate([
     {$sort:{NumberofCustomersinState:1}}
 ])
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
+db.employees.aggregate([
+    {$group:{_id:"$_id",NumberofReports:{$sum:"$reportsTo"}}},
+    {$sort:{NumberofReports: -1}}
+])
 // List the names and credit limit of the customers with the 10 highest credit limits
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
 // Calculate the dollar value of each product in inventory. You can calculate this by multiplying the quantity in stock by the buy price. Display the product name, quantity in stock, buy price, and in its dollar value in a column called “Dollar Value”. Sort the results in descending order based on dollar value.
