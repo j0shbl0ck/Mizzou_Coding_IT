@@ -33,7 +33,7 @@ db.customers.aggregate([
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
 db.employees.aggregate([
     {$group:{_id:"$_id",NumberofReports:{$sum:"$reportsTo"}}},
-    {$sort:{NumberofReports: -1}}
+    {$sort:{NumberofReports: 1}}
 ])
 // List the names and credit limit of the customers with the 10 highest credit limits
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
