@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.1.5 ***/
+Version: 1.1.6 ***/
 
 /* 
 RECALL the collections:
@@ -36,5 +36,9 @@ db.employees.aggregate([
     {$sort:{NumberofReports: -1}}
 ])
 // List the names and credit limit of the customers with the 10 highest credit limits
+db.customers.aggregate([
+    {$sort: {creditLimit: -1}},{$limit: 10},
+    {$project: {_id:0, customerName: 1, createdLimit: 1}}
+])
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
 // Calculate the dollar value of each product in inventory. You can calculate this by multiplying the quantity in stock by the buy price. Display the product name, quantity in stock, buy price, and in its dollar value in a column called “Dollar Value”. Sort the results in descending order based on dollar value.
