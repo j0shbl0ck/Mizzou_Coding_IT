@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.4 ***/
+Version: 1.0.5 ***/
 
 /* 
 RECALL the collections:
@@ -20,7 +20,7 @@ db.products.count({"MSRP":{$gte:100}},{"productName":1, "MSRP":1,"_id":0})
 // Calculate the number of orders each customer has placed and display the top 25 in descending order based on orders placed. Display the customer name and the orders placed in a columns called “Orders Placed”.
 db.orders.aggregate([
     {$group:{_id:"$customerName",OrdersPlace:{$sum:1}}},
-    {$sort:{OrdersPlace: 1}},
+    {$sort:{OrdersPlace: -1}},
     {$limit: 25}
 ])
 // List the product names where the quantity in stock is greater than 5000
