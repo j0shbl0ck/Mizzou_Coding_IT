@@ -1,12 +1,12 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.5 ***/
+Version: 1.0.6 ***/
 
 /* 
 RECALL the collections:
 USE classicmodels
-SHOW collections
+show collections
 -------------------
 RECALL structure of the data in your collections:
 db.orders.findOne();
@@ -24,6 +24,7 @@ db.orders.aggregate([
     {$limit: 25}
 ])
 // List the product names where the quantity in stock is greater than 5000
+db.products.count({"quantityInStock":{$gte:5000}},{"productName":1, "quantityInStock":1,"_id":0})
 // Calculate and display the number of customers in each state. Display the customer name and and number of customers in each state in a column called “Number of Customers in State”. Sort the results by the Number of Customers in State.
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
 // List the names and credit limit of the customers with the 10 highest credit limits
