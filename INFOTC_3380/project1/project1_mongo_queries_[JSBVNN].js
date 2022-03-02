@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.1.3 ***/
+Version: 1.1.4 ***/
 
 /* 
 RECALL the collections:
@@ -32,8 +32,8 @@ db.customers.aggregate([
 ])
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
 db.employees.aggregate([
-    {$group:{_id:"$_id",NumberofReports:{$sum:-1}}},
-    {$sort:{NumberofReports: -1}}
+    {$sort:{NumberofReports: -1}},
+    {$project: {_id:0,firstName:1,lastName:1}}
 ])
 // List the names and credit limit of the customers with the 10 highest credit limits
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
