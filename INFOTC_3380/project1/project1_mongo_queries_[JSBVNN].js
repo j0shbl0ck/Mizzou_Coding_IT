@@ -26,6 +26,9 @@ db.orders.aggregate([
 // List the product names where the quantity in stock is greater than 5000
 db.products.find({"quantityInStock":{$gte:5000}},{"productName":1, "quantityInStock":1,"_id":0})
 // Calculate and display the number of customers in each state. Display the customer name and and number of customers in each state in a column called “Number of Customers in State”. Sort the results by the Number of Customers in State.
+db.customers.aggregate([
+    {$group:{_id: "$state",NumberofCustomersinState: {$sum:1}}}
+])
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
 // List the names and credit limit of the customers with the 10 highest credit limits
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
