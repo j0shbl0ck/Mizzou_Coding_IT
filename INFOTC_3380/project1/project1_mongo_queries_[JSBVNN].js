@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 /* 
 RECALL the collections:
@@ -15,7 +15,7 @@ db.employees.findOne();
 */
 
 // How many products have an MSRP of $100 of greater?
-db.products.find({"MSRP":{$gte:100}},{"productName":1, "MSRP":1})
+db.products.find({"MSRP":{$gte:100}},{"productName":1, "MSRP":1,"_id":0})
 // Calculate the number of orders each customer has placed and display the top 25 in descending order based on orders placed. Display the customer name and the orders placed in a columns called “Orders Placed”.
 // List the product names where the quantity in stock is greater than 5000
 // Calculate and display the number of customers in each state. Display the customer name and and number of customers in each state in a column called “Number of Customers in State”. Sort the results by the Number of Customers in State.
