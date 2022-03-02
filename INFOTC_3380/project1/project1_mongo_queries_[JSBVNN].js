@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.0.7 ***/
+Version: 1.0.8 ***/
 
 /* 
 RECALL the collections:
@@ -27,7 +27,8 @@ db.orders.aggregate([
 db.products.find({"quantityInStock":{$gte:5000}},{"productName":1, "quantityInStock":1,"_id":0})
 // Calculate and display the number of customers in each state. Display the customer name and and number of customers in each state in a column called “Number of Customers in State”. Sort the results by the Number of Customers in State.
 db.customers.aggregate([
-    {$group:{_id: "$state",NumberofCustomersinState: {$sum:1}}}
+    {$group:{_id: "$state",NumberofCustomersinState: {$sum:1}}},
+    {$sort:{NumberofCustomersinState:1}}
 ])
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
 // List the names and credit limit of the customers with the 10 highest credit limits
