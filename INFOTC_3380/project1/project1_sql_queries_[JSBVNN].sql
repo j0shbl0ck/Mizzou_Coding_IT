@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.3.7 ***/
+Version: 1.3.8 ***/
 
 --RECALL tables
 SHOW tables;
@@ -33,7 +33,7 @@ ORDER BY t.title DESC;
 -- List the first name, last name, and department name for all current department managers. Remember that a current manager has a to_date value of 9999-01-01.
 SELECT e.first_name, e.last_name, d.dept_name
 FROM employees e, departments d, dept_manager f
-WHERE e.emp_no = f.emp_no, f.to_date > (SELECT 9999-01-01 FROM departments f)
+WHERE e.emp_no = f.emp_no, f.to_date > (SELECT 9999-01-01 FROM departments d)
 GROUP BY e.first_name, e.last_name, d.dept_name;
 
 -- How many employees does each department currently have? List the department name and number of employees in a column named “Number of Employees”.
