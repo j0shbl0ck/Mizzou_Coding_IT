@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.4.0 ***/
+Version: 1.4.1 ***/
 
 /* 
 RECALL the collections:
@@ -49,13 +49,11 @@ db.customers.aggregate([
 
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
 db.products.aggregate([
-    {$project:{_id:0,NumberofLines:{$sum:"$productLine"}}}
-])
-
-db.products.aggregate([
     {$group:{_id:"$productLine",NumberofProductLines:{$sum:1}}},
     {$project:{_id:0,NumberofProductLines:1}}
 ])
+
+db.products.count({"productLine":1,"_id":0})
 // Calculate the dollar value of each product in inventory. You can calculate this by multiplying the quantity in stock by the buy price. Display the product name, quantity in stock, buy price, and in its dollar value in a column called “Dollar Value”. Sort the results in descending order based on dollar value.
 db.products.aggregate([
     {$project:{_id:0,productName:1,quantityInStock:1,buyPrice:1,DollarValue:{$multiply:["$quantityInStock","$buyPrice"]}}},
