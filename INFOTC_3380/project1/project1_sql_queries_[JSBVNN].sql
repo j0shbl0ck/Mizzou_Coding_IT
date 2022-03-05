@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.2.3 ***/
+Version: 1.2.4 ***/
 
 --RECALL tables
 SHOW tables;
