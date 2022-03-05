@@ -17,7 +17,7 @@ GROUP BY e.first_name, e.last_name, d.dept_name
 -- List the first name, last name, and salary of the current employees with the ten (10) highest salaries.
 SELECT e.first_name, e.last_name, s.salary
 FROM employees e, salaries s
-WHERE s.salary > (SELECT SUM(s.salary) FROM salaries)
+WHERE e.emp_no = s.emp_no
 GROUP BY e.first_name, e.last_name, s.salary
 ORDER BY s.salary DESC
 LIMIT 10;
