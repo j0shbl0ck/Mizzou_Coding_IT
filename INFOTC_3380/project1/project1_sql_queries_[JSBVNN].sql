@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.3.2 ***/
+Version: 1.3.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -34,7 +34,7 @@ ORDER BY t.title DESC;
 SELECT e.first_name, e.last_name, d.dept_name
 FROM employees e, deparments d, dept_manager f
 WHERE e.emp_no = f.emp_no, f.to_date > (SELECT 9999-01-01 FROM deparments f)
-GROUP BY e.first_name, e.last_name
+GROUP BY e.first_name, e.last_name, d.dept_name;
 
 -- How many employees does each department currently have? List the department name and number of employees in a column named “Number of Employees”.
 SELECT d.dept_name, SUM(d.dept_no) AS "Number of Employees"
