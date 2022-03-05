@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.2.2 ***/
+Version: 1.2.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -18,7 +18,7 @@ GROUP BY e.first_name, e.last_name, d.dept_name
 SELECT e.first_name, e.last_name, s.salary
 FROM employees e, salaries s
 WHERE s.salary > (SELECT SUM(s.salary) FROM salaries)
---GROUP BY e.first_name, e.last_name, s.salary
+GROUP BY e.first_name, e.last_name, s.salary
 ORDER BY s.salary DESC
 LIMIT 10;
 
