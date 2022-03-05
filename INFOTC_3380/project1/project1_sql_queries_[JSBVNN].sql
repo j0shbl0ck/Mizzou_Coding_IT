@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.3.9 ***/
+Version: 1.4.0 ***/
 
 --RECALL tables
 SHOW tables;
@@ -37,10 +37,11 @@ WHERE e.emp_no = f.emp_no, f.to_date > (SELECT 9999-01-01 FROM departments d)
 GROUP BY e.first_name, e.last_name, d.dept_name;
 
 -- How many employees does each department currently have? List the department name and number of employees in a column named “Number of Employees”.
-SELECT d.dept_name, COUNT(d.dept_no) AS "Number of Employees"
-FROM departments d
+SELECT d.dept_name, COUNT(e.dept_no) AS "Number of Employees"
+FROM departments d, dept_emp e
+WHERE d.dept_no = e.dept_no
 GROUP BY d.dept_name
-ORDER BY COUNT(d.dept_no);
+ORDER BY COUNT(e.dept_no);
 
 SELECT p.productName, COUNT(d.quantityOrdered) AS "Quantity Ordered"
 FROM products p, orderdetails d
