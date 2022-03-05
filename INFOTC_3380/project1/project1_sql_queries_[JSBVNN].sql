@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.2.8 ***/
+Version: 1.2.9 ***/
 
 --RECALL tables
 SHOW tables;
@@ -18,7 +18,7 @@ GROUP BY e.first_name, e.last_name, d.dept_name
 SELECT DISTINCT(e.first_name, e.last_name) s.salary
 FROM employees e, salaries s
 WHERE e.emp_no = s.emp_no
-GROUP BY e.first_name, e.last_name, s.salary
+--GROUP BY e.first_name, e.last_name, s.salary
 ORDER BY s.salary DESC
 LIMIT 10;
 
