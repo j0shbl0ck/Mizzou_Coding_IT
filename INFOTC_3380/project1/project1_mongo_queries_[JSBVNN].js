@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.2.5 ***/
+Version: 1.2.6 ***/
 
 /* 
 RECALL the collections:
@@ -17,22 +17,26 @@ db.employees.findOne();
 
 // How many products have an MSRP of $100 of greater?
 db.products.count({"MSRP":{$gte:100}},{"productName":1, "MSRP":1,"_id":0})
+
 // Calculate the number of orders each customer has placed and display the top 25 in descending order based on orders placed. Display the customer name and the orders placed in a columns called “Orders Placed”.
 db.orders.aggregate([
     {$group:{_id:"$customerName",OrdersPlace:{$sum:1}}},
     {$sort:{OrdersPlace: -1}},
     {$limit: 25}
 ])
+
 // List the product names where the quantity in stock is greater than 5000
 db.products.find({"quantityInStock":{$gte:5000}},{"productName":1, "quantityInStock":1,"_id":0})
+
 // Calculate and display the number of customers in each state. Display the customer name and and number of customers in each state in a column called “Number of Customers in State”. Sort the results by the Number of Customers in State.
 db.customers.aggregate([
     {$group:{_id: "$state",NumberofCustomersinState: {$sum:1}}},
     {$sort:{NumberofCustomersinState:1}}
 ])
+
 // Which employees manage the most people? Develop a query to calculate the number of people each employees manages. Display the employee number and number of employees employees they manage in a column called “Number of Reports”.
 db.employees.aggregate([
-    {$group:{_id:"$_id",NumberofReports:{$sum:"$reportsTo"}}},
+    {$group:{_id:"$reportsTo",NumberofReports:{$sum:"$reportsTo"}}},
     {$sort:{NumberofReports: -1}}
 ])
 // List the names and credit limit of the customers with the 10 highest credit limits
