@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.3.2 ***/
+Version: 1.3.1 ***/
 
 --RECALL tables
 SHOW tables;
@@ -18,7 +18,8 @@ GROUP BY e.first_name, e.last_name, d.dept_name
 SELECT DISTINCT e.first_name, e.last_name, s.salary
 FROM employees e, salaries s
 WHERE e.emp_no = s.emp_no
-ORDER BY e.first_name, e.last_name, s.salary DESC
+GROUP BY e.first_name, e.last_name
+ORDER BY SUM(s.salary) DESC
 LIMIT 10;
 
 -- What is the total payroll (sum of all current salaries) for the company.
