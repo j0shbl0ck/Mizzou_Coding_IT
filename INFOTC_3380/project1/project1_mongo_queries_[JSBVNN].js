@@ -55,7 +55,7 @@ db.products.aggregate([
 
 db.products.aggregate([
     {$group:{"_id":"$productLine",NumberofProductLines:{$sum:"$productLine"}}},
-    {$project:{_id:0,NumberofProductLines:1}}
+    {$count:{NumberofProductLines:1}}
 ])
 // Calculate the dollar value of each product in inventory. You can calculate this by multiplying the quantity in stock by the buy price. Display the product name, quantity in stock, buy price, and in its dollar value in a column called “Dollar Value”. Sort the results in descending order based on dollar value.
 db.products.aggregate([
