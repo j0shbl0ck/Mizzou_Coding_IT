@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.3.2 ***/
+Version: 1.3.3 ***/
 
 /* 
 RECALL the collections:
@@ -41,9 +41,15 @@ db.employees.aggregate([
 ])
 
 // List the names and credit limit of the customers with the 10 highest credit limits
-db.customers.find(
+db.customers.aggregate([
+    {$group:{_id:"$_id",customerName:"$}}
     {"customerName":1,"creditLimit":-1,"_id":0}
-)
+])
+
+db.customers.aggregate([
+    {$project:{_id:0,customerName:1,creditLimit:1}},
+    {$sort:{DollarValue:-1}}
+])
 // Write a query to calculate the number of product lines in the database. Display the result in a column called “Number of Lines”. 
 db.products.aggregate([
     {$project:{_id:0,NumberofLines:{$sum:"$productLine"}}}
