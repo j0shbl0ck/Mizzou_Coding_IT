@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.2.6 ***/
+Version: 1.2.7 ***/
 
 --RECALL tables
 SHOW tables;
@@ -23,11 +23,8 @@ ORDER BY s.salary DESC
 LIMIT 10;
 
 -- What is the total payroll (sum of all current salaries) for the company.
-SELECT e.emp_no, SUM(s.salary) AS "salary"
-FROM salaries s, employees e
-WHERE e.emp_no = s.emp_no;
-
-
+SELECT SUM(s.salary) AS "salary"
+FROM salaries s;
 
 -- Display a list of the unique titles for this company.
 SELECT DISTINCT(t.title)
