@@ -18,7 +18,8 @@ GROUP BY e.first_name, e.last_name, d.dept_name
 SELECT e.first_name, e.last_name, s.salary
 FROM employees e, salaries s
 WHERE e.emp_no = s.emp_no
-GROUP BY e.first_name, e.last_name
+GROUP BY e.first_name, e.last_name, s.salary
+ORDER BY s.salary DESC
 LIMIT 10;
 
 -- What is the total payroll (sum of all current salaries) for the company.
