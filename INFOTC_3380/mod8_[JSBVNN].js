@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
-Date: 2/27/22
-Version: 1.4.7 ***/
+Date: 3/09/22
+Version: 1.0.1 ***/
 
 /* 
 RECALL the collections:
@@ -17,14 +17,44 @@ db.employees.findOne();
 
 
 // Calculate the number of orders for each product that has been ordered. Display the product name and number of orders in a column called “Number of Orders”. Display the results in descending order based on “Number of Orders”. Note: You are calculating the number of orders and not quantity ordered. For example, if Alice orders 3 pizzas today and 5 pizzas next week then pizza orders equals 2 and the quantity of pizzas ordered equals 8.
+db.orders.aggregate([
+    {$unwind: "$orderDetails"},
+    {$project:{_id: 0, "orderDetails.productName": 1, "orderDetails.quantityOrdered": 1}},
+    {$sort: {"orderDetails.quantityOrdered": -1}},
+])
 
 // Calculate the total number of each product that has been ordered. Display the product name and quantity ordered in a column called “Quantity Ordered”. Display the results in descending order based on Quantity Ordered.
+db.orders.aggregate([
+    {$unwind: "$orderDetails"},
+    {$project:{_id: 0, "orderDetails.productName": 1, "orderDetails.quantityOrdered": 1}},
+    {$sort: {"orderDetails.quantityOrdered": -1}},
+])
 
 // Calculate the total dollar value of the top 25 products that has been ordered in the database. Display the product name and the dollar value in a column called “Total Value”.
+db.products.aggregate([
+    {$project:{_id:0,ProductName:"$productName",TotalValue:{$multiply:["$quantityInStock","$MSRP"]}}},
+    {$sort:{TotalValue: -1}},
+    {$limit: 25}
+])
 
 // Calculate the number of orders each customer has placed and display the top 25 in descending order based on orders placed. Display the customer name and the orders placed in a columns coaaled “Orders Placed”.
+db.orders.aggregate([
+    {$unwind: "$orderDetails"},
+    {$project:{_id: 0, "orderDetails.productName": 1, "orderDetails.quantityOrdered": 1}},
+    {$sort: {"orderDetails.quantityOrdered": -1}},
+])
 
 // Calculate the total payments made each year. Display the year and total payments in a column called “Total Payments”.
+db.stocks.aggregate([
+    {$match:{Sector:"Industrials"}},
+    {$project:{_id:0,Name:1,Symbol:1,OutstandingShares:{$divide:["$MarketCap","$Price"]}}},
+    {$sort:{OutstandingShares:-1}}
+])
+
+SELECT YEAR(paymentDate), SUM(amount) AS "Total Payments" --could also refer to how many payments people made
+FROM payments
+GROUP BY YEAR(paymentDate)
+ORDER BY SUM(amount); 
 
 // Calculate the total payments made each month in 2004. Display the month and total payments in a column called “Total Payments”. Order the results by month in ascending order. **Hint: You will need to use the $addFields to add a field for year using the $year function, then match for 2004
 
