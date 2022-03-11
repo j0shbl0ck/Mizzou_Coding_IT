@@ -2,7 +2,7 @@
 ## Table of Contents
 1. [Modules 2-3](#primarily-towards-modules-2-3)
 2. [Modules 4-5](#primarily-towards-modules-4-5)
-3. [Modules 6](#primarily-towards-modules-6,8)
+3. [Modules 6,8](#primarily-towards-modules-68)
 4. [Project1](#primarily-towards-project1)
 
 ## Primarily towards Modules 2-3
@@ -12,7 +12,6 @@
 4. Log into mysql-container in Docker: ```docker exec -it mysql-container bash```
 5. Log into MySQL Server varying on usernaming and password.
 6. Once finished, ```docker-compose down```
-
 
 ## Primarily towards Modules 4-5
 1. Open terminal and type ```open -a docker```
