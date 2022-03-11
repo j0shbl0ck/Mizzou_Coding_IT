@@ -33,7 +33,7 @@
 13. ```db.zips.findOne();```
 14. ```db.stocks.findOne();```
 
-## Primarily towards Modules 6
+## Primarily towards Modules 6,8
 1. Open terminal and type ```open -a docker```
 2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
 3. In terminal (Mac) run: ```docker-compose up -d```
