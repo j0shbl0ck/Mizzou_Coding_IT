@@ -2,7 +2,7 @@
 ## Table of Contents
 1. [Modules 2-3](#primarily-towards-modules-2-3)
 2. [Modules 4-5](#primarily-towards-modules-4-5)
-3. [Modules 6](#primarily-towards-modules-6)
+3. [Modules 6](#primarily-towards-modules-6,8)
 4. [Project1](#primarily-towards-project1)
 
 ## Primarily towards Modules 2-3
