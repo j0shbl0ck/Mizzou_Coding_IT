@@ -47,18 +47,15 @@ db.orders.aggregate([
 // Calculate the total payments made each year. Display the year and total payments in a column called “Total Payments”.
 db.customers.aggregate([
     {$unwind:"$payments"},
-    {$project:{_id:0,year:{$year:"$payments.paymentDate"},TotalPayments:{$sum:"$payments.amount"}}},
-    {$sort:{"payments.paymentDate":-1}}
+    {$group: {_id:{$year:"$payments.paymentDate"},TotalPayments:{$sum:1}}}
 ])
 
 // Calculate the total payments made each month in 2004. Display the month and total payments in a column called “Total Payments”. Order the results by month in ascending order. **Hint: You will need to use the $addFields to add a field for year using the $year function, then match for 2004
 db.customers.aggregate([
     {$unwind:"$payments"},
-    {$match:{$expr : {$eq: [{$month: "payments.paymentData"}]},
-    {$group:{_id:0,year:{$year:"$payments.paymentDate"},TotalPayments:{$sum:"$payments.amount"}}},
-    {$sort:{"payments.paymentDate":-1}}
-])
-{ $month: ISODate("2000-01-01T00:00:00Z") }
+    {$project:{_id:{$year:"$payments.paymentDate"},month:{$month:"$payments.paymentDate"},TotalPayments:{$sum:1}}},
+    {$match:{_id:2004}},
+    {$sort:{month: -1}}
 
 // Calculate the total payments made each day in December of 2004. Display the day in a column named “Day” and total payments in a column called “Total Payments”. Order the results by day in ascending order. **Hint: You will need to use the $addFields to add a field for year and month, using the $year and $month functions, then match for 2004 and 12
 
