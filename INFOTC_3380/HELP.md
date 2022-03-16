@@ -99,7 +99,7 @@
 4. Close terminal, then open a new session
 ### Load the MySQL Database (First Time Setup)
 5. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/sql``` folder
-6. ```docker cp employeesDB mysql-container:/root/sql-files```
+6. ```docker cp sakila-db mysql-container:/root/sql-files```
 7. Close terminal, then open new session and ```docker exec -it mysql-container bash```
 8. ```cd ~/sql-files/```
 9. ```cd ~/sql-files/sakila-db/```
