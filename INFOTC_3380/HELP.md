@@ -4,6 +4,7 @@
 2. [Modules 4-5](#primarily-towards-modules-4-5)
 3. [Modules 6,8](#primarily-towards-modules-68)
 4. [Project1](#primarily-towards-project1)
+5. [Midterm Project](#primarily-towards-midterm-project) 
 
 ## Primarily towards Modules 2-3
 1. Open terminal and type: ```open -a docker```
