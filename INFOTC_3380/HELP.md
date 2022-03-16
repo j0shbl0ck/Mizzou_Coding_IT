@@ -91,3 +91,33 @@
 27. ```show collections```
 28. ```db.orders.findOne();```
 29. ```db.customers.findOne();```
+
+## Primarily towards Midterm Project
+1. Open terminal and type ```open -a docker```
+2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
+3. In terminal (Mac) run: ```docker-compose up -d```
+4. Close terminal, then open a new session
+### Load the MySQL Database (First Time Setup)
+5. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/sql``` folder
+6. ```docker cp employeesDB mysql-container:/root/sql-files```
+7. Close terminal, then open new session and ```docker exec -it mysql-container bash```
+8. ```cd ~/sql-files/```
+9. ```cd ~/sql-files/sakila-db/```
+10. ```mysql -u root -p```
+11. ```source ~/sql-files/sakila-db/sakila-schema.sql```
+12. ```source ~/sql-files/sakila-db/sakila-data.sql```
+#### Log into the MySQL Server
+13. ```docker exec -it mysql-container bash```
+14. ```mysql -u root -p```
+15. ```SHOW databases;```
+16. ```USE sakila;```
+17. ```SHOW tables;```
+18. ```DESCRIBE customers;```
+#### Log into the Mongo Server
+19. ```docker exec -it mongo-container bash```
+20. ```mongo```
+21. ```show dbs```
+22. ```use classicmodels```
+23. ```show collections```
+24. ```db.orders.findOne();```
+25. ```db.customers.findOne();```
