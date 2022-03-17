@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/15/22
-Version: 1.0.0 ***/
+Version: 1.0.1 ***/
 
 --RECALL tables
 SHOW tables;
@@ -9,10 +9,21 @@ SHOW tables;
 DESCRIBE <table in sakila>;
 
 -- Display the customer first name, last name, and movie titles the rented in 2006. Sort result by customer last name.
+SELECT c.first_name, c.last_name, f.title 
+FROM customer c, film f, rental r 
+WHERE c.customer_id = r.customer_id, 
+GROUP BY c.first_name, c.last_name, f.title;
 
 -- How many films are in each category? List the category name in a column called "Category Name" and number of films in the category in a column called "Number of Films". Sort by number of films in descending order
+SELECT c.name AS "Category Name", COUNT(f.film_id) AS "Number of Films"
+FROM category c, film f
+WHERE c.last_update = f.last_update
+GROUP BY c.name
+ORDER BY COUNT(f.film_id) DESC;
+
 
 -- Calculate each customer's total payments and display the top 15 customers in terms of total payments in descending order. Display the customer first and last name and total payment amount in a column called "Total Payments".
+
 
 -- Calculate the total payments for each store. Display store id and total payments in a Column called Total Payments. Display results in descending order by total payments
 
