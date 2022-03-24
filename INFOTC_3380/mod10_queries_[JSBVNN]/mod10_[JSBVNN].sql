@@ -18,7 +18,6 @@ DESCRIBE <table in classicmodels>;
 -- Show the order number, customer number, and order total for orders with a larger order total than order number 10222.
 
 
-
 --Write queries using wildcards for the following questions.
 
 -- Show the company name and total payments for companies whose name ends in “Ltd”.
