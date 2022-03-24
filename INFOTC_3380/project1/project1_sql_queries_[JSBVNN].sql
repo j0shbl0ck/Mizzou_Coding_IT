@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.4.3 ***/
+Version: 1.4.4 ***/
 
 --RECALL tables
 SHOW tables;
@@ -15,7 +15,7 @@ JOIN departments d
 ON e.department_id = d.department_id;
 
 SELECT e.first_name, e.last_name, s.salary, d.dept_name
-FROM employees e, salaries s, departments d
+FROM employees e, salary s, departments d
 WHERE e.emp_no = s.emp_no
 GROUP BY e.first_name, e.last_name, d.dept_name
 
