@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/23/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -13,7 +13,7 @@ DESCRIBE <table in classicmodels>;
 -- Display the customer name, customer number, along with their sales rep’s number, first name, and last name.
 SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
 FROM customers c
-RIGHT JOIN employees e
+JOIN employees e
 ON c.salesRepEmployeeNumber = e.employeeNumber;
 
 -- Display each employee’s first and last name and their office code, city, and phone.
@@ -24,12 +24,12 @@ ON e.officeCode = o.officeCode;
 
 -- Display the customer’s name, and number along with the order number order date, product name, quantity, and price for each of the customer’s orders.
 SELECT c.customerName, c.customerNumber, o.orderNumber, o.orderDate, p.productName, od.quantityOrdered, od.priceEach
-FROM customer c
+FROM customers c
 JOIN orders o
 ON c.customerNumber = o.customerNumber
 JOIN orderdetails od
 ON o.orderNumber = od.orderNumber
-JOIN product p
+JOIN products p
 ON od.productCode = p.productCode;
 
 -- Display the customer name and customer number along with the payment date, check number, and amount for each payment
