@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 2/27/22
-Version: 1.4.2 ***/
+Version: 1.4.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -9,12 +9,24 @@ SHOW tables;
 DESCRIBE <table in employees>;
 
 -- List all of the current employees first name, last name, salary and department name.
+SELECT e.first_name, e.last_name, e.salary, d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id;
+
 SELECT e.first_name, e.last_name, s.salary, d.dept_name
 FROM employees e, salaries s, departments d
 WHERE e.emp_no = s.emp_no
 GROUP BY e.first_name, e.last_name, d.dept_name
 
--- List the first name, last name, and salary of the current employees with the ten (10) highest salaries.
+-- List the first name, last name, and salary of the current employees with the ten highest salaries.
+SELECT e.first_name, e.last_name, s.salary
+FROM employees e
+JOIN salaries s
+ON e.emp_no = s.emp_no
+ORDER BY s.salary DESC
+LIMIT 10;
+
 SELECT e.first_name, e.last_name, s.salary
 FROM employees e, salaries s
 WHERE e.emp_no = s.emp_no
