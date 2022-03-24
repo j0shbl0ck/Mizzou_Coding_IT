@@ -6,14 +6,14 @@ Version: 1.0.0 ***/
 --RECALL tables
 SHOW tables;
 --RECALL Tables_in_classicmodels
-DESCRIBE <table in sakila>;
+DESCRIBE <table in classicmodels>;
 
 -- 2A Section
 
 -- Display the customer name, customer number, along with their sales rep’s number, first name, and last name.
 SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
-FROM customer c
-JOIN employee e
+FROM customers c
+JOIN employees e
 ON c.salesRepEmployeeNumber = e.employeeNumber;
 
 -- Display each employee’s first and last name and their office code, city, and phone.
