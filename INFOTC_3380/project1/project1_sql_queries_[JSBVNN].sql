@@ -9,9 +9,10 @@ SHOW tables;
 DESCRIBE <table in employees>;
 
 -- List all of the current employees first name, last name, salary and department name.
-SELECT e.first_name, e.last_name, e.salary, d.department_name
+SELECT e.first_name, e.last_name, s.salary, d.department_name
 FROM employees e
-JOIN departments d
+JOIN salaries s ON e.employee_id = s.employee_id
+JOIN departments d ON e.department_id = d.department_id;
 ON e.department_id = d.department_id;
 
 SELECT e.first_name, e.last_name, s.salary, d.dept_name
