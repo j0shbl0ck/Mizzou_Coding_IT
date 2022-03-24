@@ -1,25 +1,25 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/23/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 --RECALL tables
 SHOW tables;
 --RECALL Tables_in_classicmodels
 DESCRIBE <table in classicmodels>;
 
--- 2A Section
+-- 2A Section using three types of joins
 
 -- Display the customer name, customer number, along with their sales rep’s number, first name, and last name.
 SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
 FROM customers c
-JOIN employees e
+RIGHT JOIN employees e
 ON c.salesRepEmployeeNumber = e.employeeNumber;
 
 -- Display each employee’s first and last name and their office code, city, and phone.
 SELECT e.firstName, e.lastName, o.officeCode, o.city, o.phone
-FROM employee e
-JOIN office o
+FROM employees e
+JOIN offices o
 ON e.officeCode = o.officeCode;
 
 -- Display the customer’s name, and number along with the order number order date, product name, quantity, and price for each of the customer’s orders.
@@ -45,7 +45,7 @@ JOIN productlines pl
 ON p.productLine = pl.productLine;
 
 
--- 2B Section
+-- 2B Section using most appropriate join
 
 -- Show the customer name, order number and order date only for customers who have placed orders.
 SELECT c.customerName, o.orderNumber, o.orderDate
