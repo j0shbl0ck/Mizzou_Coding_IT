@@ -34,13 +34,13 @@ ON od.productCode = p.productCode;
 
 -- Display the customer name and customer number along with the payment date, check number, and amount for each payment
 SELECT c.customerName, c.customerNumber, p.paymentDate, p.checkNumber, p.amount
-FROM customer c
-JOIN payment p
+FROM customers c
+JOIN payments p
 ON c.customerNumber = p.customerNumber;
 
 -- Display the product line, description, and product name for all products
 SELECT pl.productLine, pl.textDescription, p.productName
-FROM product p
+FROM products p
 JOIN productlines pl
 ON p.productLine = pl.productLine;
 
@@ -49,7 +49,7 @@ ON p.productLine = pl.productLine;
 
 -- Show the customer name, order number and order date only for customers who have placed orders.
 SELECT c.customerName, o.orderNumber, o.orderDate
-FROM customer c
+FROM customers c
 JOIN orders o
 ON c.customerNumber = o.customerNumber;
 
@@ -62,20 +62,20 @@ GROUP BY o.orderNumber;
 
 -- Show the employee name (first, last) and office address (address line 1, state and country) for all employees.
 SELECT e.firstName, e.lastName, o.addressLine1, o.state, o.country
-FROM employee e
-JOIN office o
+FROM employees e
+JOIN offices o
 ON e.officeCode = o.officeCode;
 
 -- Show the customer, number, payment date, check number, and amount for each payment. Include customers who have not made any payments.
 SELECT c.customerName, c.customerNumber, p.paymentDate, p.checkNumber, p.amount
-FROM customer c
-JOIN payment p
+FROM customers c
+JOIN payments p
 ON c.customerNumber = p.customerNumber;
 
 -- Show the employee name, customer name and the total sales for that customer. The results should include employees even if they have do not have customers.
 SELECT e.firstName, e.lastName, c.customerName, SUM(od.quantityOrdered * od.priceEach)
-FROM employee e
-JOIN customer c
+FROM employees e
+JOIN customers c
 ON e.employeeNumber = c.salesRepEmployeeNumber
 JOIN orders o
 ON c.customerNumber = o.customerNumber
