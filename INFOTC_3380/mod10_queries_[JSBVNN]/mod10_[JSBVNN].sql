@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/24/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -60,16 +60,6 @@ HAVING SUM(o.orderNumber) > (SELECT SUM(orderNumber) FROM orders WHERE orderNumb
 ORDER BY SUM(o.orderNumber) DESC;
 
 --Write queries using wildcards for the following questions.
-
---show proucts that begin with "T"
-SELECT productName, productCode
-FROM products
-WHERE productName LIKE 'T%';
-
---show proucts with "Ford" in the name
-SELECT productName, productCode
-FROM products
-WHERE productName LIKE '%Ford%';
 
 -- Show the company name and total payments for companies whose name ends in “Ltd”.
 SELECT c.customerName, SUM(p.amount) AS "Total Payments"
