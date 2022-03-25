@@ -8,6 +8,76 @@ SHOW tables;
 --RECALL Tables_in_classicmodels
 DESCRIBE <table in classicmodels>;
 
+-- SAMPLE QUERIES
+
+--Display the customer name and number along with the employee number and name (first, last)
+--include employees who have no customers in the results
+
+SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
+FROM customers c, employees e
+WHERE c.salesRepEmployeeNumber = e.employeeNumber;
+
+SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
+FROM customers c
+RIGHT JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber;
+
+--only return employees who do not have customers
+SELECT c.customerNumber, c.customerName, e.employeeNumber, CONCAT(e.firstName, " ", e.lastName) AS "Employee Name"
+FROM customers c
+RIGHT JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber
+WHERE c.customerNumber IS NULL;
+
+--Display the customer name and number along with the employee number and name (first, last)
+--include customers who have no employees in the results
+SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
+FROM customers c
+LEFT JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber;
+
+SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
+FROM employees e
+RIGHT JOIN customers c ON c.salesRepEmployeeNumber = e.employeeNumber;
+
+SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
+FROM customers c
+JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber;
+
+--only return customers with no sales reps assigned
+
+SELECT c.customerNumber, c.customerName, e.employeeNumber, e.firstName, e.lastName
+FROM employees e
+RIGHT JOIN customers c ON c.salesRepEmployeeNumber = e.employeeNumber
+WHERE e.employeeNumber IS NULL;
+
+--Display the orderNumber, customer name, emplyee first and last name for customers who have and have not placed orders
+SELECT o.orderNumber, c.customerName, e.firstName, e.lastName
+FROM customers c
+LEFT JOIN orders o ON c.customerNumber = o.customerNumber
+JOIN employees e ON e.employeeNumber = c.salesRepEmployeeNumber;
+
+SELECT o.orderNumber, c.customerName, e.firstName, e.lastName
+FROM orders o
+RIGHT JOIN customers c ON o.customerNumber = c.customerNumber
+JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber;
+
+--display only customers who have no orders
+SELECT o.orderNumber, c.customerName, CONCAT(e.firstName, " ", e.lastName) AS "Sales Rep"
+FROM orders o
+RIGHT JOIN customers c ON o.customerNumber = c.customerNumber
+JOIN employees e ON c.salesRepEmployeeNumber = e.employeeNumber
+WHERE o.orderNumber IS NULL;
+
+--Display customer names who have not made payments
+SELECT c.customerName
+FROM customers c
+LEFT JOIN payments p ON p.customerNumber = c.customerNumber
+WHERE p.customerNumber IS NULL;
+
+SELECT customerName
+FROM customers
+WHERE customerNumber NOT IN (SELECT customerNumber FROM payments);
+
+-- END OF SAMPLE QUERIES
+
 -- 2A Section using three types of joins
 
 -- Display the customer name, customer number, along with their sales rep’s number, first name, and last name.
