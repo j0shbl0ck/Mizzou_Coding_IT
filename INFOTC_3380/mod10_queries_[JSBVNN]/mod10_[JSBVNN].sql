@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/24/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 --RECALL tables
 SHOW tables;
@@ -9,18 +9,6 @@ SHOW tables;
 DESCRIBE <table in classicmodels>;
 
 --Write queries using subqueries for the following questions.
-
--- Display the customer number, name, and phone number for customers with sales rep Gerard Hernandez, employee number 1370
-SELECT customerNumber, customerName, phone
-FROM customers
-WHERE customerNumber IN (SELECT customerNumber FROM customers WHERE salesRepEmployeeNumber = 1370);
-
--- Show the state and the number of customers in that state for states with a greater number of customers than Connecticut (CT)
-SELECT state, COUNT(state) AS "Num Customers in State"
-FROM customers
-GROUP BY state
-HAVING COUNT(state) > (SELECT COUNT(state) FROM customers WHERE state = "CT")
-ORDER by COUNT(state) DESC;
 
 -- Write a query to show the customer number, name, payment date, and payment amount for payments greater than the average payment.
 SELECT c.customerNumber, c.customerName, p.paymentDate, p.amount
@@ -65,16 +53,56 @@ HAVING SUM(p.quantityInStock * p.buyPrice) < (SELECT SUM(quantityInStock * buyPr
 ORDER BY SUM(p.quantityInStock * p.buyPrice) ASC;
 
 -- Show the order number, customer number, and order total for orders with a larger order total than order number 10222.
-
+SELECT o.orderNumber, o.customerNumber, SUM(o.orderNumber) AS "Total Value"
+FROM orders o
+GROUP BY o.orderNumber, o.customerNumber
+HAVING SUM(o.orderNumber) > (SELECT SUM(orderNumber) FROM orders WHERE orderNumber = 10222)
+ORDER BY SUM(o.orderNumber) DESC;
 
 --Write queries using wildcards for the following questions.
 
+--show proucts that begin with "T"
+SELECT productName, productCode
+FROM products
+WHERE productName LIKE 'T%';
+
+--show proucts with "Ford" in the name
+SELECT productName, productCode
+FROM products
+WHERE productName LIKE '%Ford%';
+
 -- Show the company name and total payments for companies whose name ends in “Ltd”.
+SELECT c.customerName, SUM(p.amount) AS "Total Payments"
+FROM customers c, payments p
+WHERE c.customerName LIKE '%Ltd'
+AND c.customerNumber = p.customerNumber
+GROUP BY c.customerName, p.amount
+ORDER BY SUM(p.amount) DESC;
+
 -- How many employees have a three digit extension? A three digit extension looks like xXXX.
+SELECT e.employeeNumber, e.extension
+FROM employees e
+WHERE e.extension LIKE 'x___';
+
 -- Show the product code, name, vendor, and buy price for products from the 1950s (1950 - 1959). The year appears is in the name.
+SELECT p.productCode, p.productName, p.productVendor, p.buyPrice
+FROM products p
+WHERE p.productName LIKE '%195_%';
+
 -- show all office information for offices in the 212 area code. Hint. Look at the phone number.
+SELECT o.city, o.phone, o.addressLine1, o.addressLine2, o.state, o.postalCode, o.country
+FROM offices o
+WHERE o.phone LIKE '%212%';
+
 -- Show first name, last name, employee number and email for the sales managers.
+SELECT e.firstName, e.lastName, e.employeeNumber, e.email
+FROM employees e
+WHERE e.employeeNumber IN (SELECT employeeNumber FROM employees WHERE reportsTo IS NOT NULL);
+
 -- Show the name, product code, quantity in stock, and buy price for products with “Chevy” in the name.
+SELECT p.productName, p.productCode, p.quantityInStock, p.buyPrice
+FROM products p
+WHERE p.productName LIKE '%Chevy%';
 
 
 
