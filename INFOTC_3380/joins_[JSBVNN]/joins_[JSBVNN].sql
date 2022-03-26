@@ -37,6 +37,11 @@ FROM employees e
 RIGHT JOIN offices o
 ON e.officeCode = o.officeCode;
 
+SELECT e.firstName, e.lastName, o.officeCode, o.city, o.phone
+FROM employees e
+LEFT JOIN offices o
+ON e.officeCode = o.officeCode;
+
 -- Display the customer’s name, and number along with the order number order date, product name, quantity, and price for each of the customer’s orders.
 SELECT c.customerName, c.customerNumber, o.orderNumber, o.orderDate, p.productName, od.quantityOrdered, od.priceEach
 FROM customers c
