@@ -1,0 +1,30 @@
+Josh Block
+INFOTC 3380
+3/25/2022
+Challenge: Joins in MySQL
+
+
+Display the customer name, customer number, along with their sales rep’s number, first name, and last name.
+* Description:
+* Number of Results Returned:
+* Columns equally NULL:
+
+Display each employee’s first and last name and their office code, city, and phone.
+* Description:
+* Number of Results Returned:
+* Columns equally NULL:
+
+Display the customer’s name, and number along with the order number order date, product name, quantity, and price for each of the customer’s orders.
+* Description:
+* Number of Results Returned:
+* Columns equally NULL:
+
+Display the customer name and customer number along with the payment date, check number, and amount for each payment
+* Description:
+* Number of Results Returned:
+* Columns equally NULL:
+
+Display the product line, description, and product name for all products
+* Description:
+* Number of Results Returned:
+* Columns equally NULL:
