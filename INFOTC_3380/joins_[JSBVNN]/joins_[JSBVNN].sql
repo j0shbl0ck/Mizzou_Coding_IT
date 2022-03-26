@@ -1,15 +1,12 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/23/22
-Version: 1.0.4 ***/
+Version: 1.0.5 ***/
 
 --RECALL tables
 SHOW tables;
 --RECALL Tables_in_classicmodels
 DESCRIBE <table in classicmodels>;
-
--- show all tables in classicmodels
-SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'classicmodels';
 
 -- 2A Section using three types of joins
 
