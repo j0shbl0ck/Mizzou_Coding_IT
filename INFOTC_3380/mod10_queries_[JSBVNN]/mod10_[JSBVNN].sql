@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/24/22
-Version: 1.0.3 ***/
+Version: 1.0.4 ***/
 
 --RECALL tables
 SHOW tables;
@@ -13,18 +13,7 @@ DESCRIBE <table in classicmodels>;
 -- Write a query to show the customer number, name, payment date, and payment amount for payments greater than the average payment.
 SELECT c.customerNumber, c.customerName, p.paymentDate, p.amount
 FROM customers c, payments p
-GROUP BY c.customerNumber, c.customerName, p.paymentDate, p.amount
-HAVING AVG(p.amount) < p.amount
-ORDER BY p.amount DESC;
-
-SELECT c.customerNumber, c.customerName, p.paymentDate, p.amount
-FROM customers c, payments p
 WHERE c.customerNumber IN (SELECT customerNumber FROM payments WHERE amount > (SELECT AVG(amount) FROM payments));
-
-SELECT c.customerNumber, c.customerName, p.paymentDate, p.amount
-FROM payments p, customers c
-WHERE p.customerNumber = c.customerNumber
-AND p.amount > (SELECT AVG(amount) FROM payments);
 
 -- Create a query to generate a list of managers. Show their employee number, first name, and last name.
 SELECT e.employeeNumber, e.firstName, e.lastName
@@ -53,11 +42,11 @@ HAVING SUM(p.quantityInStock * p.buyPrice) < (SELECT SUM(quantityInStock * buyPr
 ORDER BY SUM(p.quantityInStock * p.buyPrice) ASC;
 
 -- Show the order number, customer number, and order total for orders with a larger order total than order number 10222.
-SELECT o.orderNumber, o.customerNumber, SUM(o.orderNumber) AS "Total Value"
-FROM orders o
-GROUP BY o.orderNumber, o.customerNumber
-HAVING SUM(o.orderNumber) > (SELECT SUM(orderNumber) FROM orders WHERE orderNumber = 10222)
-ORDER BY SUM(o.orderNumber) DESC;
+SELECT od.orderNumber, o.customerNumber, SUM(od.quantityOrdered * od.priceEach) AS "Total Value"
+FROM orders o, orderdetails od
+GROUP BY od.orderNumber, o.customerNumber, od.quantityOrdered, od.priceEach
+HAVING SUM(od.quantityOrdered * od.priceEach) > (SELECT SUM(quantityOrdered * priceEach) FROM orderdetails WHERE orderNumber = 10222)
+ORDER BY SUM(od.quantityOrdered * od.priceEach) DESC;
 
 --Write queries using wildcards for the following questions.
 
