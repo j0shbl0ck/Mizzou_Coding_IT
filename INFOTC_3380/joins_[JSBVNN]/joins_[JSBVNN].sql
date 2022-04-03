@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 3/23/22
-Version: 1.0.5 ***/
+Version: 1.0.6 ***/
 
 --RECALL tables
 SHOW tables;
@@ -56,18 +56,18 @@ SELECT c.customerName, c.customerNumber, o.orderNumber, o.orderDate, p.productNa
 FROM customers c
 RIGHT JOIN orders o
 ON c.customerNumber = o.customerNumber
-JOIN orderdetails od
+RIGHT JOIN orderdetails od
 ON o.orderNumber = od.orderNumber
-JOIN products p
+RIGHT JOIN products p
 ON od.productCode = p.productCode;
 
 SELECT c.customerName, c.customerNumber, o.orderNumber, o.orderDate, p.productName, od.quantityOrdered, od.priceEach
 FROM customers c
 LEFT JOIN orders o
 ON c.customerNumber = o.customerNumber
-JOIN orderdetails od
+LEFT JOIN orderdetails od
 ON o.orderNumber = od.orderNumber
-JOIN products p
+LEFT JOIN products p
 ON od.productCode = p.productCode;
 
 
@@ -188,9 +188,9 @@ SELECT e.firstName, e.lastName, c.customerName, SUM(od.quantityOrdered * od.pric
 FROM employees e
 RIGHT JOIN customers c
 ON e.employeeNumber = c.salesRepEmployeeNumber
-JOIN orders o
+RIGHT JOIN orders o
 ON c.customerNumber = o.customerNumber
-JOIN orderdetails od
+LEFT JOIN orderdetails od
 ON o.orderNumber = od.orderNumber
 GROUP BY e.firstName, e.lastName, c.customerName;
 
@@ -198,9 +198,9 @@ SELECT e.firstName, e.lastName, c.customerName, SUM(od.quantityOrdered * od.pric
 FROM employees e
 LEFT JOIN customers c
 ON e.employeeNumber = c.salesRepEmployeeNumber
-JOIN orders o
+LEFT JOIN orders o
 ON c.customerNumber = o.customerNumber
-JOIN orderdetails od
+LEFT JOIN orderdetails od
 ON o.orderNumber = od.orderNumber
 GROUP BY e.firstName, e.lastName, c.customerName;
 
