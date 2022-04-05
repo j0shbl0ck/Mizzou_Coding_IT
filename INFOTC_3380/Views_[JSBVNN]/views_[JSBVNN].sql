@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/03/22
-Version: 1.0.3 ***/
+Version: 1.0.4 ***/
 
 --RECALL tables
 SHOW tables;
@@ -10,13 +10,6 @@ DESCRIBE <table in employees>;
 -- Remove view
 DROP VIEW <view_name>;
 
--- This is the example provided. First you create a new view, then execute the CREATE VIEW statement. 
-CREATE VIEW customerPayments AS
-SELECT c.customerName, p.checkNumber, p.paymentDate, p.amount
-FROM customers c
-INNER JOIN payments p ON c.customerNumber = p.customerNumber;
-
-SELECT * FROM customerPayments;
 
 -- Write a query to create a view named "SFEmployees" for those salespeople who work in the San Francisco office. Include the employee name (first, last), number, email, and job title. 
 CREATE VIEW SFEmployees AS
