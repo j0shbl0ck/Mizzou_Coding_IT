@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/03/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 --RECALL tables
 SHOW tables;
@@ -47,24 +47,64 @@ GROUP BY c.city;
 -- Write a query to create a view named "paymentsByMonth" that calculates payments per month. You will have to group by multiple columns for this query: month and year because payments from January 2004 and January 2005 should not be grouped together. Remember the SQL month() and year() functions. 
 CREATE VIEW paymentsByMonth AS
 SELECT month(p.paymentDate) AS "Month", year(p.paymentDate) AS "Year", SUM(p.amount) AS "TotalPayments"
-
-
 FROM payments p
 GROUP BY month(p.paymentDate), year(p.paymentDate)
 ORDER BY month(p.paymentDate), year(p.paymentDate) ASC;
-    -- Query the paymentsByMonth view to show the total payments for January 2004.
-    SELECT * FROM paymentsByMonth WHERE Month = 1 AND Year = 2004;
-
    -- Query the paymentsByMonth view to show payments in November 2004
+    SELECT * FROM paymentsByMonth WHERE Month = 11 AND Year = 2004;
 
--- Write a query to create a view named "orderTotalsByMonth" to calculate order totals (in dollars) per month. Query the orderTotalsByMonth view to show the order total in August 2004.
+-- Write a query to create a view named "orderTotalsByMonth" to calculate order totals (in dollars) per month. 
+CREATE VIEW orderTotalsByMonth AS
+SELECT month(o.orderDate) AS "Month", year(o.orderDate) AS "Year", SUM(od.quantityOrdered * od.priceEach) AS "TotalOrders"
+FROM orders o
+INNER JOIN orderdetails od ON o.orderNumber = od.orderNumber
+GROUP BY month(o.orderDate), year(o.orderDate)
+ORDER BY month(o.orderDate), year(o.orderDate) ASC;
+    -- Query the orderTotalsByMonth view to show the order total in August 2004.
+    SELECT * FROM orderTotalsByMonth WHERE Month = 8 AND Year = 2004;
 
--- Write a query to create a view named "salesPerLine" that calculates sales per product line. Query the salesPerLine view to show the total sales for the "Classic Cars" line.
+-- Write a query to create a view named "salesPerLine" that calculates sales per product line. 
+CREATE VIEW salesPerLine AS
+SELECT l.productLine, SUM(od.quantityOrdered * od.priceEach) AS "TotalSales"
+FROM products p
+INNER JOIN productlines l ON p.productLine = l.productLine
+INNER JOIN orderdetails od ON p.productCode = od.productCode
+GROUP BY l.productLine;
+    
+    -- Query the salesPerLine view to show the total sales for the "Classic Cars" line.
+    SELECT * FROM salesPerLine WHERE productLine = 'Classic Cars';
 
--- Write a query to create a view named "productSalesYear" that calculates sales per product per year. Include the product name, sales total, and year. Query the productSalesYear view to show the sales per year for the "2001 Ferrari Enzo"
+-- Write a query to create a view named "productSalesYear" that calculates sales per product per year. Include the product name, sales total, and year.
+CREATE VIEW productSalesYear AS
+SELECT p.productName, SUM(od.quantityOrdered * od.priceEach) AS "TotalSales", year(o.orderDate) AS "Year"
+FROM products p
+INNER JOIN orderdetails od ON p.productCode = od.productCode
+INNER JOIN orders o ON od.orderNumber = o.orderNumber
+GROUP BY p.productName, year(o.orderDate)
+ORDER BY p.productName, year(o.orderDate) ASC; 
+    -- Query the productSalesYear view to show the sales per year for the "2001 Ferrari Enzo"
+    SELECT * FROM productSalesYear WHERE productName = '2001 Ferrari Enzo' AND Year = 2004;
 
--- Write a query to create a view named "orderTotals" that displays the order total for each order. Include order number, customer name, and total. Query the orderTotals view to select the top 15 orders.
+-- Write a query to create a view named "orderTotals" that displays the order total for each order. Include order number, customer name, and total. 
+CREATE VIEW orderTotals AS
+SELECT o.orderNumber, c.customerName, SUM(od.quantityOrdered * od.priceEach) AS "Total"
+FROM orders o
+INNER JOIN customers c ON o.customerNumber = c.customerNumber
+INNER JOIN orderdetails od ON o.orderNumber = od.orderNumber
+GROUP BY o.orderNumber;
+    -- Query the orderTotals view to select the top 15 orders.
+    SELECT * FROM orderTotals ORDER BY Total DESC LIMIT 15;
 
 -- Write a query to create a view named "salesPerRep" that calculates total sales for each sales rep.
+CREATE VIEW salesPerRep AS
+SELECT e.firstName, e.lastName, SUM(od.quantityOrdered * od.priceEach) AS "TotalSales"
+FROM employees e
+INNER JOIN customers c ON c.salesRepEmployeeNumber = e.employeeNumber
+INNER JOIN orders o ON o.customerNumber = c.customerNumber
+INNER JOIN orderdetails od ON o.orderNumber = od.orderNumber
+GROUP BY e.firstName, e.lastName
+ORDER BY SUM(od.quantityOrdered * od.priceEach) ASC;
+    -- Query the salesPerRep view to show the total sales for the sales rep with the first name "Andy".
+    SELECT * FROM salesPerRep WHERE firstName = 'Andy';
 
 -- Write a query to create a view named "salesPerOffice" that displays sales per office.
