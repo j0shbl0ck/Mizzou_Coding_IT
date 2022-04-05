@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/03/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 --RECALL tables
 SHOW tables;
@@ -108,3 +108,14 @@ ORDER BY SUM(od.quantityOrdered * od.priceEach) ASC;
     SELECT * FROM salesPerRep WHERE firstName = 'Andy';
 
 -- Write a query to create a view named "salesPerOffice" that displays sales per office.
+CREATE VIEW salesPerOffice AS
+SELECT o.city, SUM(od.quantityOrdered * od.priceEach) AS "TotalSales"
+FROM offices o
+INNER JOIN employees e ON e.officeCode = o.officeCode
+INNER JOIN customers c ON c.salesRepEmployeeNumber = e.employeeNumber
+INNER JOIN orders oe ON oe.customerNumber = c.customerNumber
+INNER JOIN orderdetails od ON oe.orderNumber = od.orderNumber
+GROUP BY o.city
+ORDER BY SUM(od.quantityOrdered * od.priceEach) ASC;
+    -- Query the salesPerOffice view to show the total sales for the office in Singapore.
+    SELECT * FROM salesPerOffice WHERE city = 'Tokyo';
