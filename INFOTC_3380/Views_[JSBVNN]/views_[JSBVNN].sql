@@ -62,8 +62,7 @@ SELECT l.productLine, SUM(od.quantityOrdered * od.priceEach) AS "TotalSales"
 FROM products p
 INNER JOIN productlines l ON p.productLine = l.productLine
 INNER JOIN orderdetails od ON p.productCode = od.productCode
-GROUP BY l.productLine;
-    
+GROUP BY l.productLine;    
     -- Query the salesPerLine view to show the total sales for the "Classic Cars" line.
     SELECT * FROM salesPerLine WHERE productLine = 'Classic Cars';
 
