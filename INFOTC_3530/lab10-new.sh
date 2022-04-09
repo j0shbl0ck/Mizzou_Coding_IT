@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.1.4
+#     Version: 1.1.5
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -631,7 +631,9 @@ function main_menu {
         3) user_info ; main_menu ;;
         4) file_operations ; main_menu ;;
         5) find_files ; main_menu ;;
-        6) exit 0 ;;
+        6) # show exiting statement
+            echo "Exiting..."
+            exit 0 ;;
         *) echo "Please enter a valid selection"
            main_menu ;;
     esac
