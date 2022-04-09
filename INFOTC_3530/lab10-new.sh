@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.3
+#     Version: 1.0.4
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -478,6 +478,7 @@ function find_files {
         # if user selects 1 from find_files, call find_files_by_name function
         function find_files_by_name {
             # find files by name
+            clear
             echo "==============================="
             echo "          Find files by name   "
             echo "==============================="
@@ -499,6 +500,7 @@ function find_files {
         # if user selects 2 from find_files, call find_files_by_size function
         function find_files_by_size {
             # find files by size
+            clear
             echo "==============================="
             echo "          Find files by size   "
             echo "==============================="
@@ -513,6 +515,7 @@ function find_files {
         # if user selects 3 from find_files, call find_files_by_date function
         function find_files_by_date {
             # find files by date
+            clear
             echo "==============================="
             echo "          Find files by date   "
             echo "==============================="
@@ -527,12 +530,13 @@ function find_files {
         # if user selects 4 from find_files, call find_files_by_type function
         function find_files_by_type {
             # find files by type
+            clear
             echo "==============================="
             echo "          Find files by type   "
             echo "==============================="
             echo "Enter file type: "
             read file_type
-            find  -type f -name '*$file_type'
+            find  -type f -name '*$(file_type)'
             echo "==============================="
             find_files
         }
@@ -541,6 +545,7 @@ function find_files {
         # if user selects 5 from find_files, call find_files_by_owner function
         function find_files_by_owner {
             # find files by owner
+            clear
             echo "==============================="
             echo "          Find files by owner   "
             echo "==============================="
@@ -555,6 +560,7 @@ function find_files {
         # if user selects 6 from find_files, call find_files_by_group function
         function find_files_by_group {
             # find files by group
+            clear
             echo "==============================="
             echo "          Find files by group   "
             echo "==============================="
@@ -569,6 +575,7 @@ function find_files {
         # if user selects 7 from find_files, call find_files_by_modified_time function
         function find_files_by_modified_time {
             # find files by modified time
+            clear
             echo "==============================="
             echo "          Find files by modified time   "
             echo "==============================="
