@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.0
+#     Version: 1.0.1
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -43,16 +43,34 @@ function os_info {
         # ===== Distribution info =====
         # if user selects 1 from os_info, call os_distro function
         function os_distro {
+            clear
             # display OS distribution info
             echo "==============================="
             echo "          OS Distribution      "
             echo "==============================="
-            echo "Distribution: $(lsb_release -d | cut -f2)"
-            echo "Release: $(lsb_release -r | cut -f2)"
-            echo "Description: $(lsb_release -d | cut -f2)"
-            echo "Codename: $(lsb_release -c | cut -f2)"
-            echo "Kernel: $(uname -r)"
-            echo "==============================="
+            # check if lsb_release is installed
+            if [ -x "$(command -v lsb_release)" ]; then
+                # if lsb_release is installed, display OS distribution info
+                echo "Distribution: $(lsb_release -d | cut -f2)"
+                echo "Release: $(lsb_release -r | cut -f2)"
+                echo "Description: $(lsb_release -d | cut -f2)"
+                echo "Codename: $(lsb_release -c | cut -f2)"
+                echo "Kernel: $(uname -mrs)"
+                echo "==============================="
+                else
+                # if lsb_release is not installed, display error message
+                echo "lsb_release is not installed"
+                # ask if they would like to install lsb_release
+                echo "Would you like to install lsb_release? (y/N)"
+                read lsb_release_install
+                case $lsb_release_install in
+                    y) yum install redhat-lsb-core ; os_distro ;;
+                    N) echo "Returning to OS Distribution menu"
+                        os_distro ;;
+                    *) echo "Invalid selection, returning to OS distribution menu"
+                        os_distro ;;
+                esac                                                      
+            fi
             os_info
         }
 
