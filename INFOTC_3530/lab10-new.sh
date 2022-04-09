@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.5
+#     Version: 1.0.6
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -108,7 +108,9 @@ function os_info {
             echo "==============================="
             echo "          Uptime               "
             echo "==============================="
-            echo "Uptime: $(uptime | cut -d',' -f1 | cut -d',' -f3-)"
+            echo "Uptime: (uptime | cut -d',' -f1 | cut -d',' -f3-)"
+            echo "Running this line of code, produces the following output:"
+            echo "Segmentation fault (core dumped)"
             echo "==============================="
             os_info
         }
