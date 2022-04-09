@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.2
+#     Version: 1.0.3
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -75,6 +75,7 @@ function os_info {
         # if user selects 2 from os_info, call mem_info function
         function mem_info {
             # display free/used memory info
+            clear
             echo "==============================="
             echo "          Memory Info          "
             echo "==============================="
@@ -89,6 +90,7 @@ function os_info {
         # if user selects 3 from os_info, call disk_space function
         function disk_space {
             # display disk space info
+            clear
             echo "==============================="
             echo "          Disk Space           "
             echo "==============================="
@@ -102,6 +104,7 @@ function os_info {
         # if user selects 4 from os_info, call uptime function
         function uptime {
             # display uptime info
+            clear
             echo "==============================="
             echo "          Uptime               "
             echo "==============================="
@@ -137,6 +140,7 @@ function network_info {
         # if user selects 1 from network_info, call ip_info function
         function ip_info {
             # display IP info
+            clear
             echo "==============================="
             echo "          IP Address           "
             echo "==============================="
@@ -149,11 +153,11 @@ function network_info {
         # if user selects 2 from network_info, call mac_info function
         function mac_info {
             # display MAC info
+            clear
             echo "==============================="
             echo "          MAC Address          "
             echo "==============================="
-            echo "MAC Address: $(ifconfig | grep -B1 'inet addr:' | grep -v '
-            inet addr:' | cut -d: -f2 | awk '{print $1}')"
+            echo "MAC Address: $(cat /sys/class/net/*/address)"
             echo "==============================="
             network_info
         }
@@ -162,6 +166,7 @@ function network_info {
         # if user selects 3 from network_info, call hostname_info function
         function hostname_info {
             # display hostname info
+            clear
             echo "==============================="
             echo "          Hostname             "
             echo "==============================="
@@ -202,12 +207,23 @@ function user_info {
             echo "==============================="
             echo "          Add a user           "
             echo "==============================="
-            echo "Enter username: "
-            read username
-            echo "Enter password: "
-            read -s password
-            useradd -m -p $(openssl passwd -1 $password) $username
-            echo "==============================="
+            # check if user is root
+            if [ "$(id -u)" = "0" ]; then
+                # if user is root, ask for username and password
+                read -p "Enter username: " username
+                read -p "Enter password: " password
+                # create user with username and password
+                useradd -m -p $(openssl passwd -1 $password) $username
+                # check if user was created
+                if [ $? -eq 0 ]; then
+                    echo "User created successfully"
+                else
+                    echo "User creation failed"
+                fi
+            else
+                # if user is not root, display error message
+                echo "You must be root to add a user"
+            fi
             user_info
         }
 
@@ -259,7 +275,8 @@ function file_operations {
     echo "3. Create a directory"
     echo "4. Delete a directory"
     echo "5. Compress files "
-    echo "6. Return to main menu"
+    echo "6. Decompress an archive"
+    echo "7. Return to main menu"
     echo "Enter your selection: "
     read file_operations_selection
     case $file_operations_selection in
@@ -268,7 +285,8 @@ function file_operations {
         3) create_directory ;;
         4) delete_directory ;;
         5) compress_files ;;
-        6) main_menu ;;
+        6) decompress_archive ;;
+        7) main_menu ;;
         *) echo "Please enter a valid selection"
             file_operations ;;
     esac
@@ -278,12 +296,45 @@ function file_operations {
         # if user selects 1 from file_operations, call create_file function
         function create_file {
             # create a file
+            clear
             echo "==============================="
             echo "          Create a file        "
             echo "==============================="
             echo "Enter file name: "
             read file_name
-            touch $file_name
+            # check if file exists
+            if [ -f $file_name ]; then
+                # if file exists, display error message
+                echo "File already exists"
+                # ask if user wants to overwrite file
+                read -p "Do you want to overwrite the file? [y/n]: " overwrite
+                case $overwrite in
+                    y) echo "File overwritten"
+                        # if user wants to overwrite file, create file
+                        # get current directory
+                        current_directory=$(pwd)
+                        cp $file_name $current_directory
+                        ;;
+                    n) echo "File not overwritten"
+                        ;;
+                    *) echo "Please enter a valid selection"
+                        create_file ;;
+                esac
+            else
+                # if file does not exist, create file
+                # get current directory
+                current_directory=$(pwd)
+                touch $file_name
+                # tell user where file name and where it was was created
+                echo "File name: $file_name"
+                echo "Location: $current_directory"
+                # check if file was created
+                if [ $? -eq 0 ]; then
+                    echo "File created successfully"
+                else
+                    echo "File creation failed"
+                fi
+            fi
             echo "==============================="
             file_operations
         }
@@ -292,12 +343,20 @@ function file_operations {
         # if user selects 2 from file_operations, call delete_file function
         function delete_file {
             # delete a file
+            clear
             echo "==============================="
             echo "          Delete a file        "
             echo "==============================="
+            ls
             echo "Enter file name: "
             read file_name
             rm $file_name
+            # check if file was deleted
+            if [ $? -eq 0 ]; then
+                echo "File deleted successfully"
+            else
+                echo "File deletion failed"
+            fi
             echo "==============================="
             file_operations
         }
@@ -306,12 +365,29 @@ function file_operations {
         # if user selects 3 from file_operations, call create_directory function
         function create_directory {
             # create a directory
+            clear
             echo "==============================="
             echo "          Create a directory   "
             echo "==============================="
             echo "Enter directory name: "
             read directory_name
             mkdir $directory_name
+            # check if directory was created
+            if [ $? -eq 0 ]; then
+                echo "Directory created successfully"
+                # ask user to enter the OCTAL permissions for the directory
+                read -p "Enter the octal permissions for the directory: " octal_permissions
+                # change permissions of directory
+                chmod $octal_permissions $directory_name
+                # check if permissions were changed
+                if [ $? -eq 0 ]; then
+                    echo "Permissions changed successfully"
+                else
+                    echo "Permissions change failed"
+                fi
+            else
+                echo "Directory creation failed"
+            fi
             echo "==============================="
             file_operations
         }
@@ -320,12 +396,19 @@ function file_operations {
         # if user selects 4 from file_operations, call delete_directory function
         function delete_directory {
             # delete a directory
+            clear
             echo "==============================="
             echo "          Delete a directory   "
             echo "==============================="
             echo "Enter directory name: "
             read directory_name
             rmdir $directory_name
+            # check if directory was deleted
+            if [ $? -eq 0 ]; then
+                echo "Directory deleted successfully"
+            else
+                echo "Directory deletion failed"
+            fi
             echo "==============================="
             file_operations
         }
@@ -334,12 +417,28 @@ function file_operations {
         # if user selects 5 from file_operations, call compress_files function
         function compress_files {
             # compress files
+            clear
             echo "==============================="
-            echo "          Compress files       "
+            echo "          Compress file        "
             echo "==============================="
             echo "Enter file name: "
             read file_name
             tar -czf $file_name.tar.gz $file_name
+            echo "==============================="
+            file_operations
+        }
+
+        # ===== Decompress an archive =====
+        # if user selects 6 from file_operations, call decompress_archive function
+        function decompress_archive {
+            clear
+            # decompress an archive
+            echo "==============================="
+            echo "          Decompress archive    "
+            echo "==============================="
+            echo "Enter archive name: "
+            read archive_name
+            tar -xzf $archive_name
             echo "==============================="
             file_operations
         }
@@ -357,7 +456,8 @@ function find_files {
     echo "4. Find files by type"
     echo "5. Find files by owner"
     echo "6. Find files by group"
-    echo "7. Return to main menu"
+    echo "7. Find files by modified time"
+    echo "8. Return to main menu"
     echo "Enter your selection: "
     read find_files_selection
     case $find_files_selection in
@@ -367,7 +467,8 @@ function find_files {
         4) find_files_by_type ;;
         5) find_files_by_owner ;;
         6) find_files_by_group ;;
-        7) main_menu ;;
+        7) find_files_by_modified_time ;;
+        8) main_menu ;;
         *) echo "Please enter a valid selection"
             find_files ;;
     esac
@@ -380,9 +481,16 @@ function find_files {
             echo "==============================="
             echo "          Find files by name   "
             echo "==============================="
-            echo "Enter file name: "
+            echo "Enter file full name: "
             read file_name
-            find . -name $file_name
+            # if file not found, display error message
+            if [ ! -f $file_name ]; then
+                echo "File not found"
+            else
+                # if file found, display file name
+                echo "File Found:"
+                find -type f -iname $file_name
+            fi
             echo "==============================="
             find_files
         }
@@ -424,7 +532,7 @@ function find_files {
             echo "==============================="
             echo "Enter file type: "
             read file_type
-            find . -type $file_type
+            find  -type f -name '*$file_type'
             echo "==============================="
             find_files
         }
@@ -453,6 +561,20 @@ function find_files {
             echo "Enter group: "
             read group
             find . -group $group
+            echo "==============================="
+            find_files
+        }
+
+        # ===== Find files by modified time =====
+        # if user selects 7 from find_files, call find_files_by_modified_time function
+        function find_files_by_modified_time {
+            # find files by modified time
+            echo "==============================="
+            echo "          Find files by modified time   "
+            echo "==============================="
+            echo "Enter modified time: "
+            read modified_time
+            find . -mtime $modified_time
             echo "==============================="
             find_files
         }
