@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.7
+#     Version: 1.0.9
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -315,10 +315,11 @@ function file_operations {
             read file_name
             # check if file exists
             if [ -f $file_name ]; then
-                # if file exists, display error message
-                echo "File already exists"
-                # ask if user wants to overwrite file
-                read -p "Do you want to overwrite the file? [y/n]: " overwrite
+                # if file exists, display error message in red
+                echo -e "\e[31mError: File already exists\e[0m"
+                # ask if user wants to overwrite file in yellow
+                echo -e "\e[33mDo you want to overwrite the file? (y/n)\e[0m"
+                read overwrite
                 case $overwrite in
                     y) echo "File overwritten"
                         # if user wants to overwrite file, create file
@@ -364,9 +365,11 @@ function file_operations {
             rm $file_name
             # check if file was deleted
             if [ $? -eq 0 ]; then
-                echo "File deleted successfully"
+                # if file was deleted, display success message in green
+                echo -e "\e[32mFile deleted successfully\e[0m"
             else
-                echo "File deletion failed"
+                # if file was not deleted, display error message in red
+                echo -e "\e[31mFile deletion failed\e[0m"
             fi
             echo "==============================="
             file_operations
@@ -386,18 +389,22 @@ function file_operations {
             # check if directory was created
             if [ $? -eq 0 ]; then
                 echo "Directory created successfully"
-                # ask user to enter the OCTAL permissions for the directory
-                read -p "Enter the octal permissions for the directory: " octal_permissions
+                # ask user to enter the OCTAL permissions for the directory in cyan
+                echo -e "\e[36mEnter the octal permissions for the directory: \e[0m"
+                read octal_permissions
                 # change permissions of directory
                 chmod $octal_permissions $directory_name
                 # check if permissions were changed
                 if [ $? -eq 0 ]; then
-                    echo "Permissions changed successfully"
+                    # if permissions were changed, display success message in green
+                    echo -e "\e[32mPermissions changed successfully\e[0m"
                 else
-                    echo "Permissions change failed"
+                    # if permissions were not changed, display error message in red
+                    echo -e "\e[31mPermissions change failed\e[0m"
                 fi
             else
-                echo "Directory creation failed"
+                # if directory was not created, display error message in red
+                echo -e "\e[31mDirectory creation failed\e[0m"
             fi
             echo "==============================="
             file_operations
@@ -416,9 +423,11 @@ function file_operations {
             rmdir $directory_name
             # check if directory was deleted
             if [ $? -eq 0 ]; then
-                echo "Directory deleted successfully"
+                # if directory was deleted, display success message in green
+                echo -e "\e[32mDirectory deleted successfully\e[0m"
             else
-                echo "Directory deletion failed"
+                # if directory was not deleted, display error message in red
+                echo -e "\e[31mDirectory deletion failed\e[0m"
             fi
             echo "==============================="
             file_operations
@@ -597,10 +606,10 @@ function find_files {
             find_files
         }
 
-# Create main menu function with six options and have user select one
+# Create main menu function with six options each a different color and have user select one
 function main_menu {
     clear
-    echo "Today is $(date +"%m/%d/%Y") and the time is $(date +"%r")"
+    echo -e "\e[37mToday is $(date +"%m/%d/%Y") and the time is $(date +"%r")\e[0m"
     echo "==============================="
     echo "          Main Menu            "
     echo "==============================="
