@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.1.2
+#     Version: 1.1.3
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -108,7 +108,7 @@ function os_info {
             echo "==============================="
             echo "          Uptime               "
             echo "==============================="
-            echo -e "\e[31mUptime: $(uptime | cut -d',' -f1 | cut -d',' -f3-)\e[0m"
+            echo -e "\e[31mUptime: (uptime | cut -d',' -f1 | cut -d',' -f3-)\e[0m"
             echo - e "\e[31mRunning this line of code, produces the following output:\e[0m"
             echo -e "\e[31mSegmentation fault (core dumped)\e[0m"
             echo "==============================="
