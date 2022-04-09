@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.4
+#     Version: 1.0.5
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -204,6 +204,7 @@ function user_info {
         # if user selects 1 from user_info, call add_user function
         function add_user {
             # add a user
+            clear
             echo "==============================="
             echo "          Add a user           "
             echo "==============================="
@@ -231,6 +232,7 @@ function user_info {
         # if user selects 2 from user_info, call list_users function
         function list_users {
             # list users
+            clear
             echo "==============================="
             echo "          List users           "
             echo "==============================="
@@ -243,6 +245,7 @@ function user_info {
         # if user selects 3 from user_info, call signed_in_user function
         function signed_in_user {
             # display signed in user
+            clear
             echo "==============================="
             echo "          Signed in user       "
             echo "==============================="
@@ -255,6 +258,7 @@ function user_info {
         # if user selects 4 from user_info, call last_logged_in_users function
         function last_logged_in_users {
             # display last logged in users
+            clear
             echo "==============================="
             echo "          Last logged in users "
             echo "==============================="
@@ -536,7 +540,7 @@ function find_files {
             echo "==============================="
             echo "Enter file type: "
             read file_type
-            find  -type f -name '*$(file_type)'
+            find . -name "*.$file_type"
             echo "==============================="
             find_files
         }
