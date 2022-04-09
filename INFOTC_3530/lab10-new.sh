@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.9
+#     Version: 1.1.0
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -338,13 +338,16 @@ function file_operations {
                 current_directory=$(pwd)
                 touch $file_name
                 # tell user where file name and where it was was created
+                echo "------------------------------"
                 echo "File name: $file_name"
                 echo "Location: $current_directory"
                 # check if file was created
                 if [ $? -eq 0 ]; then
-                    echo "File created successfully"
+                    # if file was created, display success message in green
+                    echo -e "\e[32mFile created successfully\e[0m"
                 else
-                    echo "File creation failed"
+                    # if file was not created, display error message in red
+                    echo -e "\e[31mFile not created\e[0m"
                 fi
             fi
             echo "==============================="
