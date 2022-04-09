@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.6
+#     Version: 1.0.7
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -212,20 +212,24 @@ function user_info {
             echo "==============================="
             # check if user is root
             if [ "$(id -u)" = "0" ]; then
-                # if user is root, ask for username and password
-                read -p "Enter username: " username
-                read -p "Enter password: " password
+                # if user is root, ask for username and password in yellow
+                echo -e "\e[33mEnter username: \e[0m"
+                read username
+                echo -e "\e[33mEnter password: \e[0m"
+                read -s password
                 # create user with username and password
                 useradd -m -p $(openssl passwd -1 $password) $username
                 # check if user was created
                 if [ $? -eq 0 ]; then
-                    echo "User created successfully"
+                    # if user was created, display success message in green
+                    echo -e "\e[32mUser created successfully\e[0m"
                 else
-                    echo "User creation failed"
+                    # if user was not created, display error message in red
+                    echo -e "\e[31mUser not created\e[0m"
                 fi
             else
-                # if user is not root, display error message
-                echo "You must be root to add a user"
+                # if user is not root, display error message in red
+                echo -e "\e[1;31mError: You must be root to add a user\e[0m"
             fi
             user_info
         }
