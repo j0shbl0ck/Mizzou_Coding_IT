@@ -57,18 +57,15 @@ function os_info {
                 echo "Codename: $(lsb_release -c | cut -f2)"
                 echo "Kernel: $(uname -mrs)"
                 echo "==============================="
-                else
+            else
                 # if lsb_release is not installed, display error message
                 echo "lsb_release is not installed"
                 # ask if they would like to install lsb_release
-                echo "Would you like to install lsb_release? (y/N)"
-                read lsb_release_install
+                read -p "Would you like to install lsb_release? (y/N)" lsb_release_install
                 case $lsb_release_install in
-                    y) yum install redhat-lsb-core ; os_distro ;;
-                    N) echo "Returning to OS Distribution menu"
-                        os_distro ;;
-                    *) echo "Invalid selection, returning to OS distribution menu"
-                        os_distro ;;
+                    y) sudo yum install redhat-lsb-core ;;
+                    N) os_info ;;
+                    *) echo "Invalid selection, returning to OS distribution menu" ;;
                 esac                                                      
             fi
             os_info
@@ -95,9 +92,8 @@ function os_info {
             echo "==============================="
             echo "          Disk Space           "
             echo "==============================="
-            echo "Total disk space: $(df -h | grep /dev/sda1 | awk '{print $2}')"
-            echo "Used disk space: $(df -h | grep /dev/sda1 | awk '{print $3}')"
-            echo "Free disk space: $(df -h | grep /dev/sda1 | awk '{print $4}')"
+            echo "Disk Space Inforation: "
+            df -h
             echo "==============================="
             os_info
         }
@@ -109,7 +105,7 @@ function os_info {
             echo "==============================="
             echo "          Uptime               "
             echo "==============================="
-            echo "Uptime: $(uptime | cut -d',' -f1 | cut -d' ' -f3-)"
+            echo "Uptime: $(uptime | cut -d',' -f1 | cut -d',' -f3-)"
             echo "==============================="
             os_info
         }
