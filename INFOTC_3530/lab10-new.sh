@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.1.0
+#     Version: 1.1.1
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -391,7 +391,8 @@ function file_operations {
             mkdir $directory_name
             # check if directory was created
             if [ $? -eq 0 ]; then
-                echo "Directory created successfully"
+                # if directory was created, display success message in green
+                echo -e "\e[32mDirectory created successfully\e[0m"
                 # ask user to enter the OCTAL permissions for the directory in cyan
                 echo -e "\e[36mEnter the octal permissions for the directory: \e[0m"
                 read octal_permissions
