@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.2
+#     Version: 1.0.3
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
@@ -13,22 +13,16 @@
 # >>
 #! /bin/bash
 
-# Create main menu function with six options
-main_menu() {
-    # Clear the screen
-    clear
-    # Display date and time
-    echo "Today is $(date +"%m/%d/%Y") and the time is $(date +"%r")"
-    echo "==============================="
-    echo "          Main Menu            "
-    echo "==============================="
-    echo "1. Add a user"
-    echo "2. List users"
-    echo "3. Add an SSH key"
-    echo "4. List SSH keys"
-    echo "5. Exit"
-    echo "6. Exit"
-}
+# create menu with six options for user
+echo "Welcome to the JSBVNN's Lab10 Menu"
+echo "Please select an option from the menu below"
+echo "1. Display the date and time"
+echo "2. Display the system uptime"
+echo "3. Display the system load"
+echo "4. Display the system memory usage"
+echo "5. Display the system network information"
+echo "6. Exit"
+
 
 # Get user's choice
 read -p "Enter your choice [1-6]: " choice
