@@ -255,7 +255,8 @@ function user_info {
             echo "==============================="
             echo "          Signed in user       "
             echo "==============================="
-            echo "Signed in user: $(whoami)"
+            # display signed in user in purple
+            echo -e "\e[35mSigned in user: $(whoami)\e[0m"
             echo "==============================="
             user_info
         }
