@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.1
+#     Version: 1.0.2
 #     Date: 04.07.22
 #     Type: Public
 # .NOTES
