@@ -77,7 +77,6 @@ WHERE WORKING_AREA = 'Bangalore';
     FROM agents
     ORDER BY WORKING_AREA;
 
-
 -- Delete customers whose name begins with the letter “S”.
 DELETE FROM customer
 WHERE CUST_NAME LIKE 'S%';
