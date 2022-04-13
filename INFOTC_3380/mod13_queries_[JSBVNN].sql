@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/10/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 -- Recall all databases
 SHOW DATABASES;
@@ -49,7 +49,7 @@ WHERE WORKING_AREA = 'London';
     ON o.AGENT_CODE = a.AGENT_CODE
     WHERE a.WORKING_AREA = 'London';
 
--- Update customers with grade 2 to grade 3. [INCOMPLETE - Not updated]
+-- Update customers with grade 2 to grade 3. [COMPLETE]
 UPDATE customer
 SET GRADE = 3
 WHERE GRADE = 2;
@@ -58,7 +58,7 @@ WHERE GRADE = 2;
     SELECT CUST_NAME, CUST_CODE
     FROM customer
     WHERE GRADE = 2;
-    -- Write query that selects all customers names and customer codes with grade 3. [COMPLETE - Run before update]
+    -- Write query that selects all customers names and customer codes with grade 3. [COMPLETE]
     SELECT CUST_NAME, CUST_CODE 
     FROM customer 
     WHERE GRADE = 3;
@@ -68,7 +68,7 @@ WHERE GRADE = 2;
 Delete Queries
 # --------------------------
 
--- Delete sales agents from Bangalore. [INCOMPLETE - Not deleted]
+-- Delete sales agents from Bangalore. [COMPLETE]
 DELETE FROM agents
 WHERE WORKING_AREA = 'Bangalore';
     
@@ -77,7 +77,7 @@ WHERE WORKING_AREA = 'Bangalore';
     FROM agents
     ORDER BY WORKING_AREA;
 
--- Delete customers whose name begins with the letter “S”.
+-- Delete customers whose name begins with the letter “S”. [COMPLETE]
 DELETE FROM customer
 WHERE CUST_NAME LIKE 'S%';
     
