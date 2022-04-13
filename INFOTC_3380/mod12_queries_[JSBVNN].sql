@@ -20,6 +20,25 @@ INSERT INTO <table in module2> (<columns>) VALUES (<values>);
 -- Select from table
 SELECT <columns> FROM <table in module2> WHERE <column> = <value>;
 
+# --------------------------
+Select (Read) Queries 
+# --------------------------
+
+-- Write a query to calculate the payments each sales agent is responsible for. Display the agent name and the total payments. [INCOMPLETE]
+SELECT agent_name, SUM(payment) 
+FROM sales_agent_payments 
+GROUP BY agent_name;
+
+-- Write a query to calculate payments for each sales agent by country of the sales agent. Display the agent country and total payments. [INCOMPLETE]
+SELECT agent_country, SUM(payment)
+FROM sales_agent_payments
+GROUP BY agent_country;
+
+-- Write a query to calculate the commission for each order. Display order id, customer name, agent name, and commission amount. [INCOMPLETE]
+SELECT order_id, customer_name, agent_name, commission_amount
+FROM orders
+WHERE commission_amount IS NOT NULL;
+
 
 # --------------------------
 Update Queries
