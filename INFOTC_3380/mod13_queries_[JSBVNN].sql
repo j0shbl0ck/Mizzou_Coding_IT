@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/10/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 -- Recall all databases
 SHOW DATABASES;
@@ -35,12 +35,12 @@ WHERE CUST_CITY = 'New York';
     FROM customer 
     WHERE CUST_CITY = 'NY';
 
--- Increase the commission for sales agents from London by 20%. [INCOMPLETE - Not updated]
+-- Increase the commission for sales agents from London by 20%. [COMPLETE]
 UPDATE agents
-SET COMMISSION = COMMISSION + 0.2
+SET COMMISSION = (COMMISSION * 0.2) + COMMISSION
 WHERE WORKING_AREA = 'London';
 
-    -- Write query to calculate the commission for each order where the agent is from London. Display order id, customer name, agent name, and commission amount. [COMPLETE - Run before update]
+    -- Write query to calculate the commission for each order where the agent is from London. Display order id, customer name, agent name, and commission amount. [COMPLETE]
     SELECT o.ORD_NUM, c.CUST_NAME, a.AGENT_NAME, a.COMMISSION
     FROM orders o
     JOIN customer c
