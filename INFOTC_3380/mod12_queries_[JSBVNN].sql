@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/10/22
-Version: 1.0.4 ***/
+Version: 1.0.6 ***/
 
 -- Recall all databases
 SHOW DATABASES;
