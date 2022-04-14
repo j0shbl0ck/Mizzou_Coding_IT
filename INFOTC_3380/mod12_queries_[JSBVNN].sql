@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/10/22
-Version: 1.0.6 ***/
+Version: 1.0.7 ***/
 
 -- Recall all databases
 SHOW DATABASES;
@@ -20,24 +20,28 @@ INSERT INTO <table in module2> (<columns>) VALUES (<values>);
 -- Select from table
 SELECT <columns> FROM <table in module2> WHERE <column> = <value>;
 
+
 # --------------------------
 Select (Read) Queries 
 # --------------------------
 
 -- Write a query to calculate the payments each sales agent is responsible for. Display the agent name and the total payments. [INCOMPLETE]
-SELECT agent_name, SUM(payment) 
-FROM sales_agent_payments 
-GROUP BY agent_name;
+SELECT AGENT_NAME, SUM(c.PAYMENT_AMT) AS TOTAL_PAYMENTS 
+FROM agents a, orders o, customer c 
+WHERE a.AGENT_CODE = o.AGENT_CODE AND o.CUST_CODE = c.CUST_CODE
+GROUP BY AGENT_NAME;
 
 -- Write a query to calculate payments for each sales agent by country of the sales agent. Display the agent country and total payments. [INCOMPLETE]
-SELECT agent_country, SUM(payment)
-FROM sales_agent_payments
-GROUP BY agent_country;
+SELECT COUNTRY, SUM(c.PAYMENT_AMT) AS TOTAL_PAYMENTS
+FROM agents a, orders o, customer c
+WHERE a.AGENT_CODE = o.AGENT_CODE AND o.CUST_CODE = c.CUST_CODE
+GROUP BY COUNTRY;
 
 -- Write a query to calculate the commission for each order. Display order id, customer name, agent name, and commission amount. [INCOMPLETE]
-SELECT order_id, customer_name, agent_name, commission_amount
-FROM orders
-WHERE commission_amount IS NOT NULL;
+SELECT ORD_NUM, CUST_NAME, AGENT_NAME, COMMISSION
+FROM orders o, customer c, agents a
+WHERE o.CUST_CODE = c.CUST_CODE AND o.AGENT_CODE = a.AGENT_CODE
+GROUP BY ORD_NUM;
 
 
 # --------------------------
