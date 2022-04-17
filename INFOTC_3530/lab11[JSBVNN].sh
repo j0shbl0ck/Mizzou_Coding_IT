@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.3
+#     Version: 1.0.4
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
@@ -35,13 +35,13 @@ do
         case $choice in
                 1)
                     echo "=====================Auditing user accounts====================="
-                    # Display username, exact date/time and IP address for the users who logged in to the system, ordered by date (oldest to newest).
+                    # Display username, exact date/time and IP address for the users who logged in to the system, ordered by date (oldest to newest). 
                     echo "-> List of users who logged in to the system:"
-                    echo $(last | grep -v "Never" | awk '{print $1, $3, $4}')
-                    # Display in ascending order the date and time when the last user account was created.
+                    echo $(last | awk '{print $1, $3, $4}' | sort -k3 -n | awk '{print $1, $2, $3, $4}' | sed 's/\(.*\)/\L\1/' | sed 's/\(.*\)/\U\1/' | sed 's/\(.*\)/\1 logged in/' | sed 's/\(.*\)/\1\n/') 
+                    # Display in ascending order the date and time when the last user account was created. For example, user1 was created on Nov 7 03:00.
                     echo "-> Last user account created:"
                     echo $(last | grep -v "Never" | awk '{print $1, $3, $4}' | sort -k3 | tail -1)
-                    # Display the usernames who are currently online
+                    # Display the usernames who are currently online 
                     echo "-> List of users who are currently online:"
                     echo "Users logged in: $(who | cut -d' ' -f1)"
                 ;;
