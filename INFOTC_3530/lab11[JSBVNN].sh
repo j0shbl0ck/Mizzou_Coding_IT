@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.5
+#     Version: 1.0.6
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
@@ -53,12 +53,13 @@ do
                 ;;
                 3)          
                     echo "=====================Auditing network configuration====================="
-                    # Display the network adapter, the IP address, subnet mask, and the MAC address. Format the output to only include the requested info
+                    # Display the network adapter, the IP address, subnet mask, and the MAC address from ifconfig. Format the output to only include the requested information.
                     echo "-> List of network adapters:"
-                    echo $(ifconfig | grep -v "lo" | awk '{print $1, $2, $4, $5}')
+                    echo $(ifconfig | grep -v "lo" | grep -v "flags" | sed 's/\(.*\)/\L\1/' | sed 's/\(.*\)/\U\1/' | sed 's/\(.*\)/\1: \1/' | sed 's/\(.*\)/\1\n/')
                     # Display services information for the first 100 ports that have the state of LISTEN, omit localhost output (hint: explore the netstat -tulpn command)
                     echo "-> List of services listening on ports:"
                     echo $(netstat -tulpn | grep LISTEN | head -n 100)
+
                 ;;
                 4)
                     echo "===================Update/upgrade the system==================="
