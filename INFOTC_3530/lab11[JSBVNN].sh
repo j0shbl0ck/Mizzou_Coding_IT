@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.2
+#     Version: 1.0.3
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
@@ -59,6 +59,7 @@ do
                     # Display services information for the first 100 ports that have the state of LISTEN, omit localhost output (hint: explore the netstat -tulpn command)
                     echo "-> List of services listening on ports:"
                     echo $(netstat -tulpn | grep LISTEN | head -n 100)
+                ;;
                 4)
                     echo "===================Update/upgrade the system==================="
                     # Update and upgrade the system (hint: different distributions use different package managers! Use the partial implementation to help with this)
