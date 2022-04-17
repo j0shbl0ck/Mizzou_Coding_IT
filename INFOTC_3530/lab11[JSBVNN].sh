@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.6
+#     Version: 1.0.7
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
@@ -34,6 +34,7 @@ do
 
         case $choice in
                 1)
+                    clear
                     echo "=====================Auditing user accounts====================="
                     # Display username, exact date/time and IP address for the users who logged in to the system, ordered by date (oldest to newest). 
                     echo "-> List of users who logged in to the system:"
@@ -46,12 +47,14 @@ do
                     echo "Users logged in: $(who | cut -d' ' -f1)"
                 ;;
                 2)
+                    clear
                     echo "=====================Auditing Hard Disk Drives (HDD)====================="
                     # Display the total number of HDD, their names, their partitions, and the mounting point
                     echo "-> List of Hard Disk Drives (HDD):"
                     echo $(lsblk -o NAME,SIZE,MOUNTPOINT | grep -v "NAME" | sed 's/\(.*\)/\L\1/' | sed 's/\(.*\)/\U\1/' | sed 's/\(.*\)/\1: \1/' | sed 's/\(.*\)/\1\n/')
                 ;;
-                3)          
+                3)        
+                    clear  
                     echo "=====================Auditing network configuration====================="
                     # Display the network adapter, the IP address, subnet mask, and the MAC address from ifconfig. Format the output to only include the requested information.
                     echo "-> List of network adapters:"
@@ -62,6 +65,7 @@ do
 
                 ;;
                 4)
+                    clear
                     echo "===================Update/upgrade the system==================="
                     # Update and upgrade the system (hint: different distributions use different package managers! Use the partial implementation to help with this)
                     if [ $system == \"fedora\" ]
