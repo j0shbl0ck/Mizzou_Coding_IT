@@ -3,7 +3,7 @@
 #     This script allows user interactiveness across the console
 # .DESCRIPTION
 #     Author: j0shbl0ck https://github.com/j0shbl0ck
-#     Version: 1.0.4
+#     Version: 1.0.5
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
@@ -49,7 +49,7 @@ do
                     echo "=====================Auditing Hard Disk Drives (HDD)====================="
                     # Display the total number of HDD, their names, their partitions, and the mounting point
                     echo "-> List of Hard Disk Drives (HDD):"
-                    echo $(lsblk | grep disk | awk '{print $1, $4, $7}')
+                    echo $(lsblk -o NAME,SIZE,MOUNTPOINT | grep -v "NAME" | sed 's/\(.*\)/\L\1/' | sed 's/\(.*\)/\U\1/' | sed 's/\(.*\)/\1: \1/' | sed 's/\(.*\)/\1\n/')
                 ;;
                 3)          
                     echo "=====================Auditing network configuration====================="
