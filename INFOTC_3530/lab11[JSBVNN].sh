@@ -43,7 +43,7 @@ do
                     echo $(last | grep -v "Never" | awk '{print $1, $3, $4}' | sort -k3 | tail -1)
                     # Display the usernames who are currently online
                     echo "-> List of users who are currently online:"
-                    echo $(who | awk '{print $1}')
+                    echo "Users logged in: $(who | cut -d' ' -f1)"
                 ;;
                 2)
                     echo "=====================Auditing Hard Disk Drives (HDD)====================="
