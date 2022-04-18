@@ -5,6 +5,7 @@
 3. [Modules 6,8](#primarily-towards-modules-68)
 4. [Project1](#primarily-towards-project1)
 5. [Midterm Project](#primarily-towards-midterm-project) 
+6. [Project2](#primarily-towards-project2)
 
 ## Primarily towards Modules 2-3
 1. Open terminal and type: ```open -a docker```
@@ -122,3 +123,24 @@
 23. ```show collections```
 24. ```db.orders.findOne();```
 25. ```db.customers.findOne();```
+
+## Primarily towards Project2
+1. Open terminal and type ```open -a docker```
+2. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/it-3380-dev-env``` folder
+3. In terminal (Mac) run: ```docker-compose up -d```
+4. Close terminal, then open a new session
+### Load the MySQL Database (First Time Setup)
+5. Open terminal and cd into ```cd /Users/247jblock/OneDrive\ -\ University\ of\ Missouri/SP22/INFOTC\ 3380/Docker/sql``` folder
+6. ```docker cp HR_database mysql-container:/root/sql-files```
+7. Close terminal, then open new session and ```docker exec -it mysql-container bash```
+8. ```cd ~/sql-files/```
+9. ```mysql -u root -p```
+10. ```source ~/sql-files/hr.sql```
+11. Close the terminal, then open new session.
+#### Log into the MySQL Server
+12. ```docker exec -it mysql-container bash```
+13. ```mysql -u root -p```
+14. ```SHOW databases;```
+15. ```USE project2;```
+16. ```SHOW tables;```
+17. ```DESCRIBE countries;```
