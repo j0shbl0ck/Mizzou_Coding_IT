@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/19/22
-Version: 1.0.1 """
+Version: 1.0.2 """
 
 # create SQL connection
 import mysql.connector
@@ -9,7 +9,8 @@ import mysql.connector
 
 def show_region_and_num_employees(mycursor):
     #query to get the region and the number of employees from that region
-    mycursor.execute("SELECT region, COUNT(*) FROM employees GROUP BY region")
+    sqlquery1 = "SELECT * FROM EmployeesPerRegion;"
+    mycursor.execute(sqlquery1)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -21,7 +22,8 @@ def show_region_and_num_employees(mycursor):
 
 def display_all_managers(mycursor):
     #query to get the managers
-    mycursor.execute("SELECT first_name, last_name FROM employees WHERE manager_id IS NULL")
+    sqlquery2 = "SELECT * FROM managers;"
+    mycursor.execute(sqlquery2)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -33,7 +35,8 @@ def display_all_managers(mycursor):
 
 def get_count_of_dependents_in_each_department(mycursor):
     #query to get the department and the number of dependents from that department
-    mycursor.execute("SELECT department, COUNT(*) FROM employees GROUP BY department")
+    sqlquery3 = "SELECT * FROM DependentsByDepartment;"
+    mycursor.execute(sqlquery3)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -45,19 +48,21 @@ def get_count_of_dependents_in_each_department(mycursor):
 
 def calculate_num_employees_hired_each_year(mycursor):
     #query to get the year and the number of employees from that year
-    mycursor.execute("SELECT year, COUNT(*) FROM employees GROUP BY year")
+    sqlquery4 = "SELECT * FROM HiresByYear;"
+    mycursor.execute(sqlquery4)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
     print("\nYear and the number of employees from that year")
     for x in myresult:
         print(x)
-
+        
     return
 
 def calculate_total_salaries_for_each_department(mycursor):
     #query to get the department and the total salaries from that department
-    mycursor.execute("SELECT department, SUM(salary) FROM employees GROUP BY department")
+    sqlquery5 = "SELECT * FROM SalaryByDepartment;"
+    mycursor.execute(sqlquery5)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -69,7 +74,8 @@ def calculate_total_salaries_for_each_department(mycursor):
 
 def calculate_total_salaries_for_each_job_title(mycursor):
     #query to get the job title and the total salaries from that job title
-    mycursor.execute("SELECT job_title, SUM(salary) FROM employees GROUP BY job_title")
+    sqlquery6 = "SELECT * FROM SalaryByJobTitle;"
+    mycursor.execute(sqlquery6)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -81,7 +87,8 @@ def calculate_total_salaries_for_each_job_title(mycursor):
 
 def calculate_num_dependents_each_employee_has(mycursor):
     #query to get the employee id and the number of dependents from that employee
-    mycursor.execute("SELECT employee_id, COUNT(*) FROM employees GROUP BY employee_id")
+    sqlquery7 = "SELECT * FROM EmployeeDependents;"
+    mycursor.execute(sqlquery7)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -93,7 +100,8 @@ def calculate_num_dependents_each_employee_has(mycursor):
 
 def calculate_num_locations_in_each_country(mycursor):
     #query to get the country and the number of locations from that country
-    mycursor.execute("SELECT country, COUNT(*) FROM locations GROUP BY country")
+    sqlquery8 = "SELECT * FROM CountryLocation;"
+    mycursor.execute(sqlquery8)
     #fetch all the rows from the query
     myresult = mycursor.fetchall()
     #print the result
@@ -102,6 +110,7 @@ def calculate_num_locations_in_each_country(mycursor):
         print(x)
 
     return
+
 
 # ----- MENU -----
 def print_menu():
