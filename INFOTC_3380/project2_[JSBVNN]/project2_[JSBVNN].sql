@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/18/22
-Version: 1.0.2 ***/
+Version: 1.0.3 ***/
 
 -- Recall all databases
 SHOW DATABASES;
@@ -123,6 +123,19 @@ GROUP BY regions.region_name;
     SELECT * FROM EmployeesPerRegion WHERE region_name = 'Americas';
 
 -- Write a query to create a view named “managers” to display all the managers. Include the manager’s name (first, last), phone number, email, job title, and department name.
+CREATE VIEW managers AS
+SELECT employees.first_name, employees.last_name, employees.phone_number, employees.email, jobs.job_title, departments.department_name
+FROM employees
+JOIN jobs ON employees.job_id = jobs.job_id
+JOIN departments ON employees.department_id = departments.department_id
+WHERE jobs.job_title = '*Manager';
+
+-- Display all job titles and the number of employees in each job title.
+SELECT jobs.job_title, COUNT(employees.employee_id) AS Number_of_Employees
+FROM jobs
+JOIN employees ON jobs.job_id = employees.job_id
+GROUP BY jobs.job_title;
+
     -- Query the managers view to show the number of managers in each department.
 
 -- Write a query to create a view named “DependentsByDepartment” to get a count of how many dependents there are in each department.
