@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/18/22
-Version: 1.0.1 ***/
+Version: 1.0.2 ***/
 
 -- Recall all databases
 SHOW DATABASES;
@@ -109,8 +109,18 @@ mysql> DESCRIBE regions;
 +-------------+-------------+------+-----+---------+----------------+
 
 
--- Write a query to create a view named “EmployeesPerRegion” that shows the region_name and the number of employees from that region in a column called “Number of Employees”.
-    -- Query the EmployeesPerRegion to show the number of employees from the Americas.
+-- Write a query to create a view named “EmployeesPerRegion” that shows the region_name and the number of employees from that region in a column called “Number of Employees”. [Not created]
+CREATE VIEW EmployeesPerRegion AS
+SELECT regions.region_name, COUNT(employees.employee_id) AS Number_of_Employees
+FROM regions
+JOIN countries ON regions.region_id = countries.region_id
+JOIN locations ON countries.country_id = locations.country_id
+JOIN departments ON locations.location_id = departments.location_id
+JOIN employees ON departments.department_id = employees.department_id
+GROUP BY regions.region_name;
+
+    -- Query the EmployeesPerRegion to show the number of employees from the Americas. [Not queried]
+    SELECT * FROM EmployeesPerRegion WHERE region_name = 'Americas';
 
 -- Write a query to create a view named “managers” to display all the managers. Include the manager’s name (first, last), phone number, email, job title, and department name.
     -- Query the managers view to show the number of managers in each department.
