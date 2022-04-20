@@ -47,8 +47,14 @@ namespace Sales_Data_Analyzer
             var valueHand = from salesData in salesDataList where salesData.Description.Contains("HAND WARMER UNIO JACK") select(salesData.UnitPrice * salesData.Quantity);
             report += $"Total Sale Value Of Hand Warmer Union Jack units: {valueHand}\n";
 
+
             var productPrice = ();
+            // Which descriptions have the highest unit price? List the descriptions(s) and the unit price.
+            var productPrice = from salesData in salesDataList select salesData.UnitPrice.Max();
+            report += $"Highest Unit Price: {productPrice}\n";
+            
             //Group Products by UnitPrice then find max and list the description alongside. 
+            report += $
             report += $"Prodct With Highest UnitPrice: {productPrice}\n";
 
             var saleTotal = from salesData in salesDataList select(salesData.UnitPrice * salesData.Quantity);
