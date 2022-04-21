@@ -1,7 +1,7 @@
 /*** USER INFORMATION 
 Student: Josh Block
 Date: 4/18/22
-Version: 1.0.5 ***/
+Version: 1.0.6 ***/
 
 -- Recall all databases
 SHOW DATABASES;
@@ -70,7 +70,7 @@ GROUP BY Hire_Year;
     -- Query the HiresByYear view to show the number of hires in 1997. [Complete]
     SELECT * FROM HiresByYear WHERE Hire_Year = 1997;
 
--- Write a query to create a view named “SalaryByDepartment” to calculate total salaries for each department. [Not created]
+-- Write a query to create a view named “SalaryByDepartment” to calculate total salaries for each department. [Complete]
 CREATE VIEW SalaryByDepartment AS
 SELECT departments.department_name, SUM(employees.salary) AS Total_Salary
 FROM departments
@@ -78,35 +78,35 @@ JOIN locations ON departments.location_id = locations.location_id
 JOIN employees ON departments.department_id = employees.department_id
 GROUP BY departments.department_name;
 
-    -- Query the SalaryByDepartment view to show the total salary for the Finance department. [Not queried]
+    -- Query the SalaryByDepartment view to show the total salary for the Finance department. [Complete]
     SELECT * FROM SalaryByDepartment WHERE department_name = 'Finance';
 
--- Write a query to create a view named “SalaryByJobTitle” to calculate total salaries for each job title. [Not created]
+-- Write a query to create a view named “SalaryByJobTitle” to calculate total salaries for each job title. [Complete]
 CREATE VIEW SalaryByJobTitle AS
 SELECT jobs.job_title, SUM(employees.salary) AS Total_Salary
 FROM jobs
 JOIN employees ON jobs.job_id = employees.job_id
 GROUP BY jobs.job_title;
 
-    -- Query the SalaryByJobTitle view to show the job title and total salary for the title with the highest total salary. [Not queried]
+    -- Query the SalaryByJobTitle view to show the job title and total salary for the title with the highest total salary. [Complete]
     SELECT * FROM SalaryByJobTitle ORDER BY Total_Salary DESC LIMIT 1;
 
--- Write a query to create a view named “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+-- Write a query to create a view named “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join. [Complete]
 CREATE VIEW EmployeeDependents AS
 SELECT employees.first_name, employees.last_name, employees.email, employees.phone_number, COUNT(dependents.dependent_id) AS Number_of_Dependents
 FROM employees
 LEFT JOIN dependents ON employees.employee_id = dependents.employee_id
 GROUP BY employees.employee_id;
 
-    -- Query the EmployeeDependents view to show employees with no children". Show employee name (first, last), email, phone number, and number of dependents.
+    -- Query the EmployeeDependents view to show employees with no children". Show employee name (first, last), email, phone number, and number of dependents. [Complete]
     SELECT * FROM EmployeeDependents WHERE Number_of_Dependents = 0;
     
--- Write a query to create a view named “CountryLocation” that calculates the number of locations in each country. This query should show countries even if they have 0 locations. Display the country name and number of locations.
+-- Write a query to create a view named “CountryLocation” that calculates the number of locations in each country. This query should show countries even if they have 0 locations. Display the country name and number of locations. Hint: left or right join. [Complete]
 CREATE VIEW CountryLocation AS
 SELECT countries.country_name, COUNT(locations.location_id) AS Number_of_Locations
 FROM countries
-JOIN locations ON countries.country_id = locations.country_id
+LEFT JOIN locations ON countries.country_id = locations.country_id
 GROUP BY countries.country_name;
 
-    -- Query the CountryLocation view to show countries with no locations". Show country name and number of locations.
+    -- Query the CountryLocation view to show countries with no locations". Show country name and number of locations. [Complete]
     SELECT * FROM CountryLocation WHERE Number_of_Locations = 0;
