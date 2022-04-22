@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/19/22
-Version: 1.0.5 """
+Version: 1.0.6 """
 
 # create SQL connection
 import mysql.connector
@@ -9,7 +9,7 @@ import mysql.connector
 
     #Query the EmployeesPerRegion to show the number of employees from the Americas
 def get_num_employees_from_Americas(mycursor):
-    sqlquery1 = "SELECT * FROM EmployeesPerRegion WHERE Region = 'Americas';"
+    sqlquery1 = "SELECT * FROM EmployeesPerRegion WHERE region_name = 'Americas';"
     mycursor.execute(sqlquery1)
     myresult = mycursor.fetchall()
     print("\nRegion and the number of employees from that region")
@@ -20,7 +20,7 @@ def get_num_employees_from_Americas(mycursor):
 
     #Query the managers view to show the number of managers in each department
 def get_count_of_managers_in_each_department(mycursor):
-    sqlquery2 = "SELECT * FROM ManagersByDepartment;"
+    sqlquery2 = "SELECT departments.department_name, COUNT(managers.first_name) AS Number_of_Managers FROM managers JOIN departments ON managers.department_name = departments.department_name GROUP BY departments.department_name;"
     mycursor.execute(sqlquery2)
     myresult = mycursor.fetchall()
     print("\nDepartment and the number of managers from that department")
@@ -30,7 +30,7 @@ def get_count_of_managers_in_each_department(mycursor):
 
     #Query the DependentsByDepartment view to show the department with the largest number of dependents. This should show the department name and the number of dependents.
 def get_department_with_largest_number_of_dependents(mycursor):
-    sqlquery3 = "SELECT * FROM DependentsByDepartment;"
+    sqlquery3 = "SELECT * FROM DependentsByDepartment ORDER BY Number_of_Dependents DESC LIMIT 2;"
     mycursor.execute(sqlquery3)
     myresult = mycursor.fetchall()
     print("\nDepartment and the number of dependents from that department")
@@ -41,7 +41,7 @@ def get_department_with_largest_number_of_dependents(mycursor):
 
     #Query the HiresByYear view to show the number of hires in 1997.
 def get_num_hires_in_1997(mycursor):
-    sqlquery4 = "SELECT * FROM HiresByYear WHERE Year = 1997;"
+    sqlquery4 = "SELECT * FROM HiresByYear WHERE Hire_Year = 1997;"
     mycursor.execute(sqlquery4)
     myresult = mycursor.fetchall()
     print("\nYear and the number of hires from that year")
@@ -51,7 +51,7 @@ def get_num_hires_in_1997(mycursor):
 
     #Query the SalaryByDepartment view to show the total salary for the Finance department.
 def get_total_salary_for_finance_department(mycursor):
-    sqlquery5 = "SELECT * FROM SalaryByDepartment WHERE Department = 'Finance';"
+    sqlquery5 = "SELECT * FROM SalaryByDepartment WHERE department_name = 'Finance';"
     mycursor.execute(sqlquery5)
     myresult = mycursor.fetchall()
     print("\nDepartment and the total salaries from that department")
@@ -61,7 +61,7 @@ def get_total_salary_for_finance_department(mycursor):
 
     #Query the SalaryByJobTitle view to show the job title and total salary for the title with the highest total salary.
 def get_job_title_with_highest_total_salary(mycursor):
-    sqlquery6 = "SELECT * FROM SalaryByJobTitle;"
+    sqlquery6 = "SELECT * FROM SalaryByJobTitle ORDER BY Total_Salary DESC LIMIT 1;"
     mycursor.execute(sqlquery6)
     myresult = mycursor.fetchall()
     print("\nJob Title and the total salaries from that job title")
@@ -71,7 +71,7 @@ def get_job_title_with_highest_total_salary(mycursor):
 
     #Query the EmployeeDependents view to show employees with no children". Show employee name (first, last), email, phone number, and number of dependents.
 def get_employees_with_no_children(mycursor):
-    sqlquery7 = "SELECT * FROM EmployeeDependents WHERE Children = 0;"
+    sqlquery7 = "SELECT * FROM EmployeeDependents WHERE Number_of_Dependents = 0;"
     mycursor.execute(sqlquery7)
     myresult = mycursor.fetchall()
     print("\nEmployee name, email, phone number, and number of dependents")
@@ -81,7 +81,7 @@ def get_employees_with_no_children(mycursor):
 
     #Query the CountryLocation view to show countries with no locations". Show country name and number of locations.
 def get_countries_with_no_locations(mycursor):
-    sqlquery8 = "SELECT * FROM CountryLocation WHERE Locations = 0;"
+    sqlquery8 = "SELECT * FROM CountryLocation WHERE Number_of_Locations = 0;"
     mycursor.execute(sqlquery8)
     myresult = mycursor.fetchall()
     print("\nCountry and the number of locations from that country")
