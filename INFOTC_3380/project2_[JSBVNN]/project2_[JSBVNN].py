@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/19/22
-Version: 1.0.4 """
+Version: 1.0.5 """
 
 # create SQL connection
 import mysql.connector
@@ -93,14 +93,14 @@ def get_countries_with_no_locations(mycursor):
 # ----- MENU -----
 def print_menu():
     print("Choose an option")
-    print("1. Show the region and the number of employees from that region")
-    print("2. Display all the managers")
-    print("3. Get a count of how many dependents there are in each department")
-    print("4. Calculates the number of employees hired each year")
-    print("5. Calculate total salaries for each department")
-    print("6. Calculate total salaries for each job title")
-    print("7. Calculate the number of dependents each employees has")
-    print("8. Calculates the number of locations in each country")
+    print("1. show the number of employees from the Americas")
+    print("2. show the number of managers in each department")
+    print("3. show the department with the largest number of dependents")
+    print("4. show the number of hires in 1997")
+    print("5. show the total salary for the Finance department")
+    print("6. show the job title and total salary for the title with the highest total salary")
+    print("7. show employees with no children")
+    print("8. show countries with no locations")
     print("9. Exit Application")
     return
 
@@ -131,29 +131,29 @@ def main():
     while(True):
         user_choice = get_user_choice()
         if user_choice == 1:
-            #call the function to show the region and the number of employees from that region
-            show_region_and_num_employees(mycursor)
+            #Query the EmployeesPerRegion to show the number of employees from the Americas
+            get_num_employees_from_Americas(mycursor)
         elif user_choice == 2:
-            #call the function to display all the managers
-            display_all_managers(mycursor)
+            #Query the managers view to show the number of managers in each department
+            get_count_of_managers_in_each_department(mycursor)
         elif user_choice == 3:
-            #call the function to get a count of how many dependents there are in each department
-            get_count_of_dependents_in_each_department(mycursor)
+            #Query the DependentsByDepartment view to show the department with the largest number of dependents
+            get_department_with_largest_number_of_dependents(mycursor)
         elif user_choice == 4:
-            #call the function to calculates the number of employees hired each year
-            calculate_num_employees_hired_each_year(mycursor)
+            #Query the HiresByYear view to show the number of hires in 1997.
+            get_num_hires_in_1997(mycursor)
         elif user_choice == 5:
-            #call the function to calculate total salaries for each department
-            calculate_total_salaries_for_each_department(mycursor)
+            #Query the SalaryByDepartment view to show the total salary for the Finance department.
+            get_total_salary_for_finance_department(mycursor)
         elif user_choice == 6:
-            #call the function to calculate total salaries for each job title
-            calculate_total_salaries_for_each_job_title(mycursor)
+            #Query the SalaryByJobTitle view to show the job title and total salary for the title with the highest total salary.
+            get_job_title_with_highest_total_salary(mycursor)
         elif user_choice == 7:
-            #call the function to calculate the number of dependents each employees has
-            calculate_num_dependents_each_employee_has(mycursor)
+            #Query the EmployeeDependents view to show employees with no children".
+            get_employees_with_no_children(mycursor)
         elif user_choice == 8:
-            #call the function to calculates the number of locations in each country
-            calculate_num_locations_in_each_country(mycursor)
+            #Query the CountryLocation view to show countries with no locations".
+            get_countries_with_no_locations(mycursor)
         elif user_choice == 9:
             #call the function to exit the application
             print("Bye Bye!!!")
