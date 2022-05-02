@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.0 """
+Version: 1.0.1 """
 
 # create SQL connection
 import mysql.connector
@@ -85,6 +85,69 @@ def get_hiring_data_specific(mycursor, year):
     for x in myresult4:
         print(x)
     return
+
+    # Query the SalaryByDepartment view to show the salary per department
+def get_salary_data_by_department(mycursor):
+    sqlquery5_1 = "SELECT Department, Salary FROM SalaryByDepartment"
+    mycursor.execute(sqlquery5_1)
+    myresult5 = mycursor.fetchall()
+    print("\nSalary data by department:")
+    for x in myresult5:
+        print(x)
+    return
+
+    # Query the SalaryByDepartment view to show department user inputted
+def get_salary_data_by_department_specific(mycursor, department):
+    sqlquery5_2 = "SELECT Department, Salary FROM SalaryByDepartment WHERE Department = %s"
+    mycursor.execute(sqlquery5_2, (department,))
+    myresult5 = mycursor.fetchall()
+    print("\nSalary data by department:")
+    for x in myresult5:
+        print(x)
+    return
+
+    # Query the SalaryByJobTitle view to show show the job title and total salary for the title with the highest total salary
+def get_salary_data_by_job_title(mycursor):
+    sqlquery6_1 = "SELECT JobTitle, Salary FROM SalaryByJobTitle"
+    mycursor.execute(sqlquery6_1)
+    myresult6 = mycursor.fetchall()
+    print("\nSalary data by job title:")
+    for x in myresult6:
+        print(x)
+    return
+
+    # Query the SalaryByJobTitle view to show job title user inputted
+def get_salary_data_by_job_title_specific(mycursor, job_title):
+    sqlquery6_2 = "SELECT JobTitle, Salary FROM SalaryByJobTitle WHERE JobTitle = %s"
+    mycursor.execute(sqlquery6_2, (job_title,))
+    myresult6 = mycursor.fetchall()
+    print("\nSalary data by job title:")
+    for x in myresult6:
+        print(x)
+    return
+
+    # Query the EmployeeDependents “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+def get_dependent_data_by_employee(mycursor):
+    sqlquery7_1 = "SELECT EmployeeID, FirstName, LastName, Email, PhoneNumber, COUNT(Dependents.EmployeeID) FROM EmployeeDependents LEFT JOIN Dependents ON EmployeeDependents.EmployeeID = Dependents.EmployeeID GROUP BY EmployeeID"
+    mycursor.execute(sqlquery7_1)
+    myresult7 = mycursor.fetchall()
+    print("\nEmployee dependents:")
+    for x in myresult7:
+        print(x)
+    return
+
+    # Query the EmployeeDependents “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+def get_employee_dependents_specific(mycursor, employee_id):
+    sqlquery7_2 = "SELECT EmployeeID, FirstName, LastName, Email, PhoneNumber, COUNT(Dependents.EmployeeID) FROM EmployeeDependents LEFT JOIN Dependents ON EmployeeDependents.EmployeeID = Dependents.EmployeeID WHERE EmployeeID = %s GROUP BY EmployeeID"
+    mycursor.execute(sqlquery7_2, (employee_id,))
+    myresult7 = mycursor.fetchall()
+    print("\nEmployee dependents:")
+    for x in myresult7:
+        print(x)
+    return
+
+    # Query the EmployeeDependents “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+
 
 
 
@@ -212,6 +275,57 @@ def main():
                     # ask user for specific data
                     year = input("Enter year: ")
                     get_hiring_data_specific(mycursor, year)
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+
+        elif user_choice == 5:
+            # ask user if they want to view all data
+            view_all = input("Do you want to view all data? (Y/N): ")
+            if view_all == "Y":
+                # view all data
+                get_salary_data_by_department(mycursor)
+            elif view_all == "N":
+                # ask user if they want to view specific data
+                view_specific = input("Do you want to view specific data? (Y/N): ")
+                if view_specific == "Y":
+                    # ask user for specific data
+                    department = input("Enter department: ")
+                    get_salary_data_by_department_specific(mycursor, department)
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+                
+        elif user_choice == 6:
+            # ask user if they want to view all data
+            view_all = input("Do you want to view all data? (Y/N): ")
+            if view_all == "Y":
+                # view all data
+                get_salary_data_by_job_title(mycursor)
+            elif view_all == "N":
+                # ask user if they want to view specific data
+                view_specific = input("Do you want to view specific data? (Y/N): ")
+                if view_specific == "Y":
+                    # ask user for specific data
+                    job_title = input("Enter job title: ")
+                    get_salary_data_by_job_title_specific(mycursor, job_title)
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+
+        elif user_choice == 7:
+            # ask user if they want to view all data
+            view_all = input("Do you want to view all data? (Y/N): ")
+            if view_all == "Y":
+                # view all data
+                get_dependent_data_by_employee(mycursor)
+            elif view_all == "N":
+                # ask user if they want to view specific data
+                view_specific = input("Do you want to view specific data? (Y/N): ")
+                if view_specific == "Y":
+                    # ask user for specific data
+                    employee_id = input("Enter employee: ")
+                    get_employee_dependents_specific(mycursor, employee_id)
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
