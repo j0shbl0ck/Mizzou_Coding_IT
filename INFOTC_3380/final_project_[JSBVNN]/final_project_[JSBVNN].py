@@ -1,10 +1,12 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.1 """
+Version: 1.0.2 """
 
 # create SQL connection
 import mysql.connector
+
+# ------------ VIEW DATA QUERY FUNCTIONS ------------ #
 
     # Query the EmployeesPerRegion to show the number of employees per region
 def get_employees_data(mycursor):
@@ -126,7 +128,7 @@ def get_salary_data_by_job_title_specific(mycursor, job_title):
         print(x)
     return
 
-    # Query the EmployeeDependents “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+    # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
 def get_dependent_data_by_employee(mycursor):
     sqlquery7_1 = "SELECT EmployeeID, FirstName, LastName, Email, PhoneNumber, COUNT(Dependents.EmployeeID) FROM EmployeeDependents LEFT JOIN Dependents ON EmployeeDependents.EmployeeID = Dependents.EmployeeID GROUP BY EmployeeID"
     mycursor.execute(sqlquery7_1)
@@ -136,7 +138,7 @@ def get_dependent_data_by_employee(mycursor):
         print(x)
     return
 
-    # Query the EmployeeDependents “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+    # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
 def get_employee_dependents_specific(mycursor, employee_id):
     sqlquery7_2 = "SELECT EmployeeID, FirstName, LastName, Email, PhoneNumber, COUNT(Dependents.EmployeeID) FROM EmployeeDependents LEFT JOIN Dependents ON EmployeeDependents.EmployeeID = Dependents.EmployeeID WHERE EmployeeID = %s GROUP BY EmployeeID"
     mycursor.execute(sqlquery7_2, (employee_id,))
@@ -146,15 +148,46 @@ def get_employee_dependents_specific(mycursor, employee_id):
         print(x)
     return
 
-    # Query the EmployeeDependents “EmployeeDependents” that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+    # Query the CountryLocation view to show the number of locations in each country
+def get_location_data_by_country(mycursor):
+    sqlquery8_1 = "SELECT Country, COUNT(LocationID) FROM CountryLocation GROUP BY Country"
+    mycursor.execute(sqlquery8_1)
+    myresult8 = mycursor.fetchall()
+    print("\nCountry location data:")
+    for x in myresult8:
+        print(x)
+    return
+
+    # Query the CountryLocation view to show country user inputted
+def get_location_data_by_country_specific(mycursor, country):
+    sqlquery8_2 = "SELECT Country, COUNT(LocationID) FROM CountryLocation WHERE Country = %s GROUP BY Country"
+    mycursor.execute(sqlquery8_2, (country,))
+    myresult8 = mycursor.fetchall()
+    print("\nCountry location data:")
+    for x in myresult8:
+        print(x)
+    return
 
 
 
 
+# ------ END OF VIEW DATA QUERY FUNCTIONS ------ #
+
+# ------------ ADD DATA QUERY FUNCTIONS ------------ #
 
 
+# ------------ END OF ADD DATA QUERY FUNCTIONS ------------ #
 
 
+# ------------ DELETE DATA QUERY FUNCTIONS ------------ #
+
+
+# ------------ END OF DELETE DATA QUERY FUNCTIONS ------------ #
+
+# ------------ UPDATE DATA QUERY FUNCTIONS ------------ #
+
+
+# ------------ END OF UPDATE DATA QUERY FUNCTIONS ------------ #
 
 
 
@@ -190,6 +223,8 @@ def get_user_choice():
     print_menu()
     choice = int(input("Enter Choice: "))
     return choice
+
+# ----- END OF MENU ----- #
 
 # -----  MAIN FUNCTION -----
 
@@ -329,7 +364,25 @@ def main():
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
+
+        elif user_choice == 8:
+            # ask user if they want to view all data
+            view_all = input("Do you want to view all data? (Y/N): ")
+            if view_all == "Y":
+                # view all data
+                get_location_data_by_country(mycursor)
+            elif view_all == "N":
+                # ask user if they want to view specific data
+                view_specific = input("Do you want to view specific data? (Y/N): ")
+                if view_specific == "Y":
+                    # ask user for specific data
+                    country = input("Enter country: ")
+                    get_location_data_by_country_specific(mycursor, country)
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
             
+
         elif user_choice == 17:
             #call the function to exit the application
             print("Bye Bye!!!")
@@ -337,3 +390,5 @@ def main():
         else:
             print("Invalid choice. Please try again.")
 main()
+
+# --- END OF MAIN ---
