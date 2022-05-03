@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.4 """
+Version: 1.0.5 """
 
 # create SQL connection
 import mysql.connector
@@ -230,7 +230,17 @@ def add_job_data(mycursor, job_title, min_salary, max_salary):
 
 
 # ------------ DELETE DATA QUERY FUNCTIONS ------------ #
+    # Delete a employee from the database
+def delete_employee_data(mycursor, employee_id):
+    sqlquery11 = '''DELETE FROM Employees WHERE EmployeeID = %s'''
+    mycursor.execute(sqlquery11, (employee_id,))
+    return
 
+    # Delete a dependent from the database
+def delete_dependent_data(mycursor, dependent_id):
+    sqlquery12 = '''DELETE FROM Dependents WHERE DependentID = %s'''
+    mycursor.execute(sqlquery12, (dependent_id,))
+    return
 
 # ------------ END OF DELETE DATA QUERY FUNCTIONS ------------ #
 
@@ -458,6 +468,35 @@ def main():
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
+        
+        elif user_choice == 11:
+            # ask user if they would like to delete an employee
+            delete_employee = input("Do you want to delete an employee? (Y/N): ")
+            if delete_employee == "Y":
+                # ask user for employee id
+                employee_id = input("Enter employee id: ")
+                delete_employee_data(mycursor, employee_id)
+            elif delete_employee == "N":
+                print("Returning to main menu...")
+                quit()
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+        
+        elif user_choice == 12:
+            # ask user if they would like to delte a dependent
+            delete_dependent = input("Do you want to delete a dependent? (Y/N): ")
+            if delete_dependent == "Y":
+                # ask user for dependent id
+                dependent_id = input("Enter dependent id: ")
+                delete_dependent_data(mycursor, dependent_id)
+            elif delete_dependent == "N":
+                print("Returning to main menu...")
+                quit()
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+
 
 
             
