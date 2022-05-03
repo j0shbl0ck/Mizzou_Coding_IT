@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.5 """
+Version: 1.0.6 """
 
 # create SQL connection
 import mysql.connector
@@ -246,6 +246,29 @@ def delete_dependent_data(mycursor, dependent_id):
 
 # ------------ UPDATE DATA QUERY FUNCTIONS ------------ #
 
+    # Update an employee's first name
+def update_employee_first_name(mycursor, employee_id, first_name):
+    sqlquery13 = '''UPDATE Employees SET FirstName = %s WHERE EmployeeID = %s'''
+    mycursor.execute(sqlquery13, (first_name, employee_id))
+    return
+
+    # Update an employee's last name
+def update_employee_last_name(mycursor, employee_id, last_name):
+    sqlquery14 = '''UPDATE Employees SET LastName = %s WHERE EmployeeID = %s'''
+    mycursor.execute(sqlquery14, (last_name, employee_id))
+    return
+
+    # Update a job's minimum salary
+def update_job_min_salary(mycursor, job_title, min_salary):
+    sqlquery15 = '''UPDATE Jobs SET MinSalary = %s WHERE JobTitle = %s'''
+    mycursor.execute(sqlquery15, (min_salary, job_title))
+    return
+
+    # Update a job's maximum salary
+def update_job_max_salary(mycursor, job_title, max_salary):
+    sqlquery16 = '''UPDATE Jobs SET MaxSalary = %s WHERE JobTitle = %s'''
+    mycursor.execute(sqlquery16, (max_salary, job_title))
+    return
 
 # ------------ END OF UPDATE DATA QUERY FUNCTIONS ------------ #
 
@@ -497,9 +520,53 @@ def main():
                 print("Invalid input. Returning to main menu...")
                 quit()
 
+        elif user_choice == 13:
+            # ask user if they would like to update employee first name
+            update_employee_first_name = input("Do you want to update employee first name? (Y/N): ")
+            if update_employee_first_name == "Y":
+                # ask user for employee id and new first name
+                employee_id = input("Enter employee id: ")
+                first_name = input("Enter new first name: ")
+                update_employee_first_name(mycursor, employee_id, first_name)
+            elif update_employee_first_name == "N":
+                print("Returning to main menu...")
+                quit()
 
+        elif user_choice == 14:
+            # ask user if they would like to update employee last name
+            update_employee_last_name = input("Do you want to update employee last name? (Y/N): ")
+            if update_employee_last_name == "Y":
+                # ask user for employee id and new last name
+                employee_id = input("Enter employee id: ")
+                last_name = input("Enter new last name: ")
+                update_employee_last_name(mycursor, employee_id, last_name)
+            elif update_employee_last_name == "N":
+                print("Returning to main menu...")
+                quit()
 
-            
+        elif user_choice == 15:
+            # ask user if they would like to update job's minimum salary
+            update_job_min_salary = input("Do you want to update job's minimum salary? (Y/N): ")
+            if update_job_min_salary == "Y":
+                # ask user for job id and new minimum salary
+                job_id = input("Enter job id: ")
+                min_salary = input("Enter new minimum salary: ")
+                update_job_min_salary(mycursor, job_id, min_salary)
+            elif update_job_min_salary == "N":
+                print("Returning to main menu...")
+                quit()
+
+        elif user_choice == 16:
+            # ask user if they would like to update job's maximum salary
+            update_job_max_salary = input("Do you want to update job's maximum salary? (Y/N): ")
+            if update_job_max_salary == "Y":
+                # ask user for job id and new maximum salary
+                job_id = input("Enter job id: ")
+                max_salary = input("Enter new maximum salary: ")
+                update_job_max_salary(mycursor, job_id, max_salary)
+            elif update_job_max_salary == "N":
+                print("Returning to main menu...")
+                quit()
 
         elif user_choice == 17:
             #call the function to exit the application
