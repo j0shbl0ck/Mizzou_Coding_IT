@@ -209,13 +209,22 @@ def get_location_data_by_country_specific(mycursor, country):
         print(x)
     return
 
-
-
-
 # ------ END OF VIEW DATA QUERY FUNCTIONS ------ #
 
 # ------------ ADD DATA QUERY FUNCTIONS ------------ #
+    # Add a new dependent to the database
+def add_dependent_data(mycursor, employee_id, first_name, last_name, birth_date):
+    sqlquery9 = '''INSERT INTO Dependents (EmployeeID, FirstName, LastName, BirthDate) 
+                    VALUES (%s, %s, %s, %s)'''
+    mycursor.execute(sqlquery9, (employee_id, first_name, last_name, birth_date))
+    return
 
+    # Add a new job to the database
+def add_job_data(mycursor, job_title, min_salary, max_salary):
+    sqlquery10 = '''INSERT INTO Jobs (JobTitle, MinSalary, MaxSalary) 
+                    VALUES (%s, %s, %s)'''
+    mycursor.execute(sqlquery10, (job_title, min_salary, max_salary))
+    return
 
 # ------------ END OF ADD DATA QUERY FUNCTIONS ------------ #
 
@@ -423,6 +432,34 @@ def main():
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
+        
+        elif user_choice == 9:
+            # ask user if they would like to add a new dependent
+            add_dependent = input("Do you want to add a new dependent? (Y/N): ")
+            if add_dependent == "Y":
+                # ask user for new dependent data
+                add_dependent_data(mycursor)
+            elif add_dependent == "N":
+                print("Returning to main menu...")
+                quit()
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+
+        elif user_choice == 10:
+            # ask user if they would like to add a new job
+            add_job = input("Do you want to add a new job? (Y/N): ")
+            if add_job == "Y":
+                # ask user for new job data
+                add_job_data(mycursor)
+            elif add_job == "N":
+                print("Returning to main menu...")
+                quit()
+            else:
+                print("Invalid input. Returning to main menu...")
+                quit()
+
+
             
 
         elif user_choice == 17:
