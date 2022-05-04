@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.0 """
+Version: 1.2.1 """
 
 # create SQL connection
 import mysql.connector
@@ -81,7 +81,7 @@ def get_dependent_data(mycursor):
     myresult3 = mycursor.fetchall()
     print("\nDependent count by department\n---------------------")
     for x in myresult3:
-        print(x)
+        print(f"{x[0]} Department: {x[1]} dependents")
     return
 
     # Query the DependentsByDepartment view to show department user inputted
@@ -93,7 +93,7 @@ def get_dependent_data_specific(mycursor, department):
     myresult3 = mycursor.fetchall()
     print("\nDependent count by department\n---------------------")
     for x in myresult3:
-        print(x)
+        print(f"{x[0]} Department: {x[1]} dependents")
     return
 
     # Query the HiresByYear view to show the number of employees hired per year
