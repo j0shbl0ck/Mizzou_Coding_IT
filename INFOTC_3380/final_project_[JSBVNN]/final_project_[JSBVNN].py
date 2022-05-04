@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.8 """
+Version: 1.2.9 """
 
 # create SQL connection
 import mysql.connector
@@ -178,7 +178,7 @@ def get_dependent_data_by_employee(mycursor):
     print("\nEmployee dependents:\n---------------------")
     # loop through results
     for x in myresult7:
-        print(f"{x[0]} {x[1]}:, {x[5]} dependents")
+        print(f"{x[0]} {x[1]}:, {x[2]}, {x[3]}, {x[4]} dependents")
     return
 
     # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
@@ -190,7 +190,7 @@ def get_employee_dependents_specific(mycursor, first_name):
     myresult7 = mycursor.fetchall()
     print("\nEmployee dependents:")
     for x in myresult7:
-        print(f"{x[0]} {x[1]}:, {x[5]} dependents")
+        print(f"{x[0]} {x[1]}:, {x[2]}, {x[3]}, {x[4]} dependents")
     return
 
     # Query the CountryLocation view to show the number of locations in each country
