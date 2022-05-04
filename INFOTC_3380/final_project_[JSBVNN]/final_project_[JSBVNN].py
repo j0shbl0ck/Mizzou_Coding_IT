@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.7 """
+Version: 1.2.8 """
 
 # create SQL connection
 import mysql.connector
@@ -142,7 +142,7 @@ def get_salary_data_by_department_specific(mycursor, department):
         print(f"{x[0]} Department: {x[1]} salary")
     return
 
-    # Query the SalaryByJobTitle view to show show the job title and total salary for the title with the highest total salary
+    # Query the SalaryByJobTitle view to show show the job title and total salary for the title with the highest total salary [COMPLETE]
 def get_salary_data_by_job_title(mycursor):
     sqlquery6_1 = '''SELECT *
                     FROM SalaryByJobTitle;'''
@@ -153,7 +153,7 @@ def get_salary_data_by_job_title(mycursor):
         print(f"{x[0]} Job Title: {x[1]} salary")
     return
 
-    # Query the SalaryByJobTitle view to show job title user inputted
+    # Query the SalaryByJobTitle view to show job title user inputted [COMPLETE]
 def get_salary_data_by_job_title_specific(mycursor, job_title):
     sqlquery6_2 = '''SELECT *
                     FROM SalaryByJobTitle
@@ -178,20 +178,19 @@ def get_dependent_data_by_employee(mycursor):
     print("\nEmployee dependents:\n---------------------")
     # loop through results
     for x in myresult7:
-        print(x)
+        print(f"{x[0]} {x[1]}:, {x[5]} dependents")
     return
 
     # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
-def get_employee_dependents_specific(mycursor, employee_id):
-    sqlquery7_2 = '''SELECT EmployeeID, FirstName, LastName, Email, PhoneNumber, COUNT(Dependents.EmployeeID) 
-                FROM EmployeeDependents 
-                LEFT JOIN Dependents ON EmployeeDependents.EmployeeID = Dependents.EmployeeID WHERE EmployeeID = %s 
-                GROUP BY EmployeeID'''
-    mycursor.execute(sqlquery7_2, (employee_id,))
+def get_employee_dependents_specific(mycursor, first_name):
+    sqlquery7_2 = '''SELECT *
+                    FROM EmployeeDependents
+                    WHERE first_name = %s;'''
+    mycursor.execute(sqlquery7_2, (first_name,))
     myresult7 = mycursor.fetchall()
     print("\nEmployee dependents:")
     for x in myresult7:
-        print(x)
+        print(f"{x[0]} {x[1]}:, {x[5]} dependents")
     return
 
     # Query the CountryLocation view to show the number of locations in each country
@@ -451,8 +450,8 @@ def main():
                 view_specific = input("Do you want to view specific data? (Y/N): ")
                 if view_specific == "Y":
                     # ask user for specific data
-                    employee_id = input("Enter employee: ")
-                    get_employee_dependents_specific(mycursor, employee_id)
+                    first_name = input("Enter employee's first name: ")
+                    get_employee_dependents_specific(mycursor, first_name)
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
