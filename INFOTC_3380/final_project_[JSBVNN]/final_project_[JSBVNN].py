@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.1 """
+Version: 1.1.2 """
 
 # create SQL connection
 import mysql.connector
@@ -33,7 +33,7 @@ def get_employees_data_per_region(mycursor, region):
 def get_manager_count_by_department(mycursor):
     #create query
     sqlquery2_1 = '''SELECT * 
-                    managers;'''
+                    FROM managers;'''
 
     #execute the query
     mycursor.execute(sqlquery2_1)
@@ -43,8 +43,8 @@ def get_manager_count_by_department(mycursor):
 
     print("\nManagers per Department\n---------------------")
     #loop through results
-    for x in query_result:
-        print(x)
+    for record in query_result:
+        print(f"{record[0]} Department: {record[1]} managers")
     return
 
     # Query the manager view to show department user inputted
