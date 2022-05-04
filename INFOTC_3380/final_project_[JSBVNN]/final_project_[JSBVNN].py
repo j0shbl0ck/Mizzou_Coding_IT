@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.9 """
+Version: 1.2.0 """
 
 # create SQL connection
 import mysql.connector
@@ -19,7 +19,7 @@ def get_employees_data(mycursor):
         print(x)
     return
 
-    # Query the EmployeesPerRegion to show the number of employees region user inputted
+    # Query the EmployeesPerRegion to show the number of employees region user inputted [COMPLETE]
 def get_employees_data_per_region(mycursor, region_name):
     sqlquery1_2 = '''SELECT *
                     FROM EmployeesPerRegion
@@ -73,7 +73,7 @@ def get_manager_count_by_department_specific(mycursor, department):
     
     return
 
-    # Query the DependentsByDepartment view to show the number of dependents per department
+    # Query the DependentsByDepartment view to show the number of dependents per department [COMPLETE]
 def get_dependent_data(mycursor):
     sqlquery3_1 = '''SELECT *
                     FROM DependentsByDepartment;'''
@@ -86,10 +86,12 @@ def get_dependent_data(mycursor):
 
     # Query the DependentsByDepartment view to show department user inputted
 def get_dependent_data_specific(mycursor, department):
-    sqlquery3_2 = "SELECT Department, COUNT(EmployeeID) FROM DependentsByDepartment WHERE Department = %s GROUP BY Department"
+    sqlquery3_2 = '''SELECT *
+                    FROM DependentsByDepartment
+                    WHERE department_name = %s;'''
     mycursor.execute(sqlquery3_2, (department,))
     myresult3 = mycursor.fetchall()
-    print("\nDependent count by department:")
+    print("\nDependent count by department\n---------------------")
     for x in myresult3:
         print(x)
     return
