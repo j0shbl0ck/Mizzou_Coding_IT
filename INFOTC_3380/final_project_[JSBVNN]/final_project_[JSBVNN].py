@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.4 """
+Version: 1.2.5 """
 
 # create SQL connection
 import mysql.connector
@@ -107,8 +107,8 @@ def get_hiring_data(mycursor):
         print(f"{x[0]} Year: {x[1]} employees")
     return
 
-    # Query the HiresByYear view to show year user inputted
-def get_hiring_data_specific(mycursor, year):
+    # Query the HiresByYear view to show year user inputted [COMPLETE]
+def get_hiring_data_specific(mycursor, year): 
     sqlquery4_2 = '''SELECT *
                     FROM HiresByYear
                     WHERE Hire_Year = %s;'''
@@ -119,7 +119,7 @@ def get_hiring_data_specific(mycursor, year):
         print(f"{x[0]} Year: {x[1]} employees")
     return
 
-    # Query the SalaryByDepartment view to show the salary per department
+    # Query the SalaryByDepartment view to show the salary per department [COMPLETE]
 def get_salary_data_by_department(mycursor):
     sqlquery5_1 = '''SELECT *
                     FROM SalaryByDepartment;'''
@@ -127,12 +127,14 @@ def get_salary_data_by_department(mycursor):
     myresult5 = mycursor.fetchall()
     print("\nSalary data by department\n---------------------")
     for x in myresult5:
-        print(x)
+        print(f"{x[0]} Department: {x[1]} salary"
     return
 
     # Query the SalaryByDepartment view to show department user inputted
 def get_salary_data_by_department_specific(mycursor, department):
-    sqlquery5_2 = "SELECT Department, Salary FROM SalaryByDepartment WHERE Department = %s"
+    sqlquery5_2 = '''SELECT *
+                    FROM SalaryByDepartment
+                    WHERE department_name = %s;'''
     mycursor.execute(sqlquery5_2, (department,))
     myresult5 = mycursor.fetchall()
     print("\nSalary data by department:")
