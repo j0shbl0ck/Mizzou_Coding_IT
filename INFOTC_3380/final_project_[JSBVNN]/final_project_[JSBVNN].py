@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.3.0 """
+Version: 1.3.1 """
 
 # create SQL connection
 import mysql.connector
@@ -193,7 +193,7 @@ def get_employee_dependents_specific(mycursor, first_name):
         print(f"{x[0]} {x[1]}:, {x[2]}, {x[3]}, {x[4]} dependents")
     return
 
-    # Query the CountryLocation view to show the number of locations in each country
+    # Query the CountryLocation view to show the number of locations in each country [COMPLETE]
 def get_location_data_by_country(mycursor):
     sqlquery8_1 = '''SELECT *
                     FROM CountryLocation;'''
@@ -201,10 +201,10 @@ def get_location_data_by_country(mycursor):
     myresult8 = mycursor.fetchall()
     print("\nCountry location data\n---------------------")
     for x in myresult8:
-        print(f"{x[0]} Country: {x[1]} locations")
+        print(f"{x[0]}: {x[1]} locations")
     return
 
-    # Query the CountryLocation view to show country user inputted
+    # Query the CountryLocation view to show country user inputted [COMPLETE]
 def get_location_data_by_country_specific(mycursor, country):
     sqlquery8_2 = '''SELECT *
                     FROM CountryLocation
@@ -213,7 +213,7 @@ def get_location_data_by_country_specific(mycursor, country):
     myresult8 = mycursor.fetchall()
     print("\nCountry location data:")
     for x in myresult8:
-        print(f"{x[0]} Country: {x[1]} locations")
+        print(f"{x[0]}: {x[1]} locations")
     return
 
 # ------ END OF VIEW DATA QUERY FUNCTIONS ------ #
