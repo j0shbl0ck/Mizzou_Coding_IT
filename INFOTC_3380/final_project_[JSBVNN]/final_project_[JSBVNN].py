@@ -130,7 +130,7 @@ def get_salary_data_by_department(mycursor):
         print(f"{x[0]} Department: {x[1]} salary")
     return
 
-    # Query the SalaryByDepartment view to show department user inputted
+    # Query the SalaryByDepartment view to show department user inputted [COMPLETE]
 def get_salary_data_by_department_specific(mycursor, department):
     sqlquery5_2 = '''SELECT *
                     FROM SalaryByDepartment
@@ -139,7 +139,7 @@ def get_salary_data_by_department_specific(mycursor, department):
     myresult5 = mycursor.fetchall()
     print("\nSalary data by department:")
     for x in myresult5:
-        print(x)
+        print(f"{x[0]} Department: {x[1]} salary")
     return
 
     # Query the SalaryByJobTitle view to show show the job title and total salary for the title with the highest total salary
@@ -150,19 +150,19 @@ def get_salary_data_by_job_title(mycursor):
     myresult6 = mycursor.fetchall()
     print("\nSalary data by job title\n---------------------")
     for x in myresult6:
-        print(x)
+        print(f"{x[0]} Job Title: {x[1]} salary")
     return
 
     # Query the SalaryByJobTitle view to show job title user inputted
 def get_salary_data_by_job_title_specific(mycursor, job_title):
-    sqlquery6_2 = '''SELECT JobTitle, Salary 
-                    FROM SalaryByJobTitle 
-                    WHERE JobTitle = %s'''
+    sqlquery6_2 = '''SELECT *
+                    FROM SalaryByJobTitle
+                    WHERE job_title = %s;'''
     mycursor.execute(sqlquery6_2, (job_title,))
     myresult6 = mycursor.fetchall()
-    print("\nSalary data by job title:")
+    print("\nSalary data by job title\n---------------------")
     for x in myresult6:
-        print(x)
+        print(f"{x[0]} Job Title: {x[1]} salary")
     return
 
     # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
