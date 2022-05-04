@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.2 """
+Version: 1.2.3 """
 
 # create SQL connection
 import mysql.connector
@@ -109,7 +109,7 @@ def get_hiring_data(mycursor):
 
     # Query the HiresByYear view to show year user inputted
 def get_hiring_data_specific(mycursor, year):
-    sqlquery4_2 = "SELECT Year, COUNT(EmployeeID) FROM HiresByYear WHERE Hire_Year = %s GROUP BY Hire_Year"
+    sqlquery4_2 = "SELECT Hire_Year, COUNT(EmployeeID) FROM HiresByYear WHERE Hire_Year = %s GROUP BY Hire_Year"
     mycursor.execute(sqlquery4_2, (year,))
     myresult4 = mycursor.fetchall()
     print("\nHiring data by year\n---------------------")
