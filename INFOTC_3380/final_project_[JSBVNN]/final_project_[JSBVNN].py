@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.0 """
+Version: 1.1.1 """
 
 # create SQL connection
 import mysql.connector
@@ -43,9 +43,8 @@ def get_manager_count_by_department(mycursor):
 
     print("\nManagers per Department\n---------------------")
     #loop through results
-    for record in query_result:
-        print(f"{record[0]} Department: {record[1]} managers")
-    
+    for x in query_result:
+        print(x)
     return
 
     # Query the manager view to show department user inputted
