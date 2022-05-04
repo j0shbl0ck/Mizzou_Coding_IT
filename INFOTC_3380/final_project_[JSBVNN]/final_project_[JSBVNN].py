@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.6 """
+Version: 1.0.7 """
 
 # create SQL connection
 import mysql.connector
@@ -10,10 +10,11 @@ import mysql.connector
 
     # Query the EmployeesPerRegion to show the number of employees per region
 def get_employees_data(mycursor):
-    sqlquery1_1 = "SELECT Region, COUNT(EmployeeID) FROM EmployeesPerRegion GROUP BY Region"
+    sqlquery1_1 = '''SELECT * 
+                    FROM EmployeesPerRegion'''
     mycursor.execute(sqlquery1_1)
     myresult1_1 = mycursor.fetchall()
-    print("\nEmployees per region:")
+    print("\nEmployees per region\n---------------------")
     for x in myresult1_1:
         print(x)
     return
