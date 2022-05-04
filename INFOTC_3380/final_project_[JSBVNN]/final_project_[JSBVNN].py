@@ -1,14 +1,14 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.6 """
+Version: 1.1.7 """
 
 # create SQL connection
 import mysql.connector
 
 # ------------ VIEW DATA QUERY FUNCTIONS ------------ #
 
-    # Query the EmployeesPerRegion to show the number of employees per region
+    # Query the EmployeesPerRegion to show the number of employees per region [COMPLETE]
 def get_employees_data(mycursor):
     sqlquery1_1 = '''SELECT * 
                     FROM EmployeesPerRegion;'''
@@ -19,11 +19,11 @@ def get_employees_data(mycursor):
         print(x)
     return
 
-    # Query the EmployeesPerRegion to show region user inputted
+    # Query the EmployeesPerRegion to show the number of employees region user inputted
 def get_employees_data_per_region(mycursor, region_name):
     sqlquery1_2 = '''SELECT *
                     FROM EmployeesPerRegion
-                    WHERE region_name = '%s';'''
+                    WHERE Region = %s;'''
     mycursor.execute(sqlquery1_2, (region_name,))
     myresult1_2 = mycursor.fetchall()
     print("\nEmployees per region:")
@@ -31,7 +31,7 @@ def get_employees_data_per_region(mycursor, region_name):
         print(x)
     return
 
-    # Query the manager view to show the number of managers per department
+    # Query the manager view to show the number of managers per department [COMPLETE]
 def get_manager_count_by_department(mycursor):
     #create query
     sqlquery2_1 = '''SELECT departments.department_name, COUNT(managers.first_name) AS Number_of_Managers 
@@ -51,7 +51,7 @@ def get_manager_count_by_department(mycursor):
         print(f"{record[0]} Department: {record[1]} managers")
     return
 
-    # Query the manager view to show department user inputted
+    # Query the manager view to show department user inputted [COMPLETE]
 def get_manager_count_by_department_specific(mycursor, department):
     #create query
     sqlquery2_2 = '''SELECT department_name, COUNT(department_name) AS "Number of Managers"
