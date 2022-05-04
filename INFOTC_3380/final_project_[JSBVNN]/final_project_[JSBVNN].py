@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.1 """
+Version: 1.2.2 """
 
 # create SQL connection
 import mysql.connector
@@ -84,7 +84,7 @@ def get_dependent_data(mycursor):
         print(f"{x[0]} Department: {x[1]} dependents")
     return
 
-    # Query the DependentsByDepartment view to show department user inputted
+    # Query the DependentsByDepartment view to show department user inputted [COMPLETE]
 def get_dependent_data_specific(mycursor, department):
     sqlquery3_2 = '''SELECT *
                     FROM DependentsByDepartment
@@ -96,7 +96,7 @@ def get_dependent_data_specific(mycursor, department):
         print(f"{x[0]} Department: {x[1]} dependents")
     return
 
-    # Query the HiresByYear view to show the number of employees hired per year
+    # Query the HiresByYear view to show the number of employees hired per year [COMPLETE]
 def get_hiring_data(mycursor):
     sqlquery4_1 = '''SELECT *
                     FROM HiresByYear;'''
@@ -104,17 +104,17 @@ def get_hiring_data(mycursor):
     myresult4 = mycursor.fetchall()
     print("\nHiring data by year\n---------------------")
     for x in myresult4:
-        print(x)
+        print(f"{x[0]} Year: {x[1]} employees")
     return
 
     # Query the HiresByYear view to show year user inputted
 def get_hiring_data_specific(mycursor, year):
-    sqlquery4_2 = "SELECT Year, COUNT(EmployeeID) FROM HiresByYear WHERE Year = %s GROUP BY Year"
+    sqlquery4_2 = "SELECT Year, COUNT(EmployeeID) FROM HiresByYear WHERE Hire_Year = %s GROUP BY Hire_Year"
     mycursor.execute(sqlquery4_2, (year,))
     myresult4 = mycursor.fetchall()
-    print("\nHiring data by year:")
+    print("\nHiring data by year\n---------------------")
     for x in myresult4:
-        print(x)
+        print(f"{x[0]} Year: {x[1]} employees")
     return
 
     # Query the SalaryByDepartment view to show the salary per department
