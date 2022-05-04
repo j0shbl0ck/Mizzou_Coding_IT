@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.3 """
+Version: 1.1.4 """
 
 # create SQL connection
 import mysql.connector
@@ -24,7 +24,7 @@ def get_employees_data_per_region(mycursor, region_name):
     sqlquery1_2 = '''SELECT *
                     FROM EmployeesPerRegion
                     WHERE region_name = %;'''
-    mycursor.execute(sqlquery1_2, (region_name,))
+    mycursor.execute(sqlquery1_2, region_name = region_name)
     myresult1_2 = mycursor.fetchall()
     print("\nEmployees per region:")
     for x in myresult1_2:
