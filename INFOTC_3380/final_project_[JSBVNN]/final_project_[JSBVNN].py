@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.5 """
+Version: 1.2.6 """
 
 # create SQL connection
 import mysql.connector
@@ -127,7 +127,7 @@ def get_salary_data_by_department(mycursor):
     myresult5 = mycursor.fetchall()
     print("\nSalary data by department\n---------------------")
     for x in myresult5:
-        print(f"{x[0]} Department: {x[1]} salary"
+        print(f"{x[0]} Department: {x[1]} salary")
     return
 
     # Query the SalaryByDepartment view to show department user inputted
