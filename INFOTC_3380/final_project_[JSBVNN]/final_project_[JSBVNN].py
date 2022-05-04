@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.8 """
+Version: 1.1.9 """
 
 # create SQL connection
 import mysql.connector
@@ -28,7 +28,7 @@ def get_employees_data_per_region(mycursor, region_name):
     myresult1_2 = mycursor.fetchall()
     print("\nEmployees per region:")
     for x in myresult1_2:
-        print(x)
+        print(f"{x[0]} Region: {x[1]} employees")
     return
 
     # Query the manager view to show the number of managers per department [COMPLETE]
