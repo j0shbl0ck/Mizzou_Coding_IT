@@ -1,9 +1,10 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.8 """
+Version: 1.0.9 """
 
 # create SQL connection
+from turtle import clear
 import mysql.connector
 
 # ------------ VIEW DATA QUERY FUNCTIONS ------------ #
@@ -335,6 +336,7 @@ def main():
             view_all = input("Do you want to view all data? (Y/N): ")
             if view_all == "Y":
                 # view all data
+                clear
                 get_employees_data(mycursor)
             elif view_all == "N":
                 # ask user if they want to view specific data
@@ -351,6 +353,7 @@ def main():
             view_all = input("Do you want to view all data? (Y/N): ")
             if view_all == "Y":
                 # view all data
+                clear
                 get_manager_count_by_department(mycursor)
             elif view_all == "N":
                 # ask user if they want to view specific data
