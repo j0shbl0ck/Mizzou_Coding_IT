@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.2 """
+Version: 1.1.3 """
 
 # create SQL connection
 import mysql.connector
@@ -20,9 +20,11 @@ def get_employees_data(mycursor):
     return
 
     # Query the EmployeesPerRegion to show region user inputted
-def get_employees_data_per_region(mycursor, region):
-    sqlquery1_2 = "SELECT Region, COUNT(EmployeeID) FROM EmployeesPerRegion WHERE Region = %s GROUP BY Region"
-    mycursor.execute(sqlquery1_2, (region,))
+def get_employees_data_per_region(mycursor, region_name):
+    sqlquery1_2 = '''SELECT *
+                    FROM EmployeesPerRegion
+                    WHERE region_name = %;'''
+    mycursor.execute(sqlquery1_2, (region_name,))
     myresult1_2 = mycursor.fetchall()
     print("\nEmployees per region:")
     for x in myresult1_2:
@@ -32,8 +34,10 @@ def get_employees_data_per_region(mycursor, region):
     # Query the manager view to show the number of managers per department
 def get_manager_count_by_department(mycursor):
     #create query
-    sqlquery2_1 = '''SELECT * 
-                    FROM managers;'''
+    sqlquery2_1 = '''SELECT departments.department_name, COUNT(managers.first_name) AS Number_of_Managers 
+                    FROM managers
+                    JOIN departments ON managers.department_name = departments.department_name
+                    GROUP BY departments.department_name;'''
 
     #execute the query
     mycursor.execute(sqlquery2_1)
@@ -340,8 +344,8 @@ def main():
                 view_specific = input("Do you want to view specific data? (Y/N): ")
                 if view_specific == "Y":
                     # ask user for specific data
-                    region = input("Enter region: ")
-                    get_employees_data_per_region(mycursor, region)
+                    region_name = input("Enter region: ")
+                    get_employees_data_per_region(mycursor, region_name)
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
