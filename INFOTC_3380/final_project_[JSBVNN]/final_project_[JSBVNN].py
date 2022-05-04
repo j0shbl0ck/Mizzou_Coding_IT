@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.2.9 """
+Version: 1.3.0 """
 
 # create SQL connection
 import mysql.connector
@@ -165,7 +165,7 @@ def get_salary_data_by_job_title_specific(mycursor, job_title):
         print(f"{x[0]} Job Title: {x[1]} salary")
     return
 
-    # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+    # Query the EmployeeDependents view that calculates the number of dependents each employees has. [COMPLETE]
 def get_dependent_data_by_employee(mycursor):
     sqlquery7_1 = '''SELECT *
                     FROM EmployeeDependents;'''
@@ -181,7 +181,7 @@ def get_dependent_data_by_employee(mycursor):
         print(f"{x[0]} {x[1]}:, {x[2]}, {x[3]}, {x[4]} dependents")
     return
 
-    # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
+    # Query the EmployeeDependents view that calculates the number of dependents each employees has. [COMPLETE]
 def get_employee_dependents_specific(mycursor, first_name):
     sqlquery7_2 = '''SELECT *
                     FROM EmployeeDependents
@@ -201,19 +201,19 @@ def get_location_data_by_country(mycursor):
     myresult8 = mycursor.fetchall()
     print("\nCountry location data\n---------------------")
     for x in myresult8:
-        print(x)
+        print(f"{x[0]} Country: {x[1]} locations")
     return
 
     # Query the CountryLocation view to show country user inputted
 def get_location_data_by_country_specific(mycursor, country):
-    sqlquery8_2 = '''SELECT Country, COUNT(LocationID) 
-                    FROM CountryLocation WHERE Country = %s 
-                    GROUP BY Country'''
+    sqlquery8_2 = '''SELECT *
+                    FROM CountryLocation
+                    WHERE country_name = %s;'''
     mycursor.execute(sqlquery8_2, (country,))
     myresult8 = mycursor.fetchall()
     print("\nCountry location data:")
     for x in myresult8:
-        print(x)
+        print(f"{x[0]} Country: {x[1]} locations")
     return
 
 # ------ END OF VIEW DATA QUERY FUNCTIONS ------ #
