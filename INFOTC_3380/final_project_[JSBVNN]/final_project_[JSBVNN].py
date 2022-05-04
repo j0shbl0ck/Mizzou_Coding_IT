@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.0.7 """
+Version: 1.0.8 """
 
 # create SQL connection
 import mysql.connector
@@ -11,7 +11,7 @@ import mysql.connector
     # Query the EmployeesPerRegion to show the number of employees per region
 def get_employees_data(mycursor):
     sqlquery1_1 = '''SELECT * 
-                    FROM EmployeesPerRegion'''
+                    FROM EmployeesPerRegion;'''
     mycursor.execute(sqlquery1_1)
     myresult1_1 = mycursor.fetchall()
     print("\nEmployees per region\n---------------------")
@@ -32,10 +32,8 @@ def get_employees_data_per_region(mycursor, region):
     # Query the manager view to show the number of managers per department
 def get_manager_count_by_department(mycursor):
     #create query
-    sqlquery2_1 = '''SELECT department_name, COUNT(department_name) AS "Number of Managers"
-                    FROM managers
-                    GROUP BY department_name
-                    ORDER BY COUNT(department_name) DESC;'''
+    sqlquery2_1 = '''SELECT * 
+                    managers;'''
 
     #execute the query
     mycursor.execute(sqlquery2_1)
@@ -74,10 +72,11 @@ def get_manager_count_by_department_specific(mycursor, department):
 
     # Query the DependentsByDepartment view to show the number of dependents per department
 def get_dependent_data(mycursor):
-    sqlquery3_1 = "SELECT Department, COUNT(EmployeeID) FROM DependentsByDepartment GROUP BY Department"
+    sqlquery3_1 = '''SELECT *
+                    FROM DependentsByDepartment;'''
     mycursor.execute(sqlquery3_1)
     myresult3 = mycursor.fetchall()
-    print("\nDependent count by department:")
+    print("\nDependent count by department\n---------------------")
     for x in myresult3:
         print(x)
     return
@@ -94,10 +93,11 @@ def get_dependent_data_specific(mycursor, department):
 
     # Query the HiresByYear view to show the number of employees hired per year
 def get_hiring_data(mycursor):
-    sqlquery4_1 = "SELECT Year, COUNT(EmployeeID) FROM HiresByYear GROUP BY Year"
+    sqlquery4_1 = '''SELECT *
+                    FROM HiresByYear;'''
     mycursor.execute(sqlquery4_1)
     myresult4 = mycursor.fetchall()
-    print("\nHiring data by year:")
+    print("\nHiring data by year\n---------------------")
     for x in myresult4:
         print(x)
     return
@@ -114,10 +114,11 @@ def get_hiring_data_specific(mycursor, year):
 
     # Query the SalaryByDepartment view to show the salary per department
 def get_salary_data_by_department(mycursor):
-    sqlquery5_1 = "SELECT Department, Salary FROM SalaryByDepartment"
+    sqlquery5_1 = '''SELECT *
+                    FROM SalaryByDepartment;'''
     mycursor.execute(sqlquery5_1)
     myresult5 = mycursor.fetchall()
-    print("\nSalary data by department:")
+    print("\nSalary data by department\n---------------------")
     for x in myresult5:
         print(x)
     return
@@ -134,10 +135,11 @@ def get_salary_data_by_department_specific(mycursor, department):
 
     # Query the SalaryByJobTitle view to show show the job title and total salary for the title with the highest total salary
 def get_salary_data_by_job_title(mycursor):
-    sqlquery6_1 = "SELECT JobTitle, Salary FROM SalaryByJobTitle"
+    sqlquery6_1 = '''SELECT *
+                    FROM SalaryByJobTitle;'''
     mycursor.execute(sqlquery6_1)
     myresult6 = mycursor.fetchall()
-    print("\nSalary data by job title:")
+    print("\nSalary data by job title\n---------------------")
     for x in myresult6:
         print(x)
     return
@@ -156,11 +158,8 @@ def get_salary_data_by_job_title_specific(mycursor, job_title):
 
     # Query the EmployeeDependents view that calculates the number of dependents each employees has. This query should show employees even if they have 0 dependents. Display the employee name (first, last), email, phone number, and number of dependents. Hint: left or right join.
 def get_dependent_data_by_employee(mycursor):
-    sqlquery7_1 = '''SELECT EmployeeID, FirstName, LastName, Email, PhoneNumber, COUNT(Dependents.EmployeeID) 
-                    FROM EmployeeDependents 
-                    LEFT JOIN Dependents ON EmployeeDependents.EmployeeID = Dependents.EmployeeID 
-                    GROUP BY EmployeeID'''
-
+    sqlquery7_1 = '''SELECT *
+                    FROM EmployeeDependents;'''
     # execute the query
     mycursor.execute(sqlquery7_1)
 
@@ -188,12 +187,11 @@ def get_employee_dependents_specific(mycursor, employee_id):
 
     # Query the CountryLocation view to show the number of locations in each country
 def get_location_data_by_country(mycursor):
-    sqlquery8_1 = '''SELECT Country, COUNT(LocationID) 
-                    FROM CountryLocation 
-                    GROUP BY Country'''
+    sqlquery8_1 = '''SELECT *
+                    FROM CountryLocation;'''
     mycursor.execute(sqlquery8_1)
     myresult8 = mycursor.fetchall()
-    print("\nCountry location data:")
+    print("\nCountry location data\n---------------------")
     for x in myresult8:
         print(x)
     return
