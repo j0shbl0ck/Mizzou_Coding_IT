@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.1.5 """
+Version: 1.1.6 """
 
 # create SQL connection
 import mysql.connector
@@ -20,11 +20,11 @@ def get_employees_data(mycursor):
     return
 
     # Query the EmployeesPerRegion to show region user inputted
-def get_employees_data_per_region(mycursor, region):
+def get_employees_data_per_region(mycursor, region_name):
     sqlquery1_2 = '''SELECT *
                     FROM EmployeesPerRegion
-                    WHERE region_name = '%';'''
-    mycursor.execute(sqlquery1_2, region = region_name)
+                    WHERE region_name = '%s';'''
+    mycursor.execute(sqlquery1_2, (region_name,))
     myresult1_2 = mycursor.fetchall()
     print("\nEmployees per region:")
     for x in myresult1_2:
@@ -344,8 +344,8 @@ def main():
                 view_specific = input("Do you want to view specific data? (Y/N): ")
                 if view_specific == "Y":
                     # ask user for specific data
-                    region = input("Enter region: ")
-                    get_employees_data_per_region(mycursor, region)
+                    region_name = input("Enter region: ")
+                    get_employees_data_per_region(mycursor, region_name)
             else:
                 print("Invalid input. Returning to main menu...")
                 quit()
