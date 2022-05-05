@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.2 """
+Version: 1.5.3 """
 
 # create SQL connection
 import mysql.connector
@@ -260,19 +260,19 @@ def update_employee_first_name_data(mycursor, first_name, employee_id):
     return
 
     # Update an employee's last name
-def update_employee_last_name(mycursor, employee_id, last_name):
-    sqlquery14 = '''UPDATE employees SET last_name = %s WHERE employee_id = %s;%'''
+def update_employee_last_name_data(mycursor, employee_id, last_name):
+    sqlquery14 = '''UPDATE employees SET last_name = %s WHERE employee_id = %s;'''
     mycursor.execute(sqlquery14, (last_name, employee_id))
     return
 
     # Update a job's minimum salary
-def update_job_min_salary(mycursor, job_title, min_salary):
+def update_job_min_salary_data(mycursor, job_title, min_salary):
     sqlquery15 = '''UPDATE jobs SET min_salary = %s WHERE job_title = %s;'''
     mycursor.execute(sqlquery15, (min_salary, job_title))
     return
 
     # Update a job's maximum salary
-def update_job_max_salary(mycursor, job_title, max_salary):
+def update_job_max_salary_data(mycursor, job_title, max_salary):
     sqlquery16 = '''UPDATE jobs SET max_salary = %s WHERE job_title = %s;'''
     mycursor.execute(sqlquery16, (max_salary, job_title))
     return
@@ -556,7 +556,7 @@ def main():
                 # ask user for employee id and new last name
                 employee_id = input("Enter employee id: ")
                 last_name = input("Enter new last name: ")
-                update_employee_last_name(mycursor, employee_id, last_name)
+                update_employee_last_name_data(mycursor, employee_id, last_name)
             elif update_employee_last_name == "N":
                 print("Returning to main menu...")
                 quit()
@@ -568,7 +568,7 @@ def main():
                 # ask user for job id and new minimum salary
                 job_id = input("Enter job id: ")
                 min_salary = input("Enter new minimum salary: ")
-                update_job_min_salary(mycursor, job_id, min_salary)
+                update_job_min_salary_data(mycursor, job_id, min_salary)
             elif update_job_min_salary == "N":
                 print("Returning to main menu...")
                 quit()
@@ -580,7 +580,7 @@ def main():
                 # ask user for job id and new maximum salary
                 job_id = input("Enter job id: ")
                 max_salary = input("Enter new maximum salary: ")
-                update_job_max_salary(mycursor, job_id, max_salary)
+                update_job_max_salary_data(mycursor, job_id, max_salary)
             elif update_job_max_salary == "N":
                 print("Returning to main menu...")
                 quit()
