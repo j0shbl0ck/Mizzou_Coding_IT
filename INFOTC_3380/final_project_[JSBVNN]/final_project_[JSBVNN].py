@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.3.9 """
+Version: 1.4.0 """
 
 # create SQL connection
 import mysql.connector
@@ -227,10 +227,12 @@ def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationshi
     return
 
     # Add a new job to the database
-def add_job_data(mycursor, job_title, min_salary, max_salary):
-    sqlquery10 = '''INSERT INTO jobs (job_title, min_salary, max_salary) 
-                    VALUES (%s, %s, %s)'''
-    mycursor.execute(sqlquery10, (job_title, min_salary, max_salary))
+    # job id is primary key
+def add_job_data(mycursor, job_id, job_title, min_salary, max_salary):
+    # job id is primary key
+    sqlquery10 = '''INSERT INTO jobs (job_id, job_title, min_salary, max_salary)
+                    VALUES (%s, %s, %s, %s);'''
+    mycursor.execute(sqlquery10, (job_id, job_title, min_salary, max_salary))
     return
 
 # ------------ END OF ADD DATA QUERY FUNCTIONS ------------ #
@@ -496,8 +498,12 @@ def main():
             # ask user if they would like to add a new job
             add_job = input("Do you want to add a new job? (Y/N): ")
             if add_job == "Y":
-                # ask user for new job data
-                add_job_data(mycursor)
+                # job id is primary key
+                job_id = input("Enter job id: ")
+                job_title = input("Enter job title: ")
+                min_salary = input("Enter minimum salary: ")
+                max_salary = input("Enter maximum salary: ")
+                add_job_data(mycursor, job_id, job_title, min_salary, max_salary)
             elif add_job == "N":
                 print("Returning to main menu...")
                 quit()
