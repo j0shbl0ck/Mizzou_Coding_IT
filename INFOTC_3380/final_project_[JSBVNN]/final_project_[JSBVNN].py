@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.0 """
+Version: 1.5.1 """
 
 # create SQL connection
 import mysql.connector
@@ -544,7 +544,7 @@ def main():
                 # ask user for employee id and new first name
                 employee_id = input("Enter employee id: ")
                 first_name = input("Enter new first name: ")
-                update_employee_first_name_data(mycursor, employee_id, first_name)
+                update_employee_first_name_data(mycursor, first_name, employee_id)
             elif update_employee_first_name == "N":
                 print("Returning to main menu...")
                 quit()
