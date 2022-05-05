@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.9 """
+Version: 1.6.0 """
 
 # create SQL connection
 import mysql.connector
@@ -137,7 +137,7 @@ def get_salary_data_by_department_specific(mycursor, department):
                     WHERE department_name = %s;'''
     mycursor.execute(sqlquery5_2, (department,))
     myresult5 = mycursor.fetchall()
-    print("\nSalary data by department:")
+    print("\nSalary data by department\n---------------------")
     for x in myresult5:
         print(f"{x[0]} Department: {x[1]} salary")
     return
@@ -178,7 +178,7 @@ def get_dependent_data_by_employee(mycursor):
     print("\nEmployee dependents:\n---------------------")
     # loop through results
     for x in myresult7:
-        print(f"{x[0]} {x[1]}:, {x[2]}, {x[3]}, {x[4]} dependents")
+        print(f"{x[0]} {x[1]}, Email: {x[2]}, Phone Number: {x[3]}, {x[4]} dependent(s)")
     return
 
     # Query the EmployeeDependents view that calculates the number of dependents each employees has. [COMPLETE]
@@ -190,7 +190,7 @@ def get_employee_dependents_specific(mycursor, first_name):
     myresult7 = mycursor.fetchall()
     print("\nEmployee dependents:")
     for x in myresult7:
-        print(f"{x[0]} {x[1]}:, {x[2]}, {x[3]}, {x[4]} dependents")
+        print(f"{x[0]} {x[1]}, Email: {x[2]}, Phone Number: {x[3]}, {x[4]} dependent(s)")
     return
 
     # Query the CountryLocation view to show the number of locations in each country [COMPLETE]
@@ -211,7 +211,7 @@ def get_location_data_by_country_specific(mycursor, country):
                     WHERE country_name = %s;'''
     mycursor.execute(sqlquery8_2, (country,))
     myresult8 = mycursor.fetchall()
-    print("\nCountry location data:")
+    print("\nCountry location data\n---------------------")
     for x in myresult8:
         print(f"{x[0]}: {x[1]} locations")
     return
@@ -221,8 +221,8 @@ def get_location_data_by_country_specific(mycursor, country):
 # ------------ ADD DATA QUERY FUNCTIONS ------------ #
     # Add a new dependent to the database [FAILED]
 def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship):
-    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship, employee_id)
-                    VALUES (%s, %s, %s, %s, null);'''
+    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship)
+                    VALUES (%s, %s, %s, %s);'''
     mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship))
     print(f"\nDependent {first_name} {last_name} added to database successfully!")
     return
