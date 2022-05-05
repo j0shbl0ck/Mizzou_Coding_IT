@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.3.4 """
+Version: 1.3.5 """
 
 # create SQL connection
 import mysql.connector
@@ -221,7 +221,7 @@ def get_location_data_by_country_specific(mycursor, country):
 # ------------ ADD DATA QUERY FUNCTIONS ------------ #
     # Add a new dependent to the database
 def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id):
-    sqlquery9 = '''INSERT INTO Dependents (dependent_id, first_name, last_name, relationship, employee_id)) 
+    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship, employee_id)) 
                     VALUES (%s, %s, %s, %s, %s);'''
     mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship, employee_id))
     return
