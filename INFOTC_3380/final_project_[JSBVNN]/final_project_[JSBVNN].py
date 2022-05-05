@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.6.0 """
+Version: 1.6.1 """
 
 # create SQL connection
 import mysql.connector
@@ -243,14 +243,14 @@ def add_job_data(mycursor, job_id, job_title, min_salary, max_salary):
 def delete_employee_data(mycursor, employee_id):
     sqlquery11 = '''DELETE FROM employees WHERE employee_id = %s'''
     mycursor.execute(sqlquery11, (employee_id,))
-    print(f"Employee ID {employee_id} has been deleted successfully")
+    print(f"\nEmployee ID {employee_id} has been deleted successfully")
     return
 
     # Delete a dependent from the database [COMPLETE]
 def delete_dependent_data(mycursor, dependent_id):
     sqlquery12 = '''DELETE FROM dependents WHERE dependent_id = %s'''
     mycursor.execute(sqlquery12, (dependent_id,))
-    print(f"Dependent ID {dependent_id} has been deleted successfully.")
+    print(f"\nDependent ID {dependent_id} has been deleted successfully.")
     return
 
 # ------------ END OF DELETE DATA QUERY FUNCTIONS ------------ #
@@ -261,21 +261,21 @@ def delete_dependent_data(mycursor, dependent_id):
 def update_employee_first_name_data(mycursor, first_name, employee_id):
     sqlquery13 = '''UPDATE employees SET first_name = %s WHERE employee_id = %s;'''
     mycursor.execute(sqlquery13, (first_name, employee_id))
-    print(f"Employee ID {employee_id}'s first name has been updated to {first_name} succesfully.")
+    print(f"\nEmployee ID {employee_id}'s first name has been updated to {first_name} succesfully.")
     return
 
     # Update an employee's last name [COMPLETE]
 def update_employee_last_name_data(mycursor, employee_id, last_name):
     sqlquery14 = '''UPDATE employees SET last_name = %s WHERE employee_id = %s;'''
     mycursor.execute(sqlquery14, (last_name, employee_id))
-    print(f"Employee ID {employee_id}'s last name has been updated to {last_name} succesfully.")
+    print(f"\nEmployee ID {employee_id}'s last name has been updated to {last_name} succesfully.")
     return
 
     # Update a job's minimum salary [COMPLETE]
 def update_job_min_salary_data(mycursor, job_title, min_salary):
     sqlquery15 = '''UPDATE jobs SET min_salary = %s WHERE job_title = %s;'''
     mycursor.execute(sqlquery15, (min_salary, job_title))
-    print("\nJob minimum salary updated successfully!.")
+    print(f"\nJob minimum salary updated successfully!.")
     return
 
     # Update a job's maximum salary [COMPLETE]
