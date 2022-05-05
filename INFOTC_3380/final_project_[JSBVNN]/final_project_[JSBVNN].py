@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.3.5 """
+Version: 1.3.6 """
 
 # create SQL connection
 import mysql.connector
@@ -220,10 +220,10 @@ def get_location_data_by_country_specific(mycursor, country):
 
 # ------------ ADD DATA QUERY FUNCTIONS ------------ #
     # Add a new dependent to the database with employee id as the foreign key
-def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id):
-    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship, employee_id)
+def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship):
+    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship)
                     VALUES (%s, %s, %s, %s, %s);'''
-    mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship, employee_id))
+    mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship))
     return
 
     # Add a new job to the database
@@ -481,10 +481,10 @@ def main():
                 dependent_id = input("Enter dependent id: ")
                 first_name = input("Enter first name: ")
                 last_name = input("Enter last name: ")
-                employee_id = input("Enter employee id: ")
+                #employee_id = input("Enter employee id: ")
                 relationship = input("Enter relationship: ")
                 # employee id is a foreign key, so we need to check if the employee exists
-                add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id)
+                add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship)
             elif add_dependent == "N":
                 print("Returning to main menu...")
                 quit()
