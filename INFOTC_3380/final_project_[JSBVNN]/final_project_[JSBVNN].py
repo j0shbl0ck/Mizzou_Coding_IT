@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.4.6 """
+Version: 1.4.7 """
 
 # create SQL connection
 import mysql.connector
@@ -255,7 +255,7 @@ def delete_dependent_data(mycursor, dependent_id):
 
     # Update an employee's first name
 def update_employee_first_name(mycursor, first_name, employee_id):
-    sqlquery13 = '''UPDATE employees SET first_name = %s WHERE employee_id = %s;'''%(first_name, employee_id)
+    sqlquery13 = ('''UPDATE employees SET first_name = %s WHERE employee_id = %s;'''%(first_name, employee_id))
     #val = (first_name, employee_id)
     mycursor.execute(sqlquery13)
     return
