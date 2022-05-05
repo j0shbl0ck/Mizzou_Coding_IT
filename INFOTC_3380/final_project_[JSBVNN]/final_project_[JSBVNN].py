@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.3.3 """
+Version: 1.3.4 """
 
 # create SQL connection
 import mysql.connector
@@ -220,10 +220,10 @@ def get_location_data_by_country_specific(mycursor, country):
 
 # ------------ ADD DATA QUERY FUNCTIONS ------------ #
     # Add a new dependent to the database
-def add_dependent_data(mycursor, employee_id, first_name, last_name, birth_date):
-    sqlquery9 = '''INSERT INTO Dependents (EmployeeID, FirstName, LastName, BirthDate) 
-                    VALUES (%s, %s, %s, %s)'''
-    mycursor.execute(sqlquery9, (employee_id, first_name, last_name, birth_date))
+def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id):
+    sqlquery9 = '''INSERT INTO Dependents (dependent_id, first_name, last_name, relationship, employee_id)) 
+                    VALUES (%s, %s, %s, %s, %s);'''
+    mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship, employee_id))
     return
 
     # Add a new job to the database
@@ -477,8 +477,13 @@ def main():
             # ask user if they would like to add a new dependent
             add_dependent = input("Do you want to add a new dependent? (Y/N): ")
             if add_dependent == "Y":
-                # ask user for new dependent data
-                add_dependent_data(mycursor)
+                # ask user for data
+                dependent_id = input("Enter dependent id: ")
+                first_name = input("Enter first name: ")
+                last_name = input("Enter last name: ")
+                employee_id = input("Enter employee id: ")
+                relationship = input("Enter relationship: ")
+                add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id)
             elif add_dependent == "N":
                 print("Returning to main menu...")
                 quit()
