@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.3.2 """
+Version: 1.3.3 """
 
 # create SQL connection
 import mysql.connector
