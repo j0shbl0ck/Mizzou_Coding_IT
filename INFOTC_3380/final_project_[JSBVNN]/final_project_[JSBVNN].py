@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.8 """
+Version: 1.5.9 """
 
 # create SQL connection
 import mysql.connector
@@ -224,6 +224,7 @@ def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationshi
     sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship, employee_id)
                     VALUES (%s, %s, %s, %s, null);'''
     mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship))
+    print(f"\nDependent {first_name} {last_name} added to database successfully!")
     return
 
     # Add a new job to the database [COMPLETE?]
@@ -231,6 +232,7 @@ def add_job_data(mycursor, job_id, job_title, min_salary, max_salary):
     sqlquery10 = '''INSERT INTO jobs (job_id, job_title, min_salary, max_salary)
                     VALUES (%s, %s, %s, %s);'''
     mycursor.execute(sqlquery10, (job_id, job_title, min_salary, max_salary))
+    print(f"\nJob {job_title} added to database successfully!")
     return
 
 # ------------ END OF ADD DATA QUERY FUNCTIONS ------------ #
@@ -241,40 +243,46 @@ def add_job_data(mycursor, job_id, job_title, min_salary, max_salary):
 def delete_employee_data(mycursor, employee_id):
     sqlquery11 = '''DELETE FROM employees WHERE employee_id = %s'''
     mycursor.execute(sqlquery11, (employee_id,))
+    print(f"Employee ID {employee_id} has been deleted successfully")
     return
 
     # Delete a dependent from the database [COMPLETE]
 def delete_dependent_data(mycursor, dependent_id):
     sqlquery12 = '''DELETE FROM dependents WHERE dependent_id = %s'''
     mycursor.execute(sqlquery12, (dependent_id,))
+    print(f"Dependent ID {dependent_id} has been deleted successfully.")
     return
 
 # ------------ END OF DELETE DATA QUERY FUNCTIONS ------------ #
 
 # ------------ UPDATE DATA QUERY FUNCTIONS ------------ #
 
-    # Update an employee's first name
+    # Update an employee's first name [COMPLETE]
 def update_employee_first_name_data(mycursor, first_name, employee_id):
     sqlquery13 = '''UPDATE employees SET first_name = %s WHERE employee_id = %s;'''
     mycursor.execute(sqlquery13, (first_name, employee_id))
+    print(f"Employee ID {employee_id}'s first name has been updated to {first_name} succesfully.")
     return
 
-    # Update an employee's last name
+    # Update an employee's last name [COMPLETE]
 def update_employee_last_name_data(mycursor, employee_id, last_name):
     sqlquery14 = '''UPDATE employees SET last_name = %s WHERE employee_id = %s;'''
     mycursor.execute(sqlquery14, (last_name, employee_id))
+    print(f"Employee ID {employee_id}'s last name has been updated to {last_name} succesfully.")
     return
 
-    # Update a job's minimum salary
+    # Update a job's minimum salary [COMPLETE]
 def update_job_min_salary_data(mycursor, job_title, min_salary):
     sqlquery15 = '''UPDATE jobs SET min_salary = %s WHERE job_title = %s;'''
     mycursor.execute(sqlquery15, (min_salary, job_title))
+    print("\nJob minimum salary updated successfully!.")
     return
 
-    # Update a job's maximum salary
+    # Update a job's maximum salary [COMPLETE]
 def update_job_max_salary_data(mycursor, job_title, max_salary):
     sqlquery16 = '''UPDATE jobs SET max_salary = %s WHERE job_title = %s;'''
     mycursor.execute(sqlquery16, (max_salary, job_title))
+    print("\nJob maximum salary successfully!")
     return
 
 # ------------ END OF UPDATE DATA QUERY FUNCTIONS ------------ #
