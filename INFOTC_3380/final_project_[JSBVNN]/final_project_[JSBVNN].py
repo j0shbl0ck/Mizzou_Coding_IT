@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.4 """
+Version: 1.5.5 """
 
 # create SQL connection
 import mysql.connector
@@ -150,7 +150,7 @@ def get_salary_data_by_job_title(mycursor):
     myresult6 = mycursor.fetchall()
     print("\nSalary data by job title\n---------------------")
     for x in myresult6:
-        print(f"{x[0]} Job Title: {x[1]} salary")
+        print(f"{x[0]} Job ID: {x[1]} Job Title: {x[2]} minimum salary: {x[3]} maximum salary: ")
     return
 
     # Query the jobs table to show job title user inputted [COMPLETE]
