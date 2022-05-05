@@ -219,9 +219,9 @@ def get_location_data_by_country_specific(mycursor, country):
 # ------ END OF VIEW DATA QUERY FUNCTIONS ------ #
 
 # ------------ ADD DATA QUERY FUNCTIONS ------------ #
-    # Add a new dependent to the database
+    # Add a new dependent to the database with employee id as the foreign key
 def add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id):
-    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship, employee_id)) 
+    sqlquery9 = '''INSERT INTO dependents (dependent_id, first_name, last_name, relationship, employee_id)
                     VALUES (%s, %s, %s, %s, %s);'''
     mycursor.execute(sqlquery9, (dependent_id, first_name, last_name, relationship, employee_id))
     return
@@ -483,6 +483,7 @@ def main():
                 last_name = input("Enter last name: ")
                 employee_id = input("Enter employee id: ")
                 relationship = input("Enter relationship: ")
+                # employee id is a foreign key, so we need to check if the employee exists
                 add_dependent_data(mycursor,dependent_id, first_name, last_name, relationship, employee_id)
             elif add_dependent == "N":
                 print("Returning to main menu...")
