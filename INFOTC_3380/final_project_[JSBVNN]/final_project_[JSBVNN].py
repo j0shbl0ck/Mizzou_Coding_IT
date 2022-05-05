@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.4.3 """
+Version: 1.4.4 """
 
 # create SQL connection
 import mysql.connector
@@ -255,14 +255,14 @@ def delete_dependent_data(mycursor, dependent_id):
 
     # Update an employee's first name
 def update_employee_first_name(mycursor, employee_id, first_name):
-    sqlquery13 = '''UPDATE employees SET first_name = %s WHERE employee_id = %s;'''
+    sqlquery13 = '''UPDATE employees SET first_name = %s WHERE employee_id = %s;%'''
     val = (first_name, employee_id)
     mycursor.execute(sqlquery13, val)
     return
 
     # Update an employee's last name
 def update_employee_last_name(mycursor, employee_id, last_name):
-    sqlquery14 = '''UPDATE employees SET last_name = %s WHERE employee_id = %s;'''
+    sqlquery14 = '''UPDATE employees SET last_name = %s WHERE employee_id = %s;%'''
     mycursor.execute(sqlquery14, (last_name, employee_id))
     return
 
@@ -579,7 +579,7 @@ def main():
             update_job_max_salary = input("Do you want to update job's maximum salary? (Y/N): ")
             if update_job_max_salary == "Y":
                 # ask user for job id and new maximum salary
-                job_id = input("Enter job id: ")
+                job_id = strinput("Enter job id: ")
                 max_salary = input("Enter new maximum salary: ")
                 update_job_max_salary(mycursor, job_id, max_salary)
             elif update_job_max_salary == "N":
