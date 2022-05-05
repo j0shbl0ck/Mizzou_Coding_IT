@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.7 """
+Version: 1.5.8 """
 
 # create SQL connection
 import mysql.connector
@@ -566,9 +566,9 @@ def main():
             update_job_min_salary = input("Do you want to update job's minimum salary? (Y/N): ")
             if update_job_min_salary == "Y":
                 # ask user for job id and new minimum salary
-                job_id = input("Enter job id: ")
+                job_title = input("Enter job title: ")
                 min_salary = input("Enter new minimum salary: ")
-                update_job_min_salary_data(mycursor, job_id, min_salary)
+                update_job_min_salary_data(mycursor, job_title, min_salary)
             elif update_job_min_salary == "N":
                 print("Returning to main menu...")
                 quit()
@@ -578,9 +578,9 @@ def main():
             update_job_max_salary = input("Do you want to update job's maximum salary? (Y/N): ")
             if update_job_max_salary == "Y":
                 # ask user for job id and new maximum salary
-                job_id = input("Enter job id: ")
+                job_title = input("Enter job title: ")
                 max_salary = input("Enter new maximum salary: ")
-                update_job_max_salary_data(mycursor, job_id, max_salary)
+                update_job_max_salary_data(mycursor, job_title, max_salary)
             elif update_job_max_salary == "N":
                 print("Returning to main menu...")
                 quit()
