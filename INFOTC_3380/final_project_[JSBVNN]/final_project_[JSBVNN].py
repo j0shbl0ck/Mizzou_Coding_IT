@@ -1,7 +1,7 @@
 """ USER INFORMATION 
 Student: Josh Block
 Date: 4/28/22
-Version: 1.5.3 """
+Version: 1.5.4 """
 
 # create SQL connection
 import mysql.connector
@@ -142,10 +142,10 @@ def get_salary_data_by_department_specific(mycursor, department):
         print(f"{x[0]} Department: {x[1]} salary")
     return
 
-    # Query the SalaryByJobTitle view to show show the job title and total salary for the title with the highest total salary [COMPLETE]
+    # Query the jobs table to show show the job title and total salary for the title with the highest total salary [COMPLETE]
 def get_salary_data_by_job_title(mycursor):
     sqlquery6_1 = '''SELECT *
-                    FROM SalaryByJobTitle;'''
+                    FROM jobs;'''
     mycursor.execute(sqlquery6_1)
     myresult6 = mycursor.fetchall()
     print("\nSalary data by job title\n---------------------")
@@ -153,10 +153,10 @@ def get_salary_data_by_job_title(mycursor):
         print(f"{x[0]} Job Title: {x[1]} salary")
     return
 
-    # Query the SalaryByJobTitle view to show job title user inputted [COMPLETE]
+    # Query the jobs table to show job title user inputted [COMPLETE]
 def get_salary_data_by_job_title_specific(mycursor, job_title):
     sqlquery6_2 = '''SELECT *
-                    FROM SalaryByJobTitle
+                    FROM jobs
                     WHERE job_title = %s;'''
     mycursor.execute(sqlquery6_2, (job_title,))
     myresult6 = mycursor.fetchall()
