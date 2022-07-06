@@ -3,7 +3,7 @@
 #     This script allows the user to define the initial and last octet for the 192.168.200.0/24 network in order to ping sweep that particular IP range.
 # .DESCRIPTION
 #     Author: Josh Block
-#     Version: 1.0.1
+#     Version: 1.0.2
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
@@ -24,5 +24,5 @@ read last_octet
 
 # ping sweep 
 for ip in $(seq $initial_octet $last_octet); do
-    echo 192.168.200.$ip
+    ping -c 1 192.168.200.$ip
 done
