@@ -3,7 +3,7 @@
 #     This script allows the user to define the initial and last octet for the 192.168.200.0/24 network in order to ping sweep that particular IP range.
 # .DESCRIPTION
 #     Author: Josh Block
-#     Version: 1.0.7
+#     Version: 1.0.0
 #     Date: 04.15.22
 #     Type: Public
 # .NOTES
