@@ -23,9 +23,6 @@ echo "Enter the last octet of the IP range you want to scan: "
 read last_octet
 
 # ping sweep 
-for ip in $(seq $initial_octet 1 $last_octet); do
-    ping -c1 192.168.200.$ip &> /dev/null
-    if [ $? -eq 0 ]; then
-        echo "192.168.200.$ip is up"
-    fi
+for ip in $(seq $initial_octet $last_octet); do
+    echo 192.168.200.$ip
 done
