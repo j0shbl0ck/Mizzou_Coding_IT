@@ -1,7 +1,5 @@
 import UIKit
 
-var greeting = "Hello, playground"
-
 // Declare a constant of type unsigned 8 bit integer (UInt8) named sample1 with an initial value of 0x3A
 let sample1: UInt8 = 0x3A
 
