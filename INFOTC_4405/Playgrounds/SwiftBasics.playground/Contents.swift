@@ -1,3 +1,7 @@
+// Josh Block
+// INFOTC 4405
+// 09.02.2022
+
 import UIKit
 
 // Declare a constant of type unsigned 8 bit integer (UInt8) named sample1 with an initial value of 0x3A
