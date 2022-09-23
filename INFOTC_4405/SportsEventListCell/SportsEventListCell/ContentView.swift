@@ -36,21 +36,20 @@ struct ContentView: View {
     var body : some View {
         NavigationView {
             List {
-                ForEach(games) { game in
-                    NavigationLink(destination: DetailView(game: game)) {
-                        HStack {
-                            Image(game.sportImage)
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                            VStack(alignment: .leading) {
-                                Text(game.location)
-                                    .font(.headline)
-                                Text(game.date)
-                                    .font(.subheadline)
-                            }
+                ForEach(games, id: \.id) { game in
+                    Hstack {
+                        Image(game.sportImage)
+                            .resizable()
+                            .frame(width: 50, height: 50, alignment: .center)
+                        VStack(alignment: .leading) {
+                            Text(game.location)
+                                .font(.headline)
+                            Text(game.date)
+                                .font(.subheadline)
                         }
-                    }
-                }
+                    
+                    }.padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+                }.navigationBarTitle("Sports Events")
             }
         }
     }
