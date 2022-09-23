@@ -4,10 +4,11 @@
 //
 //  Created by Josh Block on 9/21/22.
 //
-// https://sarunw.com/posts/swiftui-list-basic/
-// https://medium.com/swift-productions/create-list-navigation-using-swiftui-c63534355fb1
-// https://www.simpleswiftguide.com/how-to-add-navigationview-to-list-in-swiftui-and-show-detail-view-using-navigationlink/
-// https://medium.com/swiftui-forum/list-in-swiftui-6778140787ee
+/* Sources:
+https://sarunw.com/posts/swiftui-list-basic/
+https://medium.com/swift-productions/create-list-navigation-using-swiftui-c63534355fb1
+https://www.simpleswiftguide.com/how-to-add-navigationview-to-list-in-swiftui-and-show-detail-view-using-navigationlink/
+https://medium.com/swiftui-forum/list-in-swiftui-6778140787ee */
 
 
 import SwiftUI
@@ -37,10 +38,10 @@ struct ContentView: View {
         NavigationView {
             List {
                 ForEach(games, id: \.id) { game in
-                    Hstack {
+                    HStack {
                         Image(game.sportImage)
                             .resizable()
-                            .frame(width: 50, height: 50, alignment: .center)
+                            .frame(width: 35, height: 35, alignment: .center)
                         VStack(alignment: .leading) {
                             Text(game.location)
                                 .font(.headline)
@@ -48,7 +49,7 @@ struct ContentView: View {
                                 .font(.subheadline)
                         }
                     
-                    }.padding(.init(top: 10, leading: 0, bottom: 10, trailing: 0))
+                    }.padding(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }.navigationBarTitle("Sports Events")
             }
         }
@@ -56,34 +57,6 @@ struct ContentView: View {
 
 }
 
-
-/* struct ContentView: View {
-    var body: some View {
-        NavigationView {
-            List {
-                Text("Row 1")
-                Text("Row 2")
-                // 1
-                HStack (spacing: 20) {
-                    Image("basketball")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                    Text("Row 3")
-                    Text("Row Underlying")
-                    Spacer()
-                }
-                HStack {
-                    Image(systemName: "3.circle")
-                    Text("Row 3")
-                    Text("Row Underlying")
-                }
-                Text("Row 4")
-            }
-            .navigationTitle("Sports Events")
-
-        }
-    }
-} */
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
