@@ -32,10 +32,33 @@ struct ContentView: View {
         .init(id: 9, location: "NY Rangers at Toronto", date: "Feb 23, 2017 at 11:30 AM", sportImage: "hockey"),
         .init(id: 10, location: "Calgary at Tampa Bay", date: "Feb 23, 2017 at 11:30 AM", sportImage: "hockey"),
     ]
+
+    var body : some View {
+        NavigationView {
+            List {
+                ForEach(games) { game in
+                    NavigationLink(destination: DetailView(game: game)) {
+                        HStack {
+                            Image(game.sportImage)
+                                .resizable()
+                                .frame(width: 50, height: 50)
+                            VStack(alignment: .leading) {
+                                Text(game.location)
+                                    .font(.headline)
+                                Text(game.date)
+                                    .font(.subheadline)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }
 
 
-struct ContentView: View {
+/* struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
@@ -61,7 +84,7 @@ struct ContentView: View {
 
         }
     }
-}
+} */
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
