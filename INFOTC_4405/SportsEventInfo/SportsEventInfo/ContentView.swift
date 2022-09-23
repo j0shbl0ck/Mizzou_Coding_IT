@@ -11,27 +11,34 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
-            HStack(spacing: 10){
+            Spacer()
+            HStack(spacing: 20){
                 Image("football")
+                    .frame(alignment: .trailing)
+                    
                 Text("football")
+                    .font(.headline)
             }
             List{
                 HStack {
-                    Image("football")
-                        .resizable()
-                        .frame(width: 35, height: 35, alignment: .center)
                     VStack(alignment: .leading) {
+                        Text("matchup")
                         Text("football")
                             .font(.headline)
                     }
                 }
             }
-            Image("TNvsMO_Oct2_2022")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            Image("TNvsMO_GameLeaders")
-                .resizable()
-                .frame(width: 250, height: 250, alignment: .center)
+            VStack(alignment: .center){
+                Image("TNvsMO_Oct2_2022")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(alignment: .center)
+                Image("TNvsMO_GameLeaders")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 250.0, height: 250.0, alignment: .center)
+            }
+
         }
         NavigationView {
             List {
