@@ -15,9 +15,10 @@ struct ContentView: View {
         VStack(alignment: .leading){
             HStack {
                 Image("football")
-                    .padding(.horizontal)
+                    .padding([.leading, .bottom, .trailing])
                 Text("football")
                 .font(Font.system(size: 24))
+                .padding(.bottom)
                 
             }
             VStack(alignment: .leading) {
