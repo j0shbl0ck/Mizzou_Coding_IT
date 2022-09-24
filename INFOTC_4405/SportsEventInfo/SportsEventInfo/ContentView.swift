@@ -15,16 +15,19 @@ struct ContentView: View {
             HStack(spacing: 20){
                 Image("football")
                     .frame(alignment: .trailing)
-                    
                 Text("football")
-                    .font(.headline)
-            }
+                .font(Font.system(size: 24).italic())            }
             List{
-                HStack {
+                VStack {
                     VStack(alignment: .leading) {
-                        Text("matchup")
-                        Text("football")
-                            .font(.headline)
+                        HStack {
+                            Text("Matchup:").italic()
+                            Text("Tennessee vs Missouri")
+                        }
+                        HStack {
+                            Text("When:").italic()
+                            Text("October 2, 2021 at 11:30:00 AM")
+                        }
                     }
                 }
             }
