@@ -3,7 +3,9 @@
 //  SportsEventInfo
 //
 //  Created by Josh Block on 9/22/22.
-//
+// https://www.simpleswiftguide.com/swiftui-image-tutorial/
+// https://swiftontap.com/font/italic()
+
 
 import SwiftUI
 
@@ -12,11 +14,14 @@ struct ContentView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 10){
             Spacer()
-            HStack(spacing: 20){
+            HStack(){
                 Image("football")
                     .frame(alignment: .trailing)
+                    .padding()
                 Text("football")
-                .font(Font.system(size: 24).italic())            }
+                .font(Font.system(size: 24))
+                
+            }
             List{
                 VStack {
                     VStack(alignment: .leading) {
@@ -60,13 +65,7 @@ struct ContentView: View {
         }
     }
 }
-struct football: View {
-    var body: some View {
-        Image("TNvsMO_Oct2_2022")
-            .resizable()
-            .scaledToFit()
-    }
-}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
