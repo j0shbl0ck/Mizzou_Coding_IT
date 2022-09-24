@@ -15,22 +15,21 @@ struct ContentView: View {
         VStack(alignment: .leading){
             HStack {
                 Image("football")
-                    .padding(10)
+                    .padding(.horizontal)
                 Text("football")
                 .font(Font.system(size: 24))
                 
             }
             VStack(alignment: .leading) {
                 HStack {
-                    Text("Matchup:").italic().font(.subheadline)
-                    Text("Tennessee vs Missouri").font(.subheadline)
-                    Text("")
+                    Text("Matchup:").italic().font(Font.system(size: 12))
+                    Text("Tennessee vs Missouri").font(Font.system(size: 12))
                 }
                 HStack {
-                    Text("When:").italic().font(.subheadline)
-                    Text("October 2, 2021 at 11:30:00 AM").font(.subheadline)
+                    Text("When:").italic().font(Font.system(size: 12))
+                    Text("October 2, 2021 at 11:30:00 AM").font(Font.system(size: 12))
                 }
-            }.padding(10)
+            }.padding(.leading)
             /*List{
                 VStack(alignment: .leading) {
                     HStack {
@@ -51,7 +50,7 @@ struct ContentView: View {
                 Image("TNvsMO_GameLeaders")
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 250.0, height: 250.0, alignment: .center)
+                    .frame(width: 275, height: 275, alignment: .center)
             }
         }
     }
