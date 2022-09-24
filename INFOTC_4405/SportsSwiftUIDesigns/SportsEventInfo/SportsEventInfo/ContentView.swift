@@ -31,18 +31,6 @@ struct ContentView: View {
                     Text("October 2, 2021 at 11:30:00 AM").font(Font.system(size: 12))
                 }
             }.padding(.leading)
-            /*List{
-                VStack(alignment: .leading) {
-                    HStack {
-                        Text("Matchup:").italic().font(.subheadline)
-                        Text("Tennessee vs Missouri").font(.subheadline)
-                    }
-                    HStack {
-                        Text("When:").italic().font(.subheadline)
-                        Text("October 2, 2021 at 11:30:00 AM").font(.subheadline)
-                    }
-                }
-            }*/
             VStack(alignment: .center){
                 Image("TNvsMO_Oct2_2022")
                     .resizable()
