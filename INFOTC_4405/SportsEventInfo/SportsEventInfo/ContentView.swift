@@ -48,19 +48,6 @@ struct ContentView: View {
             }
 
         }
-        NavigationView {
-            List {
-                HStack {
-                    Image("football")
-                        .resizable()
-                        .frame(width: 35, height: 35, alignment: .center)
-                    VStack(alignment: .leading) {
-                        Text("football")
-                            .font(.headline)
-                    }
-                }
-            }
-        }
     }
 }
 
