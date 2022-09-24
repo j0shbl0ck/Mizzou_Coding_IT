@@ -59,9 +59,7 @@ struct ContentView: View {
                             .font(.headline)
                     }
                 }
-
-            }.navigationTitle("List")
-            
+            }
         }
     }
 }
