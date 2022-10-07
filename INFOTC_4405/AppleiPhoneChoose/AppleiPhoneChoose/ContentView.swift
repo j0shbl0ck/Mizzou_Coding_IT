@@ -22,31 +22,51 @@ struct ContentView: View {
                     VStack(alignment: .leading){
                         Text("Choose your finish.").bold().font(.title2).padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                     }
+                    // Upper row of finish boxes
                     HStack{
+                        // Sierra Blue Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            Text("Sierra Blue")
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        )
+                        // Silver Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
-                            .overlay(
-                                Text("Sierra Blue")
-                                    .font(.subheadline)
-                                    .foregroundColor(.black)
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-                            )
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            Text("Silver")
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        )
                     }
+                    // Lower row of finish boxes
                     HStack{
+                        // Gold Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            Text("Gold")
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        )
+                        // Graphite Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            Text("Graphite")
+                            .font(.subheadline)
+                            .foregroundColor(.black)
+                        )
                     }
                 }
                     .background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
