@@ -93,7 +93,7 @@ struct ContentView: View {
                                 .font(.system(size: 7))
                                 .foregroundColor(.black)
                                 Text("From $999 or $41.62/mo. before trade-in*")
-                                .font(.caption)
+                                .font(.system(size: 9))
                                 .foregroundColor(.gray)
                                 .multilineTextAlignment(.center)
                             }
@@ -113,7 +113,7 @@ struct ContentView: View {
                                 .font(.system(size: 7))
                                 .foregroundColor(.black)
                                 Text("From $1,099 or $45.79/mo. before trade-in*")
-                                .font(.caption)
+                                .font(.system(size: 9))
                                 .foregroundColor(.gray)
                                 .multilineTextAlignment(.center)
                             }
@@ -136,7 +136,7 @@ struct ContentView: View {
                                 .font(.system(size: 7))
                                 .foregroundColor(.black)
                                 Text("From $1,299 or $54.12/mo. before trade-in*")
-                                .font(.caption)
+                                .font(.system(size: 9))
                                 .foregroundColor(.gray)
                                 .multilineTextAlignment(.center)
                             }
@@ -156,7 +156,7 @@ struct ContentView: View {
                                 .font(.system(size: 7))
                                 .foregroundColor(.black)
                                 Text("From $1,499 or $62.46/mo. before trade-in*")
-                                .font(.caption)
+                                .font(.system(size: 9))
                                 .foregroundColor(.gray)
                                 .multilineTextAlignment(.center)
                             }
