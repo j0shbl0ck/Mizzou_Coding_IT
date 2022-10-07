@@ -30,9 +30,15 @@ struct ContentView: View {
                         .background(Color.white)
                         .frame(width: 175, height: 80)
                         .overlay(
-                            Text("Sierra Blue")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                            VStack{
+                                Circle()
+                                .strokeBorder(Color.gray,lineWidth: 0.25)
+                                .background(Circle().foregroundColor(Color(.sRGB, red: 0.694, green: 0.776, blue: 0.851, opacity: 1.0)))
+                                .frame(width: 20, height: 20)
+                                Text("Sierra Blue")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                            }
                         )
                         // Silver Box
                         RoundedRectangle(cornerRadius: 4.0)
@@ -40,9 +46,15 @@ struct ContentView: View {
                         .background(Color.white)
                         .frame(width: 175, height: 80)
                         .overlay(
-                            Text("Silver")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                            VStack{
+                                Circle()
+                                .strokeBorder(Color.gray,lineWidth: 0.25)
+                                .background(Circle().foregroundColor(Color(.sRGB, red: 0.953, green: 0.957, blue: 0.941, opacity: 1.0)))
+                                .frame(width: 20, height: 20)
+                                Text("Silver")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                            }
                         )
                     }
                     // Lower row of finish boxes
@@ -53,9 +65,15 @@ struct ContentView: View {
                         .background(Color.white)
                         .frame(width: 175, height: 80)
                         .overlay(
-                            Text("Gold")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                            VStack{
+                                Circle()
+                                .strokeBorder(Color.gray,lineWidth: 0.25)
+                                .background(Circle().foregroundColor(Color(.sRGB, red: 0.969, green: 0.925, blue: 0.843, opacity: 1.0)))
+                                .frame(width: 20, height: 20)
+                                Text("Gold")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                            }
                         )
                         // Graphite Box
                         RoundedRectangle(cornerRadius: 4.0)
@@ -63,9 +81,15 @@ struct ContentView: View {
                         .background(Color.white)
                         .frame(width: 175, height: 80)
                         .overlay(
-                            Text("Graphite")
-                            .font(.subheadline)
-                            .foregroundColor(.black)
+                            VStack{
+                                Circle()
+                                .strokeBorder(Color.gray,lineWidth: 0.25)
+                                .background(Circle().foregroundColor(Color(.sRGB, red: 0.376, green: 0.365, blue: 0.357, opacity: 1.0)))
+                                .frame(width: 20, height: 20)
+                                Text("Graphite")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                            }
                         )
                     }
                 }
