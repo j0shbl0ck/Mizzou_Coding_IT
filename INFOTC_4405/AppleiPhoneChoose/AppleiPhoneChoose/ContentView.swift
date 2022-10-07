@@ -76,6 +76,7 @@ struct ContentView: View {
                         Text("Your current iPhone X is a 64 GB model").font(.caption).foregroundColor(.gray)
                         Text("How much capacity is right for you?").font(.caption).foregroundColor(.blue)
                     }
+                    // Upper row of capacity boxes
                     HStack{
                         // 128GB Box
                     RoundedRectangle(cornerRadius: 4.0)
@@ -99,21 +100,67 @@ struct ContentView: View {
                         )
                         // 256GB Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            VStack{
+                                Text("256GB")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                                + Text("2")
+                                .baselineOffset(6.0)
+                                .font(.system(size: 7))
+                                .foregroundColor(.black)
+                                Text("From $1,099 or $45.79/mo. before trade-in*")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                            }
+                        )
                     }
+                    // Lower row of capacity boxes
                     HStack{
                         // 512GB Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            VStack{
+                                Text("512GB")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                                + Text("2")
+                                .baselineOffset(6.0)
+                                .font(.system(size: 7))
+                                .foregroundColor(.black)
+                                Text("From $1,299 or $54.12/mo. before trade-in*")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                            }
+                        )
                         // 1TB Box
                         RoundedRectangle(cornerRadius: 4.0)
-                            .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                            .background(Color.white)
-                            .frame(width: 175, height: 80)
+                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
+                        .background(Color.white)
+                        .frame(width: 175, height: 80)
+                        .overlay(
+                            VStack{
+                                Text("1TB")
+                                .font(.subheadline)
+                                .foregroundColor(.black)
+                                + Text("2")
+                                .baselineOffset(6.0)
+                                .font(.system(size: 7))
+                                .foregroundColor(.black)
+                                Text("From $1,499 or $62.46/mo. before trade-in*")
+                                .font(.caption)
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                            }
+                        )
                     }
                 }.padding()
                     .background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
