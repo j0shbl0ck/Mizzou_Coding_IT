@@ -77,10 +77,26 @@ struct ContentView: View {
                         Text("How much capacity is right for you?").font(.caption).foregroundColor(.blue)
                     }
                     HStack{
+                        // 128GB Box
                         RoundedRectangle(cornerRadius: 4.0)
                             .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
                             .background(Color.white)
                             .frame(width: 175, height: 80)
+                            .overlay(
+                                VStack{
+                                    Text("128GB")
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
+                                    + Text("2")
+                                    .baselineOffset(6.0)
+                                    .font(.system(size: 7))
+                                    .foregroundColor(.black)
+                                    Text("From $999 or $41.62/mo. before trade-in*")
+                                    .font(.caption)
+                                    .foregroundColor(.gray)
+                                    .multilineTextAlignment(.center)
+                                }
+                            )
                         RoundedRectangle(cornerRadius: 4.0)
                             .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
                             .background(Color.white)
