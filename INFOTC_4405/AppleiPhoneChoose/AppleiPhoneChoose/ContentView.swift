@@ -96,7 +96,7 @@ struct ContentView: View {
                     .background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
                 VStack(alignment: .leading){
                     VStack(alignment: .leading){
-                        Text("Choose your capacity.").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                        Text("Choose your capacity.").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 1, trailing: 0))
                         Text("Your current iPhone X is a 64 GB model").font(.caption).foregroundColor(.gray)
                         Text("How much capacity is right for you?").font(.caption).foregroundColor(.blue)
                     }
