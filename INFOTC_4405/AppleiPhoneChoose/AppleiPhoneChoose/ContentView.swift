@@ -31,6 +31,12 @@ struct ContentView: View {
                             .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
                             .background(Color.white)
                             .frame(width: 175, height: 80)
+                            .overlay(
+                                Text("Product Red")
+                                    .font(.title3)
+                                    .foregroundColor(.red)
+                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+                            )
                     }
                     HStack{
                         RoundedRectangle(cornerRadius: 4.0)
