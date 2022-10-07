@@ -32,9 +32,9 @@ struct ContentView: View {
                             .background(Color.white)
                             .frame(width: 175, height: 80)
                             .overlay(
-                                Text("Product Red")
-                                    .font(.title3)
-                                    .foregroundColor(.red)
+                                Text("Sierra Blue")
+                                    .font(.subheadline)
+                                    .foregroundColor(.black)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                             )
                     }
