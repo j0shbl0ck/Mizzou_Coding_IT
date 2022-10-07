@@ -15,15 +15,12 @@ struct ContentView: View {
         VStack {
             VStack{
                 Text("From $999 or $41.62/mo. before trade-in*")
-                Divider()
-                    .frame(width: 500)
             }
-
             // Choose your finish section
             VStack() {
                 VStack(alignment: .leading){
                     VStack(alignment: .leading){
-                        Text("Choose your finish.").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 0, trailing: 0))
+                        Text("Choose your finish.").bold().font(.title2).padding(EdgeInsets(top: 0, leading: 0, bottom: 10, trailing: 0))
                     }
                     HStack{
                         RoundedRectangle(cornerRadius: 4.0)
@@ -45,7 +42,7 @@ struct ContentView: View {
                             .background(Color.white)
                             .frame(width: 175, height: 80)
                     }
-                }.padding()
+                }
                     .background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
                 VStack(alignment: .leading){
                     VStack(alignment: .leading){
