@@ -3,7 +3,7 @@
 //  midtermProject
 //
 //  Created by Josh Block on 10/22/22.
-//
+//  https://www.simpleswiftguide.com/swiftui-navigationview-tutorial-with-examples/
 
 import SwiftUI
 
