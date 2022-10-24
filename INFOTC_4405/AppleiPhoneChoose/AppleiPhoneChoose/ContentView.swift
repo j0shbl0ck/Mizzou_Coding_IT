@@ -50,66 +50,11 @@ struct DetailView: View {
                         Text("Population: \(state.pop)")
                         Text("Population 2018: \(state.pop2018)")
                         Text("Population 2010: \(state.pop2010)")
-                        Text("Your current iPhone X is a 64 GB model").font(.caption).foregroundColor(.gray)
-                        Text("How much capacity is right for you?").font(.caption).foregroundColor(.blue)
                     }
                     VStack(alignment: .leading){
                         Text("Miscellaneous Information.").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 1, trailing: 0))
                         Text("State Rank: \(state.rank)")
                         Text("State Density: \(state.density)")
-                    }
-                    VStack(alignment: .leading) {
-                                    HStack {
-                                        Text("Matchup:").italic().font(.caption).foregroundColor(.gray)
-                                        Text("Tennessee vs Missouri").font(Font.system(size: 12))
-                                    }
-                                    HStack {
-                                        Text("When:").italic().font(Font.system(size: 12))
-                                        Text("October 2, 2021 at 11:30:00 AM").font(Font.system(size: 12))
-                                    }
-                                }.padding(.leading)
-                    // Lower row of capacity boxes
-                    HStack{
-                        // 512GB Box
-                        RoundedRectangle(cornerRadius: 4.0)
-                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                        .background(Color.white)
-                        .frame(width: 175, height: 80)
-                        .overlay(
-                            VStack{
-                                Text("512GB")
-                                .font(.subheadline)
-                                .foregroundColor(.black)
-                                + Text("2")
-                                .baselineOffset(6.0)
-                                .font(.system(size: 7))
-                                .foregroundColor(.black)
-                                Text("From $1,299 or $54.12/mo. before trade-in*")
-                                .font(.system(size: 9))
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                            }
-                        )
-                        // 1TB Box
-                        RoundedRectangle(cornerRadius: 4.0)
-                        .stroke(Color(.sRGB, red: 0.8, green: 0.8, blue: 0.8, opacity: 1.0))
-                        .background(Color.white)
-                        .frame(width: 175, height: 80)
-                        .overlay(
-                            VStack{
-                                Text("1TB")
-                                .font(.subheadline)
-                                .foregroundColor(.black)
-                                + Text("2")
-                                .baselineOffset(6.0)
-                                .font(.system(size: 7))
-                                .foregroundColor(.black)
-                                Text("From $1,499 or $62.46/mo. before trade-in*")
-                                .font(.system(size: 9))
-                                .foregroundColor(.gray)
-                                .multilineTextAlignment(.center)
-                            }
-                        )
                     }
                 }.padding()
                     .background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
