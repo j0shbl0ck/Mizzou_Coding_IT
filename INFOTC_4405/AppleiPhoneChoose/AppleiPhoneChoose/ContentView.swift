@@ -46,19 +46,18 @@ struct DetailView: View {
             VStack() {
                 VStack(alignment: .leading){
                     VStack(alignment: .leading){
-                        Text("Population Information.").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 1, trailing: 0))
+                        Text("Population Information ⬇️").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 1, trailing: 0))
                         Text("Population: \(state.pop)")
                         Text("Population 2018: \(state.pop2018)")
                         Text("Population 2010: \(state.pop2010)")
                     }
                     VStack(alignment: .leading){
-                        Text("Miscellaneous Information.").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 1, trailing: 0))
+                        Text("Miscellaneous Information ⬇️").bold().font(.title2).padding(EdgeInsets(top: 20, leading: 0, bottom: 1, trailing: 0))
                         Text("State Rank: \(state.rank)")
                         Text("State Density: \(state.density)")
                     }
-                }.padding()
-                    .background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
-            }.padding().background(Color(.sRGB, red: 0.953, green: 0.953, blue: 0.969, opacity: 1.0))
+                }
+            }.padding()
         }
     }
 }
@@ -84,7 +83,7 @@ struct ContentView: View {
                     infoStates(state: state)
                 }
             }
-            .navigationBarTitle("United States Information", displayMode: .inline)
+            .navigationBarTitle("United States Information 🇺🇸", displayMode: .inline)
         }
     }
     
