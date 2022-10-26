@@ -1,0 +1,49 @@
+<!-- https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
+https://stackoverflow.com/questions/42754388/uncaught-in-promise-typeerror-failed-to-fetch-and-cors-error
+https://dmitripavlutin.com/fetch-with-json/ -->
+<!DOCTYPE html> 
+<html lang ="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+  </head>
+  <body>      
+    <h1>HTML DOM Events</h1>
+    <h2>The onclick Event</h2>
+    <p>The ors a function when an element is clicked on.</p>
+    <!-- <button onclick="myFunction()">Click me</button> -->
+    <p id="demo"></p>
+    <script>
+      async function createGroup() {
+        const response = await fetch('https://45.56.126.232:3333/api/groups/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
+          mode: 'no-cors',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              "name": "Example Group",
+              "targets": [
+              {
+                  "email": "user@example.com",
+                  "first_name": "Example",
+                  "last_name": "User",
+                  "position": ""
+              },
+              {
+                  "email": "foo@bar.com",
+                  "first_name": "Foo",
+                  "last_name": "Bar",
+                  "position": ""
+              }
+              ]
+          })
+        });
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+      }
+      createGroup();
+    </script>
+  </body>
+</html>
