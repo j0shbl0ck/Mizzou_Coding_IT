@@ -41,9 +41,8 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               ]
           })
         });
-        const responseText = await response.json(); //extract JSON from the http response
-        // do something with myJson
-        console.log(responseText); // logs 'OK'
+        const responseText = await response.json(); 
+        console.log(responseText);
       }
       createGroup();
     </script>
