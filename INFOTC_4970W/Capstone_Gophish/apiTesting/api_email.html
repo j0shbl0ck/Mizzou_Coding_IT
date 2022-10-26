@@ -40,7 +40,7 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               ]
           })
         });
-        const myJson = await response.json(); //extract JSON from the http response
+        let myJson = await resp.json(); //extract JSON from the http response
         // do something with myJson
       }
       createGroup();
