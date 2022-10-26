@@ -1,3 +1,4 @@
+
 <!-- https://medium.com/@dtkatz/3-ways-to-fix-the-cors-error-and-how-access-control-allow-origin-works-d97d55946d9
 https://stackoverflow.com/questions/42754388/uncaught-in-promise-typeerror-failed-to-fetch-and-cors-error
 https://dmitripavlutin.com/fetch-with-json/ -->
@@ -23,7 +24,7 @@ https://dmitripavlutin.com/fetch-with-json/ -->
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-              "name": "Example Group",
+              "name": "Example Group2005",
               "targets": [
               {
                   "email": "user@example.com",
@@ -40,8 +41,9 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               ]
           })
         });
-        let myJson = await resp.json(); //extract JSON from the http response
+        const responseText = await response.json(); //extract JSON from the http response
         // do something with myJson
+        console.log(responseText); // logs 'OK'
       }
       createGroup();
     </script>
