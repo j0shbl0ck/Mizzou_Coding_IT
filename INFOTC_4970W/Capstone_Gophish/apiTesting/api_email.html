@@ -23,8 +23,9 @@ https://dmitripavlutin.com/fetch-with-json/ -->
           headers: {
             'Content-Type': 'application/json'
           },
+          // generate random group name
           body: JSON.stringify({
-              "name": "Example Group2050",
+              "name": Math.random().toString(36).substring(7),
               "targets": [
               {
                   "email": "user@example.com",
@@ -45,6 +46,8 @@ https://dmitripavlutin.com/fetch-with-json/ -->
         //console.log(responseText);
       }
       createGroup();
+ 
+      
     </script>
   </body>
 </html>
