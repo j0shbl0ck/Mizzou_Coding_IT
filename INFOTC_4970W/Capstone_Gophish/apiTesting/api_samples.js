@@ -1,5 +1,3 @@
-document.getElementById("myForm").onsubmit = function() {runCampaign()};
-
 function runCampaign() {
     createGroup();
     createCampaign();
