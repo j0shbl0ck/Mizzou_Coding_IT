@@ -1,3 +1,9 @@
+document.getElementById("myForm").onsubmit = function() {runCampaign()};
+
+function runCampaign() {
+    createGroup();
+    createCampaign();
+} 
     var email = document.getElementById("emailaddress").value;
     var groupName = {}; // Globally scoped object
 
