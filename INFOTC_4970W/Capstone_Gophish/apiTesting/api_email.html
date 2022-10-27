@@ -31,17 +31,12 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               "name": Math.random().toString(36).substring(7),
               "targets": [
               {
-                  "email": "user@example.com",
+                  // get email from input
+                  "email": document.getElementById("email").value,
                   "first_name": "Example",
                   "last_name": "User",
                   "position": ""
               },
-              {
-                  "email": "foo@bar.com",
-                  "first_name": "Foo",
-                  "last_name": "Bar",
-                  "position": ""
-              }
               ]
           })
         });
