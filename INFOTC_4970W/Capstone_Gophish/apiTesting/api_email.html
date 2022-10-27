@@ -49,7 +49,9 @@ https://dmitripavlutin.com/fetch-with-json/ -->
       
       createGroup();
       // show groupName from createGroup()
+
       //console.log(groupName);
+
 
       async function createCampaign() {
         const response = await fetch('https://45.56.126.232:3333/api/campaigns/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
@@ -68,7 +70,7 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               "launch_date":null,
               "send_by_date":null,
               // get groupName from createGroup()
-              "groups":[{"name":createGroup(groupName)}],
+              "groups":[{"name":groupName.createGroup()}],
           })
         });
       }
