@@ -19,5 +19,12 @@ https://dmitripavlutin.com/fetch-with-json/ -->
       <input type="email" name="email2" id="emailaddress" />
       <button type="submit">Submit</button>
     </form>
+    <script>
+      document.getElementById("emailForm").addEventListener("submit", myFunction);
+      
+      function myFunction() {
+        alert("The form was submitted");
+      }
+    </script>
   </body>
 </html>
