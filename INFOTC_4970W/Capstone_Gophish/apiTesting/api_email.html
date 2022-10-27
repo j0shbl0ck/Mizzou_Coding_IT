@@ -14,67 +14,10 @@ https://dmitripavlutin.com/fetch-with-json/ -->
     <h2>The onclick Event</h2>
     <p>The ors a function when an element is clicked on.</p>
     <!-- <button onclick="myFunction()">Click me</button> -->
-    <form>
+    <form id="emailForm" action="api_samples.js">
       <label for="email">Email</label>
       <input type="email" name="email2" id="emailaddress" />
-    
       <button type="submit">Submit</button>
     </form>
-    <script>
-      var groupName = {}; // Globally scoped object
-
-      async function createGroup() {
-        // create random group name
-        groupName.groupPhish = Math.random().toString(36).substring(7);
-        const response = await fetch('https://45.56.126.232:3333/api/groups/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
-          mode: 'no-cors',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-
-          body: JSON.stringify({
-              // use random group name
-              "name": groupName.groupPhish,
-              "targets": [
-              {
-                  // get email from input
-                  "email": "247jblock@gmail.com",
-                  "first_name": "Example",
-                  "last_name": "User",
-                  "position": ""
-              },
-              ]
-          })
-        });
-      }
-      
-      createGroup();
-      // show groupName from createGroup()
-
-      //console.log(groupName);
-      async function createCampaign() {
-        var campaigngroup = (createGroup.groupName);
-        const response = await fetch('https://45.56.126.232:3333/api/campaigns/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
-          mode: 'no-cors',
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-              // generate random campaign name
-              "name": Math.random().toString(36).substring(7),
-              "template":{"name":"LoginGov"},
-              "url":"http://45.56.126.232",
-              "page":{"name":"landingPage"},
-              "smtp":{"name":"sendingProfile"},
-              "launch_date":null,
-              "send_by_date":null,
-              "groups":[{"name":groupName.groupPhish}]
-          })
-        });
-      }
-      createCampaign();
-    </script>
   </body>
 </html>
