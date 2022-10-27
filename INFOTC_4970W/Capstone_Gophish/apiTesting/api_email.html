@@ -21,9 +21,11 @@ https://dmitripavlutin.com/fetch-with-json/ -->
       <button type="submit">Submit</button>
     </form>
     <script>
+      var groupName = {}; // Globally scoped object
+
       async function createGroup() {
         // create random group name
-        var groupName = Math.random().toString(36).substring(7);
+        groupName.groupPhish = Math.random().toString(36).substring(7);
         const response = await fetch('https://45.56.126.232:3333/api/groups/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
           mode: 'no-cors',
           method: 'POST',
@@ -33,7 +35,7 @@ https://dmitripavlutin.com/fetch-with-json/ -->
 
           body: JSON.stringify({
               // use random group name
-              "name": groupName,
+              "name": groupName.groupPhish,
               "targets": [
               {
                   // get email from input
@@ -68,7 +70,7 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               "smtp":{"name":"sendingProfile"},
               "launch_date":null,
               "send_by_date":null,
-              "groups":[{"name":"Tesr123"}]
+              "groups":[{"name":groupName.groupPhish}]
           })
         });
       }
