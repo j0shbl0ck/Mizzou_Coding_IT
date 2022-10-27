@@ -30,8 +30,8 @@ https://dmitripavlutin.com/fetch-with-json/ -->
             'Content-Type': 'application/json'
           },
 
-          // generate random group name
           body: JSON.stringify({
+              // generate random group name
               "name": Math.random().toString(36).substring(7),
               "targets": [
               {
@@ -48,8 +48,31 @@ https://dmitripavlutin.com/fetch-with-json/ -->
         //console.log(responseText);
       }
       createGroup();
- 
-      
+
+      async function createCampaign() {
+        const response = await fetch('https://https://45.56.126.232:3333/api/campaigns/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
+          mode: 'no-cors',
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              // generate random campaign name
+              "name": Math.random().toString(36).substring(7),
+              "template":{"name":"LoginGov"},
+              "url":"http://45.56.126.232",
+              "page":{"name":"landingPage"},
+              "smtp":{"name":"sendingProfile"},
+              "launch_date":null,
+              "send_by_date":null,
+              // get group name from createGroup()
+              "groups":[{"name": name.createGroup()}],
+          })
+        });
+        //const responseText = await response.json();
+        //console.log(responseText);
+      }
+      createCampaign();
     </script>
   </body>
 </html>
