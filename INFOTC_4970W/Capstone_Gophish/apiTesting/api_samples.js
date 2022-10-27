@@ -1,7 +1,4 @@
-function runCampaign() {
-    createGroup();
-    createCampaign();
-} 
+function startCampaign(){  
     var email = document.getElementById("emailaddress").value;
     var groupName = {}; // Globally scoped object
 
@@ -30,11 +27,7 @@ function runCampaign() {
         })
     });
     }
-    
-    createGroup();
-
     async function createCampaign() {
-    var campaigngroup = (createGroup.groupName);
     const response = await fetch('https://45.56.126.232:3333/api/campaigns/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
         mode: 'no-cors',
         method: 'POST',
@@ -55,4 +48,6 @@ function runCampaign() {
         })
     });
     }
+    createGroup();
     createCampaign();
+}
