@@ -22,6 +22,8 @@ https://dmitripavlutin.com/fetch-with-json/ -->
     </form>
     <script>
       async function createGroup() {
+        // create random group name
+        const groupName = Math.random().toString(36).substring(7);
         const response = await fetch('https://45.56.126.232:3333/api/groups/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
           mode: 'no-cors',
           method: 'POST',
@@ -30,8 +32,8 @@ https://dmitripavlutin.com/fetch-with-json/ -->
           },
 
           body: JSON.stringify({
-              // generate random group name
-              "name": Math.random().toString(36).substring(7),
+              // use random group name
+              "name": groupName,
               "targets": [
               {
                   // get email from input
@@ -48,11 +50,6 @@ https://dmitripavlutin.com/fetch-with-json/ -->
       }
       
       createGroup();
-      // get email property from created group
-      const email = responseText.targets[0].email;
-      console.log(email);
-
-
 
       async function createCampaign() {
         const response = await fetch('https://45.56.126.232:3333/api/campaigns/?api_key=5caca5184bdafafa1d9fb4d1d89947d58f4d2f2ffa684e4645fd00a41a992630', {
@@ -71,7 +68,6 @@ https://dmitripavlutin.com/fetch-with-json/ -->
               "launch_date":null,
               "send_by_date":null,
               // get group name from createGroup()
-              
               "groups":[{"name":"Test1234"}]
           })
         });
