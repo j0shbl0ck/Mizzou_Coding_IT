@@ -14,6 +14,8 @@ https://dmitripavlutin.com/fetch-with-json/ -->
     <h2>The onclick Event</h2>
     <p>The ors a function when an element is clicked on.</p>
     <!-- <button onclick="myFunction()">Click me</button> -->
+    <label for="email">Enter your email:</label>
+    <input type="email" id="email" name="email"></input>
     <p id="demo"></p>
     <script>
       async function createGroup() {
@@ -23,6 +25,7 @@ https://dmitripavlutin.com/fetch-with-json/ -->
           headers: {
             'Content-Type': 'application/json'
           },
+
           // generate random group name
           body: JSON.stringify({
               "name": Math.random().toString(36).substring(7),
