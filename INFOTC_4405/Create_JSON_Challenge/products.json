@@ -1,0 +1,11 @@
+struct Product : Identifiable {
+    let id = UUID()
+    let cost: Double
+    let name: String
+    let urlString: String
+}
+/* Format in JSON structure */
+
+https://www.define.run/posts/encoding-and-decoding-json-in-swift
+https://www.codespeedy.com/parsing-a-json-array-in-swift/
+https://betterprogramming.pub/swift-json-parsing-made-easy-931dc8fee27
