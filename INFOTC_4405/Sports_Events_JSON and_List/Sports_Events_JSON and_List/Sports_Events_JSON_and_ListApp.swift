@@ -4,6 +4,10 @@
 //
 //  Created by Josh Block on 11/2/22.
 //
+// Source One: https://medium.com/swift-productions/fetch-json-data-display-list-swiftui-2-0-d301f401c223
+// Source Two: https://betterprogramming.pub/swift-json-parsing-made-easy-931dc8fee27f
+// Source Three: https://www.avanderlee.com/swift/json-parsing-decoding/
+
 
 import SwiftUI
 
