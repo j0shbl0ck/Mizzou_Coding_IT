@@ -7,27 +7,44 @@
 
 import SwiftUI
 
-struct EventData: Codable, Identifiable {
-    var id = UUID()
-    let status: String
-    var events: [Event]
-
-    enum CodingKeys: String, CodingKeys {
+struct EventData: Decodable {
+    enum CodingKeys: String,CodingKey {
         case status
         case events
     }
+    var id = UUID()
+    let status: String
+    var events: [Event]
 }
 
-struct Event: Codable, Identifiable {
-    var id = UUID()
-    let sport: String
-    let matchup: String
-    let date: Date
-    enum CodingKeys: String, Decodable {
+struct Event: Decodable {
+    enum CodingKeys: String, CodingKey {
         case sport
         case matchup
         case date
     }
+    var id = UUID()
+    let sport: String
+    let matchup: String
+    let date: Date
+}
+
+
+struct Video: Decodable {
+    enum CodingKeys: String, CodingKey {
+        // Map 'title'  to 'name'
+        case name = "title"
+        case url
+        // Map 'category' to 'topic'
+        case topic = "category"
+        case views
+    }
+
+    // The above mappings can be used now:
+    let name: String
+    let url: URL
+    let topic: String
+    let views: Int
 }
 
 class EventLoader {
