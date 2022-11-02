@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Events: Decodable, Identifiable {
+struct EventData: Decodable, Identifiable {
     var id = UUID()
     let sport: String
     let matchup: String
