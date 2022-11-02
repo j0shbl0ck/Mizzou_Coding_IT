@@ -38,7 +38,7 @@ struct Sports_Events_JSON_and_ListApp: App {
     
     let EventData: EventData?
 
-    init() 
+    init() {
         EventData = EventLoader.load(jsonFileName: "sports_events")
         if let EventData = EventData {
             print("Status: \(EventData.status)")
