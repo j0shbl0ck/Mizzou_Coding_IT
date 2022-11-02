@@ -7,20 +7,46 @@
 
 import SwiftUI
 
+struct Events: Decodable, Identifiable {
+    var id = UUID()
+    let sport: String
+    let matchup: String
+    let date: Date
+    enum Category: String, Decodable {
+        case swift, combine, debugging, xcode
+    }
+}
+
+class EventLoader {
+    class func load(jsonFileName: String) -> EventData? {
+        var EventData: EventData?
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .iso8601
+
+        if let jsonFileUrl = Bundle.main.url(forResource: jsonFileName, withExtension: ".json") {
+                let jsonData = try? Data(contentsOf: jsonFileUrl) {
+                    EventData = try?  jsonDecoder.decode(EventData.self, from: jsonData)
+                }
+        } 
+        return EventData
+    }
+}
+
+
 @main
 struct Sports_Events_JSON_and_ListApp: App {
     
-    init() {
-        if let filepath = Bundle.main.path(forResource: "measurements", ofType: "json") {
-            do {
-                let contents = try String(contentsOfFile: filepath)
-                // the information in the file is in contents
-                print(contents)  // to show that it is there
-            } catch {
-                // contents could not be loaded
+    let EventData: EventData?
+
+    init() 
+        EventData = EventLoader.load(jsonFileName: "sports_events")
+        if let EventData = EventData {
+            print("Status: \(EventData.status)")
+            for event in EventData.events {
+                print("Sport: \(event.sport)")
+                print("Matchup: \(event.matchup)")
+                print("Date: \(event.date)")
             }
-        } else {
-            // measurements.json is cannot be found
         }
     }
         
