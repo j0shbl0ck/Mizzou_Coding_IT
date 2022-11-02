@@ -52,18 +52,18 @@ class EventLoader {
         var EventData: EventData?
         let jsonDecoder = JSONDecoder()
         if let jsonFileUrl = Bundle.main.url(forResource: jsonFileName, withExtension: ".json") {
-                let jsonData = try? Data(contentsOf: jsonFileUrl)
+            let jsonData = try? Data(contentsOf: jsonFileUrl) {
                 EventData = try? jsonDecoder.decode(EventData.self, from: jsonData)
+            }
+            return EventData
         }
-        return EventData
     }
-}
-
-
+    
+    
 @main
 struct Sports_Events_JSON_and_ListApp: App {
     let EventData: EventData?
-
+        
     init() {
         EventData = EventLoader.load(jsonFileName: "sports_events")
         if let EventData = EventData {
