@@ -12,85 +12,73 @@
 
 import SwiftUI
 
-struct EventData: Decodable, Identifiable {
+struct EventData: Codable, Identifiable {
+    var id = UUID()
+    let status: String
+    var events: [Event]
+    
     enum CodingKeys: String,CodingKey {
         case status
         case events
     }
-    var id = UUID()
-    let status: String
-    var events: [Event]
 }
 
-struct Event: Decodable, Identifiable {
+struct Event: Codable, Identifiable {
+    var id = UUID()
+    let sport: String
+    let matchup: String
+    let date: Date
+    
     enum CodingKeys: String, CodingKey {
         case sport
         case matchup
         case date
     }
-    var id = UUID()
-    let sport: String
-    let matchup: String
-    let date: Date
 }
 
-
-struct Video: Decodable {
-    enum CodingKeys: String, CodingKey {
-        // Map 'title'  to 'name'
-        case name = "title"
-        case url
-        // Map 'category' to 'topic'
-        case topic = "category"
-        case views
-    }
-
-    // The above mappings can be used now:
-    let name: String
-    let url: URL
-    let topic: String
-    let views: Int
-}
-
-/* class EventLoader {
+class EventLoader {
     class func load(jsonFileName: String) -> EventData? {
-        var EventData: EventData?
+        var eventData: EventData?
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
         
-        if let jsonFileUrl = Bundle.main.url(forResource: jsonFileName, withExtension: ".json") {
+        if let jsonFileUrl = Bundle.main.url(forResource: jsonFileName, withExtension: ".json"),
             let jsonData = try? Data(contentsOf: jsonFileUrl) {
-                EventData = try? jsonDecoder.decode(EventData.self, from: jsonData)
-            }
-            return EventData
+                eventData = try? jsonDecoder.decode(EventData.self, from: jsonData)
         }
-    } */
-
-
-class ParseJson {
-     func readdata() -> [EventData] {
-        var dataArray = [EventData]()
-        if let bundlePath = Bundle.main.path(forResource: "EventData", ofType: "json") {
-            do { 
-                if let jsondata = try?Data(contentsOf:  URL(fileURLWithPath: bundlePath))  {
-                    if let decodejson = try? JSONDecoder().decode([EventData].self, from: jsondata) {
-                        dataArray = decodejson
-                    }
-                }
-            } 
-        }
-        return dataArray
+        return eventData
     }
 }
+    
+    
+    /* class ParseJson {
+     func readdata() -> [EventData] {
+     var dataArray = [EventData]()
+     if let bundlePath = Bundle.main.path(forResource: "EventData", ofType: "json") {
+     do {
+     if let jsondata = try?Data(contentsOf:  URL(fileURLWithPath: bundlePath))  {
+     if let decodejson = try? JSONDecoder().decode([EventData].self, from: jsondata) {
+     dataArray = decodejson
+     }
+     }
+     }
+     }
+     return dataArray
+     }
+     } */
     
     
 @main
 struct Sports_Events_JSON_and_ListApp: App {
-    let EventData2 = ParseJson().readdata()
+    let eventData: EventData?
     
     init() {
-        EventData2.forEach { (EventData) in
-            print(EventData)
+        eventData = EventLoader.load(jsonFileName: "sports_events")
+        if let eventData = eventData {
+            print("Status: \(eventData.status)")
+            for event in eventData.events {
+                print("id= \(event.id), sport = \(event.sport)")
+            }
         }
     }
     
