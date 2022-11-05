@@ -7,6 +7,7 @@
 // Source One: https://medium.com/swift-productions/fetch-json-data-display-list-swiftui-2-0-d301f401c223
 // Source Two: https://betterprogramming.pub/swift-json-parsing-made-easy-931dc8fee27f
 // Source Three: https://www.avanderlee.com/swift/json-parsing-decoding/
+// Source Four: https://www.leadbycode.com/2021/08/parse-json-in-swift-from-file-and-url.html
 
 
 import SwiftUI
@@ -51,7 +52,7 @@ struct Video: Decodable {
     let views: Int
 }
 
-class EventLoader {
+/* class EventLoader {
     class func load(jsonFileName: String) -> EventData? {
         var EventData: EventData?
         let jsonDecoder = JSONDecoder()
@@ -63,23 +64,33 @@ class EventLoader {
             }
             return EventData
         }
+    } */
+
+
+class ParseJson {
+     func readdata() -> [EventData] {
+        var dataArray = [EventData]()
+        if let bundlePath = Bundle.main.path(forResource: "EventData", ofType: "json") {
+            do { 
+                if let jsondata = try?Data(contentsOf:  URL(fileURLWithPath: bundlePath))  {
+                    if let decodejson = try? JSONDecoder().decode([EventData].self, from: jsondata) {
+                        dataArray = decodejson
+                    }
+                }
+            } 
+        }
+        return dataArray
     }
+}
     
     
     @main
     struct Sports_Events_JSON_and_ListApp: App {
-        let EventData: EventData?
+        let EventData2 = ParseJson().readdata()
         
         init() {
-            EventData = EventLoader.load(jsonFileName: "sports_events")
-            if let EventData = EventData {
-                print("Status: \(EventData.status)")
-                for event in EventData.events {
-                    print("id = \(event.id)")
-                    print("sport = \(event.sport)")
-                    print("matchup = \(event.matchup)")
-                    print("date = \(event.date)")
-                }
+            EventData2.forEach { (EventData) in
+                print(EventData)
             }
         }
         
@@ -89,4 +100,3 @@ class EventLoader {
             }
         }
     }
-}
