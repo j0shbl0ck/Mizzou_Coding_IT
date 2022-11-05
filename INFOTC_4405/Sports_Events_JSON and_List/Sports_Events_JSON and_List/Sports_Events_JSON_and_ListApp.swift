@@ -22,7 +22,7 @@ struct EventData: Decodable {
     var events: [Event]
 }
 
-struct Event: Decodable {
+struct Event: Decodable, Identifiable {
     enum CodingKeys: String, CodingKey {
         case sport
         case matchup
@@ -84,19 +84,19 @@ class ParseJson {
 }
     
     
-    @main
-    struct Sports_Events_JSON_and_ListApp: App {
-        let EventData2 = ParseJson().readdata()
-        
-        init() {
-            EventData2.forEach { (EventData) in
-                print(EventData)
-            }
-        }
-        
-        var body: some Scene {
-            WindowGroup {
-                ContentView()
-            }
+@main
+struct Sports_Events_JSON_and_ListApp: App {
+    let EventData2 = ParseJson().readdata()
+    
+    init() {
+        EventData2.forEach { (EventData) in
+            print(EventData)
         }
     }
+    
+    var body: some Scene {
+        WindowGroup {
+            ContentView()
+        }
+    }
+}
