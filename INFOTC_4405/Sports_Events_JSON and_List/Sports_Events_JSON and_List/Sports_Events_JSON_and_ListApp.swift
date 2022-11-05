@@ -8,6 +8,8 @@
 // Source Two: https://betterprogramming.pub/swift-json-parsing-made-easy-931dc8fee27f
 // Source Three: https://www.avanderlee.com/swift/json-parsing-decoding/
 // Source Four: https://www.leadbycode.com/2021/08/parse-json-in-swift-from-file-and-url.html
+// Source Five: https://blog.learncodeonline.in/navigation-list-view-with-local-json-swiftui
+// Source Six: https://www.ioscreator.com/tutorials/swiftui-json-list-tutorial
 
 
 import SwiftUI
@@ -49,24 +51,6 @@ class EventLoader {
         return eventData
     }
 }
-    
-    
-    /* class ParseJson {
-     func readdata() -> [EventData] {
-     var dataArray = [EventData]()
-     if let bundlePath = Bundle.main.path(forResource: "EventData", ofType: "json") {
-     do {
-     if let jsondata = try?Data(contentsOf:  URL(fileURLWithPath: bundlePath))  {
-     if let decodejson = try? JSONDecoder().decode([EventData].self, from: jsondata) {
-     dataArray = decodejson
-     }
-     }
-     }
-     }
-     return dataArray
-     }
-     } */
-    
     
 @main
 struct Sports_Events_JSON_and_ListApp: App {
