@@ -9,13 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+     List(users) { user in
+        Text(user.username)
+            .font(.headline)
+        Text(user.name)
+            .font(.subheadline)  
         }
-        .padding()
     }
 }
 
