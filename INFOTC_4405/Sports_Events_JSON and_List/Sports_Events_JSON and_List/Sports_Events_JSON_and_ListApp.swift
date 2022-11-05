@@ -12,7 +12,7 @@
 
 import SwiftUI
 
-struct EventData: Decodable {
+struct EventData: Decodable, Identifiable {
     enum CodingKeys: String,CodingKey {
         case status
         case events
