@@ -49,6 +49,18 @@ class FieldLoader {
 
 @main
 struct Field_Survey_ChallengeApp: App {
+    let fieldData: FieldData?
+
+    init() {
+        fieldData = FieldLoader.load(jsonFileName: "field_observations")
+        if let fieldData = fieldData {
+            print("Status: \(fieldData.status)")
+            for field in fieldData.observations {
+                print("id= \(field.id), classification = \(field.classification)")
+            }
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             ContentView()
