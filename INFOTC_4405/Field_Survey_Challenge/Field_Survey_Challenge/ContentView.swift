@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 // displays date in a human readable format
 private var dateformatter: DateFormatter {
     let dateformatter = DateFormatter()
@@ -21,65 +22,85 @@ private var timeFormatter: DateFormatter {
     return timeformatter
 }
 
-// create the list of observations
-struct infoObservation: View {
-
-    var body: some View {
-        var fieldData: FieldData? = FieldLoader.load(jsonFileName: "field_observations")
-        HStack {
-            Image(systemName: "questionmark.circle")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 50, height: 50)
-                .padding(.trailing, 20)
-            VStack(alignment: .leading) {
-                Text("Title")
-                    .font(.title)
-                Text("Date")
-                    .font(.subheadline)
-            }
-            Spacer()
-        }
-    }
-}
-
-// create detailed information of the observation once it is selected
-struct ObservationDetail: View {
-    let observation: Observation
-    
-    var body: some View {
-        VStack {
-            Image(observation.classification.imageName)
-                .resizable()
-                .scaledToFit()
-                .padding()
-            Text(observation.title)
-                .font(.title)
-                .bold()
-            Text(observation.description)
-                .padding()
-            Text("Date: \(dateformatter.string(from: observation.date))")
-            Text("Time: \(timeFormatter.string(from: observation.date))")
-        }
-    }
-}
-
-// NavigationView to display the list of observations
 struct ContentView: View {
     var body: some View {
+        var fieldData: FieldData? = FieldLoader.load(jsonFileName: "field_observations")
+
+        // build navigation view
         NavigationView {
-            List(observations) { observation in
-                NavigationLink(destination: ObservationDetail(observation: observation)) {
-                    infoObservation()
-                }
+            NavigationLink(destination: FieldObservationDetailView()) {
+                // build the list with image and text
+                List(fieldData!.observations) { observation in
+                    HStack {
+                        // for each animal, get the classification, title, and date
+                        Image(observation.classification)
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .padding()
+                        VStack(alignment: .leading) {
+                            Text(observation.title)
+                                .font(.headline)
+                            // display the date at time in a human readable format
+                            Text("\(observation.date, formatter: dateformatter) at \(observation.date, formatter: timeFormatter)")
+                                .font(.subheadline)
+                        }
+                    }
+                }   
             }
             .navigationBarTitle("Field Survey")
         }
     }
+}
 
-    struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
+struct FieldObservationDetailView: View {
+    var body: some View {
+        var fieldData: FieldData? = FieldLoader.load(jsonFileName: "field_observations")
+        // show selected observation
+        HStack{
+            Image(fieldData!.observations[0].classification)
+                .resizable()
+                .frame(width: 100, height: 100)
+                .padding()
+            VStack(alignment: .leading) {
+                Text(fieldData!.observations[0].title)
+                    .font(.headline)
+                Text(fieldData!.observations[0].description)
+                    .font(.subheadline)
+            }
         }
     }
 }
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+/* struct ContentView: View {
+
+        var body: some View {
+
+            VStack {
+                Image(systemName: "globe")
+
+                    .imageScale(.large)
+
+                    .foregroundColor(.accentColor)
+
+                Text("Hello, world!")
+
+            }
+            .padding()
+
+        }
+        struct ContentView_Previews: PreviewProvider {
+        static var previews: some View {
+            ContentView()
+        }
+
+    }
+} */
+
