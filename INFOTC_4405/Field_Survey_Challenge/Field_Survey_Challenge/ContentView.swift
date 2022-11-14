@@ -1,12 +1,13 @@
 //
 //  ContentView.swift
-//  Field_Survey_Challenge
+//  Field_2
 //
-//  Created by Josh Block on 11/10/22.
+//  Created by Josh Block on 11/14/22.
 //
+// https://www.simpleswiftguide.com/how-to-add-navigationview-to-list-in-swiftui-and-show-detail-view-using-navigationlink/
+
 
 import SwiftUI
-
 
 // displays date in a human readable format
 private var dateformatter: DateFormatter {
@@ -22,51 +23,63 @@ private var timeFormatter: DateFormatter {
     return timeformatter
 }
 
-struct ContentView: View {
-    var body: some View {
-        var fieldData: FieldData? = FieldLoader.load(jsonFileName: "field_observations")
+struct FieldRow: View {
+    var fieldObservation: FieldObservation
 
-        // build navigation view
-        NavigationView {
-            NavigationLink(destination: FieldObservationDetailView()) {
-                // build the list with image and text
-                List(fieldData!.observations) { observation in
-                    HStack {
-                        // for each animal, get the classification, title, and date
-                        Image(observation.classification)
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .padding()
-                        VStack(alignment: .leading) {
-                            Text(observation.title)
-                                .font(.headline)
-                            // display the date at time in a human readable format
-                            Text("\(observation.date, formatter: dateformatter) at \(observation.date, formatter: timeFormatter)")
-                                .font(.subheadline)
-                        }
-                    }
-                }   
+    var body: some View {
+        HStack {
+            // for each classification, display the title and date
+            Image(fieldObservation.classification.rawValue)
+                .resizable()
+                .frame(width: 25, height: 25)
+                .padding()
+            VStack(alignment: .leading) {
+                Text(fieldObservation.title)
+                    .font(.headline)
+                // display the date at time in a human readable format
+                Text("\(fieldObservation.date, formatter: dateformatter) at \(fieldObservation.date, formatter: timeFormatter)")
+                    .font(.subheadline)
             }
-            .navigationBarTitle("Field Survey")
         }
     }
 }
 
-struct FieldObservationDetailView: View {
+struct ContentView: View {
+    let fieldData = FieldObservationsLoader.load(jsonFileName: "field_observations")
     var body: some View {
-        var fieldData: FieldData? = FieldLoader.load(jsonFileName: "field_observations")
-        // show selected observation
-        HStack{
-            Image(fieldData!.observations[0].classification)
-                .resizable()
-                .frame(width: 100, height: 100)
-                .padding()
-            VStack(alignment: .leading) {
-                Text(fieldData!.observations[0].title)
-                    .font(.headline)
-                Text(fieldData!.observations[0].description)
-                    .font(.subheadline)
+        NavigationView {
+            List(fieldData!.observations) { fieldObservation in
+                NavigationLink(destination: DetailView(fieldObservation: fieldObservation)) {
+                    FieldRow(fieldObservation: fieldObservation)
+                }
             }
+            .navigationBarTitle("Hiking Trails")
+        }
+    }
+}
+
+struct DetailView: View {
+    var fieldObservation: FieldObservation
+
+    var body: some View {
+        VStack{
+            HStack {
+                Image(fieldObservation.classification.rawValue)
+                    .resizable()
+                    .frame(width: 50, height: 50)
+                VStack(alignment: .leading) {
+                    Text(fieldObservation.title)
+                        .font(.headline)
+                    Text("\(fieldObservation.date, formatter: dateformatter) at \(fieldObservation.date, formatter: timeFormatter)")
+                        .font(.subheadline)
+                }
+            }
+            HStack {
+                Text(fieldObservation.description)
+                        .font(.subheadline)
+            }
+            .navigationBarTitle("Observation")
+            Spacer()
         }
     }
 }
@@ -76,31 +89,3 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-
-
-
-/* struct ContentView: View {
-
-        var body: some View {
-
-            VStack {
-                Image(systemName: "globe")
-
-                    .imageScale(.large)
-
-                    .foregroundColor(.accentColor)
-
-                Text("Hello, world!")
-
-            }
-            .padding()
-
-        }
-        struct ContentView_Previews: PreviewProvider {
-        static var previews: some View {
-            ContentView()
-        }
-
-    }
-} */
-

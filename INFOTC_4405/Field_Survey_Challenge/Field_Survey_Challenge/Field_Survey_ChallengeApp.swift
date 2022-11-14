@@ -1,66 +1,56 @@
 //
 //  Field_Survey_ChallengeApp.swift
-//  Field_Survey_Challenge
-//
-//  Created by Josh Block on 11/10/22.
+//  Field_Survey_Challenge//
+//  Created by Josh Block on 11/14/22.
 //
 
 import SwiftUI
+import Foundation
 
-struct FieldData: Codable, Identifiable {
+enum Classification: String, Codable {
+    case amphibian
+    case bird
+    case fish
+    case insect
+    case mammal
+    case plant
+    case reptile
+}
+
+struct FieldObservation: Codable, Identifiable {
     var id = UUID()
-    let status: String
-    var observations: [Field]
-    
-    enum CodingKeys: String,CodingKey {
-        case status
-        case observations
+    var classification: Classification
+    var title: String
+    var description: String
+    var date: Date
+
+    private enum CodingKeys: String, CodingKey {
+        case classification, title, description, date
     }
 }
 
-struct Field: Codable, Identifiable {
-    var id = UUID()
-    let classification: String
-    let title: String
-    let description: String
-    let date: Date
-    
-    enum CodingKeys: String, CodingKey {
-        case classification
-        case title
-        case description
-        case date
-    }
+struct FieldObservations: Codable {
+    var status: String
+    var observations: [FieldObservation]
 }
 
-class FieldLoader {
-    class func load(jsonFileName: String) -> FieldData? {
-        var fieldData: FieldData?
+class FieldObservationsLoader {
+    class func load(jsonFileName: String) -> FieldObservations? {
+        var fieldObservations: FieldObservations?
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
-        
+
         if let jsonFileUrl = Bundle.main.url(forResource: jsonFileName, withExtension: ".json"),
             let jsonData = try? Data(contentsOf: jsonFileUrl) {
-                fieldData = try? jsonDecoder.decode(FieldData.self, from: jsonData)
-        }
-        return fieldData
+                fieldObservations = try? jsonDecoder.decode(FieldObservations.self, from: jsonData)
+            }
+
+        return fieldObservations
     }
 }
 
 @main
-struct Field_Survey_ChallengeApp: App {
-    let fieldData: FieldData?
-
-    init() {
-        fieldData = FieldLoader.load(jsonFileName: "field_observations")
-        if let fieldData = fieldData {
-            print("Status: \(fieldData.status)")
-            for field in fieldData.observations {
-                print("id= \(field.id), classification = \(field.classification)")
-            }
-        }
-    }
-
+struct Field_2App: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
